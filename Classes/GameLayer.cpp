@@ -24,11 +24,8 @@ bool GameLayer::init()
     this->ignoreAnchorPointForPosition(false);
     this->setAnchorPoint(AnchorPointLeftBottom);
     
-    this->setTouchEnabled(true);
-    this->setTouchMode(kCCTouchesOneByOne);
-    
     const CCSize winSize = CCDirector::sharedDirector()->getWinSize();
-
+    CCLog("WinSize [%f, %f]", winSize.width, winSize.height);
 
 
     CCSkeletonAnimation* skeletonNode = CCSkeletonAnimation::createWithFile("dragon.json", "dragon.atlas");
@@ -41,7 +38,7 @@ bool GameLayer::init()
     
     skeletonNode->runAction(CCRepeatForever::create(CCSequence::create(CCFadeOut::create(1.f), CCFadeIn::create(1.f), CCDelayTime::create(5.f), nullptr)));
     
-    skeletonNode->setPosition(ccp(winSize.width*0.75f, winSize.height*0.3f));
+    skeletonNode->setPosition(ccp(winSize.width*0.5f, winSize.height*0.5f));
     skeletonNode->setScaleX(-0.5f);
     
     skeletonNode->setAnimation("flying", true);

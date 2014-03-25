@@ -24,37 +24,37 @@ bool AppDelegate::applicationDidFinishLaunching() {
 
     director->setOpenGLView(view);
 	
+//    TO Do : ResolutionManager;
+    
     // Spine Resolution Setting
-    view->setDesignResolutionSize(designResolutionSize.width, designResolutionSize.height, kResolutionNoBorder);
+    const CCSize currentDesignResolutionSize = designResolutionPortraitSize;
+    view->setDesignResolutionSize(currentDesignResolutionSize.width, currentDesignResolutionSize.height, kResolutionNoBorder);
+//    view->setDesignResolutionSize(designResolutionSize.width, designResolutionSize.height, kResolutionNoBorder);
 
-	// In this demo, we select resource according to the frame's height.
+	// In this demo, we select resource according to the frame's width.
 	// If the resource size is different from design resolution size, you need to set contentScaleFactor.
-	// We use the ratio of resource's height to the height of design resolution,
-	// this can make sure that the resource's height could fit for the height of design resolution.
+	// We use the ratio of resource's width to the width of design resolution,
+	// this can make sure that the resource's width could fit for the width of design resolution.
 
 	vector<string> searchPath;
 	CCSize frameSize = view->getFrameSize();
-	if (frameSize.height > mediumResource.size.height) {
-		// if the frame's height is larger than the height of medium resource size, select large resource.
+	if (frameSize.width > mediumResource.size.width)
+    {
+		// if the frame's width is larger than the width of medium resource size, select large resource.
 		searchPath.push_back(largeResource.directory);
-
-		director->setContentScaleFactor( //
-				MIN(largeResource.size.height / designResolutionSize.height, //
-				largeResource.size.width / designResolutionSize.width));
-	} else if (frameSize.height > smallResource.size.height) {
-		// if the frame's height is larger than the height of small resource size, select medium resource.
+		director->setContentScaleFactor( MIN(largeResource.size.height / designResolutionSize.height, largeResource.size.width / designResolutionSize.width) );
+	}
+    else if (frameSize.width > smallResource.size.width)
+    {
+		// if the frame's width is larger than the width of small resource size, select medium resource.
 		searchPath.push_back(mediumResource.directory);
-
-		director->setContentScaleFactor( //
-				MIN(mediumResource.size.height / designResolutionSize.height, //
-				mediumResource.size.width / designResolutionSize.width));
-	} else {
-		// if the frame's height is smaller than the height of medium resource size, select small resource.
+		director->setContentScaleFactor( MIN(mediumResource.size.height / designResolutionSize.height, mediumResource.size.width / designResolutionSize.width) );
+	}
+    else
+    {
+		// if the frame's width is smaller than the width of medium resource size, select small resource.
 		searchPath.push_back(smallResource.directory);
-
-		director->setContentScaleFactor( //
-				MIN(smallResource.size.height / designResolutionSize.height, //
-				smallResource.size.width / designResolutionSize.width));
+		director->setContentScaleFactor( MIN(smallResource.size.height / designResolutionSize.height, smallResource.size.width / designResolutionSize.width) );
 	}
 
 	searchPath.push_back("common");

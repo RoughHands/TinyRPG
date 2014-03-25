@@ -31,13 +31,13 @@
 
 #include "cocos2d.h"
 
-#define DESIGN_RESOLUTION_480X320    0
-#define DESIGN_RESOLUTION_960x640    1
-#define DESIGN_RESOLUTION_1024X768   2
-#define DESIGN_RESOLUTION_2048X1536  3
+#define DESIGN_RESOLUTION_480X320 0
+#define DESIGN_RESOLUTION_960x640 1
+#define DESIGN_RESOLUTION_1024X768 2
+#define DESIGN_RESOLUTION_2048X1536 3
 
 /* If you want to switch design resolution, change next line */
-#define TARGET_DESIGN_RESOLUTION_SIZE  DESIGN_RESOLUTION_960x640
+#define TARGET_DESIGN_RESOLUTION_SIZE DESIGN_RESOLUTION_960x640
 
 typedef struct tagResource {
 	cocos2d::CCSize size;
@@ -46,16 +46,20 @@ typedef struct tagResource {
 
 static Resource smallResource = {cocos2d::CCSizeMake(480, 320), "iphone"};
 static Resource mediumResource = {cocos2d::CCSizeMake(960, 640), "iphone-retina"};
-static Resource mediumWideResource = { cocos2d::CCSizeMake(1136, 640), "iphonehd" /*iphone 5 retina"*/};
-static Resource largeResource = {cocos2d::CCSizeMake(1024, 768), "iphone"};
-static Resource extralargeResource = {cocos2d::CCSizeMake(2048, 1536), "iphone-retina"};
+static Resource mediumWideResource = { cocos2d::CCSizeMake(1136, 640), "iphone-retina-wide" /*iphone 5 retina"*/};
+static Resource largeResource = {cocos2d::CCSizeMake(1024, 768), "ipad"};
+static Resource extralargeResource = {cocos2d::CCSizeMake(2048, 1536), "ipad-retina"};
 
 #if (TARGET_DESIGN_RESOLUTION_SIZE == DESIGN_RESOLUTION_480X320)
 static cocos2d::CCSize designResolutionSize = cocos2d::CCSizeMake(480, 320);
 static cocos2d::CCSize designResolutionWideSize = cocos2d::CCSizeMake(568, 320);
+static cocos2d::CCSize designResolutionPortraitSize = cocos2d::CCSizeMake(320, 480);
+static cocos2d::CCSize designResolutionPortraitWideSize = cocos2d::CCSizeMake(320, 568);
 #elif (TARGET_DESIGN_RESOLUTION_SIZE == DESIGN_RESOLUTION_960x640)
 static cocos2d::CCSize designResolutionSize = cocos2d::CCSizeMake(960, 640);
 static cocos2d::CCSize designResolutionWideSize = cocos2d::CCSizeMake(1136, 640);
+static cocos2d::CCSize designResolutionPortraitSize = cocos2d::CCSizeMake(640, 960);
+static cocos2d::CCSize designResolutionPortraitWideSize = cocos2d::CCSizeMake(640, 1136);
 #elif (TARGET_DESIGN_RESOLUTION_SIZE == DESIGN_RESOLUTION_1024X768)
 static cocos2d::CCSize designResolutionSize = cocos2d::CCSizeMake(1024, 768);
 #elif (TARGET_DESIGN_RESOLUTION_SIZE == DESIGN_RESOLUTION_2048X1536)
