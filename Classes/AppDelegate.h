@@ -3,6 +3,8 @@
 
 #include "cocos2d.h"
 
+#include "TinyRPGMacros.h"
+
 /**
 @brief    The cocos2d Application.
 
@@ -14,7 +16,7 @@ public:
     AppDelegate();
     virtual ~AppDelegate();
     
-    // Test 
+    // Test
 
     /**
     @brief    Implement CCDirector and CCScene init code here.

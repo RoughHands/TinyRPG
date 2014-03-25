@@ -240,6 +240,16 @@
 		379BB9D317F03F3700829B88 /* GUIReader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 379BB99117F03F3700829B88 /* GUIReader.cpp */; };
 		379BB9D417F03F3700829B88 /* SceneReader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 379BB99317F03F3700829B88 /* SceneReader.cpp */; };
 		46513EB1187BFBA200B5ABE1 /* UITouchGroup.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46513EAF187BFBA200B5ABE1 /* UITouchGroup.cpp */; };
+		4D6AEDA018E0FF1A002115FC /* TinyRPGMacros.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4D6AED9F18E0FF1A002115FC /* TinyRPGMacros.cpp */; };
+		4D6AEDA418E10225002115FC /* BaseScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4D6AEDA218E10225002115FC /* BaseScene.cpp */; };
+		4D6AEDA818E1057E002115FC /* ActivityIndicator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4D6AEDA618E1057E002115FC /* ActivityIndicator.cpp */; };
+		4D6AEDAB18E105B3002115FC /* ActivityIndicatorLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4D6AEDA918E105B3002115FC /* ActivityIndicatorLayer.cpp */; };
+		4D6AEDAE18E10666002115FC /* RandomNumberGenerator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4D6AEDAC18E10666002115FC /* RandomNumberGenerator.cpp */; };
+		4D6AEDB118E10693002115FC /* TutorialScreenLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4D6AEDAF18E10693002115FC /* TutorialScreenLayer.cpp */; };
+		4D6AEDB518E131A6002115FC /* AudioEngine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4D6AEDB318E131A6002115FC /* AudioEngine.cpp */; };
+		4D6AEDB818E13234002115FC /* GameScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4D6AEDB618E13234002115FC /* GameScene.cpp */; };
+		4D6AEDBB18E132A8002115FC /* GameLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4D6AEDB918E132A8002115FC /* GameLayer.cpp */; };
+		4D6AEDBE18E132CD002115FC /* GameUILayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4D6AEDBC18E132CD002115FC /* GameUILayer.cpp */; };
 		7855E0E1153FEF240059DD9A /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 7855E0DF153FEF240059DD9A /* Default.png */; };
 		BF171245129291EC00B8313A /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB012928DE900B8313A /* OpenGLES.framework */; };
 		BF1712461292920000B8313A /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB212928DE900B8313A /* libxml2.dylib */; };
@@ -758,6 +768,26 @@
 		379BB99417F03F3700829B88 /* SceneReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SceneReader.h; sourceTree = "<group>"; };
 		46513EAF187BFBA200B5ABE1 /* UITouchGroup.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UITouchGroup.cpp; sourceTree = "<group>"; };
 		46513EB0187BFBA200B5ABE1 /* UITouchGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UITouchGroup.h; sourceTree = "<group>"; };
+		4D6AED9D18E05CE7002115FC /* TinyRPGMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TinyRPGMacros.h; path = ../Classes/TinyRPGMacros.h; sourceTree = "<group>"; };
+		4D6AED9F18E0FF1A002115FC /* TinyRPGMacros.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TinyRPGMacros.cpp; path = ../Classes/TinyRPGMacros.cpp; sourceTree = "<group>"; };
+		4D6AEDA218E10225002115FC /* BaseScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = BaseScene.cpp; path = ../Classes/BaseScene.cpp; sourceTree = "<group>"; };
+		4D6AEDA318E10225002115FC /* BaseScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BaseScene.h; path = ../Classes/BaseScene.h; sourceTree = "<group>"; };
+		4D6AEDA618E1057E002115FC /* ActivityIndicator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ActivityIndicator.cpp; path = ../Classes/ActivityIndicator.cpp; sourceTree = "<group>"; };
+		4D6AEDA718E1057E002115FC /* ActivityIndicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ActivityIndicator.h; path = ../Classes/ActivityIndicator.h; sourceTree = "<group>"; };
+		4D6AEDA918E105B3002115FC /* ActivityIndicatorLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ActivityIndicatorLayer.cpp; path = ../Classes/ActivityIndicatorLayer.cpp; sourceTree = "<group>"; };
+		4D6AEDAA18E105B3002115FC /* ActivityIndicatorLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ActivityIndicatorLayer.h; path = ../Classes/ActivityIndicatorLayer.h; sourceTree = "<group>"; };
+		4D6AEDAC18E10666002115FC /* RandomNumberGenerator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = RandomNumberGenerator.cpp; path = ../Classes/RandomNumberGenerator.cpp; sourceTree = "<group>"; };
+		4D6AEDAD18E10666002115FC /* RandomNumberGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RandomNumberGenerator.h; path = ../Classes/RandomNumberGenerator.h; sourceTree = "<group>"; };
+		4D6AEDAF18E10693002115FC /* TutorialScreenLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TutorialScreenLayer.cpp; path = ../Classes/TutorialScreenLayer.cpp; sourceTree = "<group>"; };
+		4D6AEDB018E10693002115FC /* TutorialScreenLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TutorialScreenLayer.h; path = ../Classes/TutorialScreenLayer.h; sourceTree = "<group>"; };
+		4D6AEDB318E131A6002115FC /* AudioEngine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = AudioEngine.cpp; path = ../Classes/AudioEngine.cpp; sourceTree = "<group>"; };
+		4D6AEDB418E131A6002115FC /* AudioEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AudioEngine.h; path = ../Classes/AudioEngine.h; sourceTree = "<group>"; };
+		4D6AEDB618E13234002115FC /* GameScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GameScene.cpp; path = ../Classes/GameScene.cpp; sourceTree = "<group>"; };
+		4D6AEDB718E13234002115FC /* GameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameScene.h; path = ../Classes/GameScene.h; sourceTree = "<group>"; };
+		4D6AEDB918E132A8002115FC /* GameLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GameLayer.cpp; path = ../Classes/GameLayer.cpp; sourceTree = "<group>"; };
+		4D6AEDBA18E132A8002115FC /* GameLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameLayer.h; path = ../Classes/GameLayer.h; sourceTree = "<group>"; };
+		4D6AEDBC18E132CD002115FC /* GameUILayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GameUILayer.cpp; path = ../Classes/GameUILayer.cpp; sourceTree = "<group>"; };
+		4D6AEDBD18E132CD002115FC /* GameUILayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameUILayer.h; path = ../Classes/GameUILayer.h; sourceTree = "<group>"; };
 		7855E0DF153FEF240059DD9A /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = SOURCE_ROOT; };
 		BF170DB012928DE900B8313A /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		BF170DB212928DE900B8313A /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
@@ -1291,10 +1321,14 @@
 		15AA9C4015B7EC450033D6C2 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				4D6AEDB218E129B5002115FC /* GameScene */,
+				4D6AEDA118E10214002115FC /* Common */,
 				1AFAF8B316D35DE700DB1158 /* AppDelegate.cpp */,
 				1AFAF8B416D35DE700DB1158 /* AppDelegate.h */,
 				1AFAF8B516D35DE700DB1158 /* HelloWorldScene.cpp */,
 				1AFAF8B616D35DE700DB1158 /* HelloWorldScene.h */,
+				4D6AED9D18E05CE7002115FC /* TinyRPGMacros.h */,
+				4D6AED9F18E0FF1A002115FC /* TinyRPGMacros.cpp */,
 			);
 			name = Classes;
 			path = ../classes;
@@ -1887,6 +1921,38 @@
 			path = CocoStudio;
 			sourceTree = "<group>";
 		};
+		4D6AEDA118E10214002115FC /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				4D6AEDA218E10225002115FC /* BaseScene.cpp */,
+				4D6AEDA318E10225002115FC /* BaseScene.h */,
+				4D6AEDA618E1057E002115FC /* ActivityIndicator.cpp */,
+				4D6AEDA718E1057E002115FC /* ActivityIndicator.h */,
+				4D6AEDA918E105B3002115FC /* ActivityIndicatorLayer.cpp */,
+				4D6AEDAA18E105B3002115FC /* ActivityIndicatorLayer.h */,
+				4D6AEDAC18E10666002115FC /* RandomNumberGenerator.cpp */,
+				4D6AEDAD18E10666002115FC /* RandomNumberGenerator.h */,
+				4D6AEDAF18E10693002115FC /* TutorialScreenLayer.cpp */,
+				4D6AEDB018E10693002115FC /* TutorialScreenLayer.h */,
+				4D6AEDB318E131A6002115FC /* AudioEngine.cpp */,
+				4D6AEDB418E131A6002115FC /* AudioEngine.h */,
+			);
+			name = Common;
+			sourceTree = "<group>";
+		};
+		4D6AEDB218E129B5002115FC /* GameScene */ = {
+			isa = PBXGroup;
+			children = (
+				4D6AEDB618E13234002115FC /* GameScene.cpp */,
+				4D6AEDB718E13234002115FC /* GameScene.h */,
+				4D6AEDB918E132A8002115FC /* GameLayer.cpp */,
+				4D6AEDBA18E132A8002115FC /* GameLayer.h */,
+				4D6AEDBC18E132CD002115FC /* GameUILayer.cpp */,
+				4D6AEDBD18E132CD002115FC /* GameUILayer.h */,
+			);
+			name = GameScene;
+			sourceTree = "<group>";
+		};
 		78C7DDAA14EBA5050085D0C2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -1932,7 +1998,8 @@
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0430;
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = RoughHands;
 			};
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "TinyRPG" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -2082,6 +2149,7 @@
 				15A3DA341682F826002FB0C5 /* CCBReader.cpp in Sources */,
 				15A3DA351682F826002FB0C5 /* CCBSequence.cpp in Sources */,
 				15A3DA361682F826002FB0C5 /* CCBSequenceProperty.cpp in Sources */,
+				4D6AEDA418E10225002115FC /* BaseScene.cpp in Sources */,
 				46513EB1187BFBA200B5ABE1 /* UITouchGroup.cpp in Sources */,
 				15A3DA371682F826002FB0C5 /* CCBValue.cpp in Sources */,
 				15A3DA381682F826002FB0C5 /* CCControlButtonLoader.cpp in Sources */,
@@ -2093,6 +2161,7 @@
 				15A3DA3D1682F826002FB0C5 /* CCLayerColorLoader.cpp in Sources */,
 				15A3DA3E1682F826002FB0C5 /* CCLayerGradientLoader.cpp in Sources */,
 				15A3DA3F1682F826002FB0C5 /* CCLayerLoader.cpp in Sources */,
+				4D6AEDAB18E105B3002115FC /* ActivityIndicatorLayer.cpp in Sources */,
 				15A3DA401682F826002FB0C5 /* CCMenuItemImageLoader.cpp in Sources */,
 				375BD5101868454E0024609E /* CCActionFrameEasing.cpp in Sources */,
 				298B29C318D0668400C1920F /* PageViewReader.cpp in Sources */,
@@ -2106,11 +2175,13 @@
 				15A3DA471682F826002FB0C5 /* CCScrollViewLoader.cpp in Sources */,
 				15A3DA481682F826002FB0C5 /* CCSpriteLoader.cpp in Sources */,
 				15A3DA491682F826002FB0C5 /* CCControl.cpp in Sources */,
+				4D6AEDA818E1057E002115FC /* ActivityIndicator.cpp in Sources */,
 				15A3DA4A1682F826002FB0C5 /* CCControlButton.cpp in Sources */,
 				15A3DA4B1682F826002FB0C5 /* CCControlColourPicker.cpp in Sources */,
 				298B29BF18D0668400C1920F /* LabelReader.cpp in Sources */,
 				15A3DA4C1682F826002FB0C5 /* CCControlHuePicker.cpp in Sources */,
 				375BD50F1868454E0024609E /* CCActionFrame.cpp in Sources */,
+				4D6AEDAE18E10666002115FC /* RandomNumberGenerator.cpp in Sources */,
 				15A3DA4D1682F826002FB0C5 /* CCControlPotentiometer.cpp in Sources */,
 				15A3DA4E1682F826002FB0C5 /* CCControlSaturationBrightnessPicker.cpp in Sources */,
 				15A3DA4F1682F826002FB0C5 /* CCControlSlider.cpp in Sources */,
@@ -2125,6 +2196,7 @@
 				15A3DA551682F826002FB0C5 /* CCEditBox.cpp in Sources */,
 				15A3DA571682F826002FB0C5 /* CCEditBoxImplIOS.mm in Sources */,
 				15A3DA591682F826002FB0C5 /* CCScrollView.cpp in Sources */,
+				4D6AEDBE18E132CD002115FC /* GameUILayer.cpp in Sources */,
 				15A3DA5A1682F826002FB0C5 /* CCSorting.cpp in Sources */,
 				15A3DA5B1682F826002FB0C5 /* CCTableView.cpp in Sources */,
 				15A3DA5C1682F826002FB0C5 /* CCTableViewCell.cpp in Sources */,
@@ -2140,7 +2212,10 @@
 				1A27573F1697CF2B00504026 /* CCEditBoxImplAndroid.cpp in Sources */,
 				1AFAF8B716D35DE700DB1158 /* AppDelegate.cpp in Sources */,
 				1AFAF8B816D35DE700DB1158 /* HelloWorldScene.cpp in Sources */,
+				4D6AEDBB18E132A8002115FC /* GameLayer.cpp in Sources */,
+				4D6AEDB118E10693002115FC /* TutorialScreenLayer.cpp in Sources */,
 				1AC3624916D4A1E8000847F2 /* AppController.mm in Sources */,
+				4D6AEDB818E13234002115FC /* GameScene.cpp in Sources */,
 				1AC3624B16D4A1E8000847F2 /* main.m in Sources */,
 				1AFCDA8216D4A25900906EA6 /* RootViewController.mm in Sources */,
 				1A8F3B6E175E05DA00049216 /* Animation.cpp in Sources */,
@@ -2160,6 +2235,7 @@
 				1A8F3B7A175E05DA00049216 /* Json.cpp in Sources */,
 				1A8F3B7B175E05DA00049216 /* RegionAttachment.cpp in Sources */,
 				1A8F3B7C175E05DA00049216 /* Skeleton.cpp in Sources */,
+				4D6AEDB518E131A6002115FC /* AudioEngine.cpp in Sources */,
 				1A8F3B7D175E05DA00049216 /* SkeletonData.cpp in Sources */,
 				1A8F3B7E175E05DA00049216 /* SkeletonJson.cpp in Sources */,
 				1A8F3B7F175E05DA00049216 /* Skin.cpp in Sources */,
@@ -2207,6 +2283,7 @@
 				379BB9BF17F03F3700829B88 /* UIScrollView.cpp in Sources */,
 				379BB9C017F03F3700829B88 /* UIButton.cpp in Sources */,
 				375BD50E1868454E0024609E /* CCActionEaseEx.cpp in Sources */,
+				4D6AEDA018E0FF1A002115FC /* TinyRPGMacros.cpp in Sources */,
 				379BB9C117F03F3700829B88 /* UICheckBox.cpp in Sources */,
 				379BB9C217F03F3700829B88 /* UIImageView.cpp in Sources */,
 				379BB9C317F03F3700829B88 /* UILabel.cpp in Sources */,
@@ -2236,9 +2313,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
+				CLANG_CXX_LIBRARY = "libc++";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = c11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -2266,7 +2346,7 @@
 					"\"$(SRCROOT)/../../../cocos2dx/platform/ios/Simulation\"",
 				);
 				INFOPLIST_FILE = Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = (
 					"\"$(SRCROOT)/../../../cocos2dx/platform/third_party/ios/libraries\"",
 					"\"$(SRCROOT)/../../../external/libwebsockets/ios/lib\"",
@@ -2278,7 +2358,7 @@
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "";
-				VALID_ARCHS = "armv6 armv7 i386";
+				VALID_ARCHS = "arm64 armv7 armv7s";
 			};
 			name = Debug;
 		};
@@ -2286,9 +2366,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
+				CLANG_CXX_LIBRARY = "libc++";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = c11;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -2314,7 +2397,7 @@
 					"\"$(SRCROOT)/../../../cocos2dx/platform/ios/Simulation\"",
 				);
 				INFOPLIST_FILE = Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = (
 					"\"$(SRCROOT)/../../../cocos2dx/platform/third_party/ios/libraries\"",
 					"\"$(SRCROOT)/../../../external/libwebsockets/ios/lib\"",
@@ -2326,17 +2409,18 @@
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "";
 				VALIDATE_PRODUCT = YES;
+				VALID_ARCHS = "arm64 armv7 armv7s";
 			};
 			name = Release;
 		};
 		C01FCF4F08A954540054247B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_VERSION = "";
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				VALID_ARCHS = "armv6 armv7 i386";
 			};
@@ -2345,7 +2429,6 @@
 		C01FCF5008A954540054247B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_VERSION = "";
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;

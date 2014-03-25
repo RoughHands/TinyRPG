@@ -6,3 +6,17 @@
     #import <Foundation/Foundation.h>
     #import <UIKit/UIKit.h>
 #endif
+
+
+#ifdef __cplusplus
+    #include "cocos2d.h"
+    using namespace cocos2d;
+
+    #include "spine-cocos2dx.h"
+    using namespace cocos2d::extension;
+
+    #include "TinyRPGMacros.h"
+    #include "AudioEngine.h"
+    #include "BaseScene.h"
+
+#endif // __cplusplus
