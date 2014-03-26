@@ -104,30 +104,9 @@ void BackgroundLayer::update(float deltaTime)
 
 }
 
-void BackgroundLayer::MoveBackground(RHMoveDirection direction, float distance)
+void BackgroundLayer::MoveBackground(float offset)
 {
-    if( direction == MoveDirection_Center )
-    {
-        // TEST Code
-        
-        return;
-    }
-    
-    float moveOffset = distance;
-    if( direction == MoveDirection_Left )
-    {
-        moveOffset = moveOffset;
-    }
-    else if( direction == MoveDirection_Right )
-    {
-        moveOffset = -moveOffset;
-    }
-    else    // MoveDirection_Center
-    {
-        return;
-    }
-    
-    m_ParallaxNode->setPosition(m_ParallaxNode->getPosition()+ccp(moveOffset,0.f));
+    m_ParallaxNode->setPosition(m_ParallaxNode->getPosition()+ccp(offset,0.f));
     
 //    m_ParallaxNode->runAction(CCMoveBy::create(0.1f, ccp(moveOffset, 0.f)));
 }

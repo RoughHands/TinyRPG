@@ -8,8 +8,6 @@
 
 #include "BaseLayer.h"
 
-#define SHOW_ANCHORPOINT_DEBUGGING
-
 BaseLayer::BaseLayer():CCLayer()
 {
 }

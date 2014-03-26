@@ -7,8 +7,13 @@
 //
 
 #include "ActorLayer.h"
+#include "PlayerNode.h"
+#include "MonsterNode.h"
+#include "RHGame.h"
 
-ActorLayer::ActorLayer():BaseLayer()
+ActorLayer::ActorLayer():BaseLayer(),
+                    m_PlayerNodeList(),
+                    m_MonsterNodeList()
 {
 }
 
@@ -37,45 +42,55 @@ void ActorLayer::AllocateAndAddAllComponents()
 {
     const CCSize winSize = CCDirector::sharedDirector()->getWinSize();
     
-    CCSkeletonAnimation* skeletonNode = CCSkeletonAnimation::createWithFile("dragon.json", "dragon.atlas");
-//    skeletonNode->setMix("walk", "jump", 0.2f);
-//    skeletonNode->setMix("jump", "walk", 0.4f);
-    
-//    skeletonNode->debugBones = true;
-    skeletonNode->setScale(0.5f);
-    skeletonNode->update(0.f);
-    
-    skeletonNode->runAction(CCRepeatForever::create(CCSequence::create(CCFadeOut::create(1.f), CCFadeIn::create(1.f), CCDelayTime::create(5.f), nullptr)));
-    
-    skeletonNode->setPosition(ccp(winSize.width*0.75f, winSize.height*0.75f));
-    skeletonNode->setScaleX(-0.5f);
-    
-    skeletonNode->setAnimation("flying", true);
-    
-    this->addChild(skeletonNode);
+    RHGame::Instance().ForAllPlayers([this](RHActor* player)
+    {
+        this->CreateAndAddPlayerNode(static_cast<RHPlayer*>(player));
+    });
+    RHGame::Instance().ForAllMonsters([this](RHActor* monster)
+    {
+        this->CreateAndAddMonsterNode(static_cast<RHMonster*>(monster));
+    });
 
-
-    //
-    CCSkeletonAnimation* playerNode = CCSkeletonAnimation::createWithFile("player/lion.json", "player/lion.atlas");
-    playerNode->setScale(1.f);
-    playerNode->update(0.f);
-
-    playerNode->setPosition(ccp(winSize.width*0.25f, winSize.height*0.58f));
     
-    playerNode->setAnimation("walk", true);
-    
-    const float attackDuration = SkeletonData_findAnimation(playerNode->skeleton->data, "attack")->duration;
-    CCLog("AttackDuration : %f", attackDuration);
-    const float walkDuration = SkeletonData_findAnimation(playerNode->skeleton->data, "walk")->duration;
-    const float defenseDuration = SkeletonData_findAnimation(playerNode->skeleton->data, "defense")->duration;
-    
-    playerNode->runAction(CCRepeatForever::create(CCSequence::create(
-                        CCCallFuncL::create([playerNode](){ playerNode->setAnimation("walk", true);  }), CCDelayTime::create(walkDuration*4.f),
-                        CCCallFuncL::create([playerNode](){ playerNode->setAnimation("defense", false);  }), CCDelayTime::create(1.5f),
-                        CCCallFuncL::create([playerNode](){ playerNode->setAnimation("attack", true);  }), CCDelayTime::create(attackDuration*2.f),
-                        nullptr)));
-    
-    this->addChild(playerNode);
+//    CCSkeletonAnimation* skeletonNode = CCSkeletonAnimation::createWithFile("dragon.json", "dragon.atlas");
+////    skeletonNode->setMix("walk", "jump", 0.2f);
+////    skeletonNode->setMix("jump", "walk", 0.4f);
+//    
+////    skeletonNode->debugBones = true;
+//    skeletonNode->setScale(0.5f);
+//    skeletonNode->update(0.f);
+//    
+//    skeletonNode->runAction(CCRepeatForever::create(CCSequence::create(CCFadeOut::create(1.f), CCFadeIn::create(1.f), CCDelayTime::create(5.f), nullptr)));
+//    
+//    skeletonNode->setPosition(ccp(winSize.width*0.75f, winSize.height*0.75f));
+//    skeletonNode->setScaleX(-0.5f);
+//    
+//    skeletonNode->setAnimation("flying", true);
+//    
+//    this->addChild(skeletonNode);
+//
+//
+//    //
+//    CCSkeletonAnimation* playerNode = CCSkeletonAnimation::createWithFile("player/lion.json", "player/lion.atlas");
+//    playerNode->setScale(1.f);
+//    playerNode->update(0.f);
+//
+//    playerNode->setPosition(ccp(winSize.width*0.25f, winSize.height*0.58f));
+//    
+//    playerNode->setAnimation("walk", true);
+//    
+//    const float attackDuration = SkeletonData_findAnimation(playerNode->skeleton->data, "attack")->duration;
+//    CCLog("AttackDuration : %f", attackDuration);
+//    const float walkDuration = SkeletonData_findAnimation(playerNode->skeleton->data, "walk")->duration;
+//    const float defenseDuration = SkeletonData_findAnimation(playerNode->skeleton->data, "defense")->duration;
+//    
+//    playerNode->runAction(CCRepeatForever::create(CCSequence::create(
+//                        CCCallFuncL::create([playerNode](){ playerNode->setAnimation("walk", true);  }), CCDelayTime::create(walkDuration*4.f),
+//                        CCCallFuncL::create([playerNode](){ playerNode->setAnimation("defense", false);  }), CCDelayTime::create(1.5f),
+//                        CCCallFuncL::create([playerNode](){ playerNode->setAnimation("attack", true);  }), CCDelayTime::create(attackDuration*2.f),
+//                        nullptr)));
+//    
+//    this->addChild(playerNode);
     //
 
 }
@@ -133,3 +148,84 @@ void ActorLayer::update(float deltaTime)
 //{
 //}
 
+void ActorLayer::CreateAndAddPlayerNode(RHPlayer* player)
+{
+    if( player == nullptr )
+    {
+        return;
+    }
+    
+    ActorNode* actorNode = this->FindActorNode(player->GetActorID());
+    if( actorNode != nullptr )
+    {
+        ASSERT_DEBUG(actorNode == nullptr);
+        return;
+    }
+    
+    actorNode = PlayerNode::create(player->GetActorID(), "player/lion");
+    actorNode->retain();
+    this->addChild(actorNode);
+    m_PlayerNodeList.push_back(actorNode);
+    
+    actorNode->UpdateAfterTick(0.f);
+}
+
+void ActorLayer::CreateAndAddMonsterNode(RHMonster* monster)
+{
+    if( monster == nullptr )
+    {
+        return;
+    }
+    
+    ActorNode* monsterNode = this->FindActorNode(monster->GetActorID());
+    if( monsterNode != nullptr )
+    {
+        ASSERT_DEBUG(monsterNode == nullptr);
+        return;
+    }
+    
+    monsterNode = MonsterNode::create(monster->GetActorID(), "monster/dragon");
+    monsterNode->retain();
+    this->addChild(monsterNode);
+    m_MonsterNodeList.push_back(monsterNode);
+    
+    monsterNode->UpdateAfterTick(0.f);    
+}
+
+ActorNode* ActorLayer::FindActorNode(const RHActorID actorID)
+{
+    std::function<bool(ActorNode*)> compareActorID = [actorID](ActorNode* actorNode)->bool
+    {
+        if( actorNode->GetActorID() == actorID )
+        {
+            return true;
+        }
+        return false;
+    };
+    
+    ActorNodeList::iterator iter = std::find_if(m_PlayerNodeList.begin(), m_PlayerNodeList.end(), compareActorID);
+    if( iter != m_PlayerNodeList.end() )
+    {
+        return *iter;
+    }
+    
+    iter = std::find_if(m_MonsterNodeList.begin(), m_MonsterNodeList.end(), compareActorID);
+    if( iter != m_MonsterNodeList.end() )
+    {
+        return *iter;
+    }
+    return nullptr;
+}
+
+void ActorLayer::UpdateAfterTick(const float deltaTime)
+{
+    ForAllActorNodes([deltaTime](ActorNode* actorNode)
+    {
+        actorNode->UpdateAfterTick(deltaTime);
+    });
+}
+
+void ActorLayer::MoveBackground(float offset)
+{
+    this->setPosition(this->getPosition()+ccp(offset,0.f));
+}

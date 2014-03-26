@@ -158,6 +158,7 @@ public:
 
 #define TinyRPGFontName "fonts/pencilgrid.ttf"
 
+#define SHOW_ANCHORPOINT_DEBUGGING
 
 
 #endif

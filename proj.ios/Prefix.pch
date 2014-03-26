@@ -19,6 +19,7 @@
     using namespace flownet;
 
     #include "TinyRPGSharedTypes.h"
+    #include "TinyRPGSharedProperties.h"
 
     #include "TinyRPGMacros.h"
     #include "TinyRPGProperties.h"

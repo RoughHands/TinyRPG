@@ -10,6 +10,10 @@
 #define __TinyRPG__RHGame__
 
 #include "RHObject.h"
+#include "RHStage.h"
+#include "RHActor.h"
+#include "RHPlayer.h"
+#include "RHMonster.h"
 
 class RHStage;
 
@@ -27,16 +31,46 @@ public:
 
     
 private:
-    RHStage*        m_Stage;
+    RHStage*                m_Stage;
+    
+    // Client Status
+    RHActorID               m_MyPlayerID;
+public:
+    const RHActorID         GetMyPlayerID() {   return m_MyPlayerID; }
+    RHPlayer*               FindMyPlayer()  { return static_cast<RHPlayer*>(this->FindActor(m_MyPlayerID)); }
+private:
+    void                    UpdateMyPlayer(const milliseconds deltaTime);
+    // End Client Status
     
 public:
     RHGame(const STRING& objectName="Game");
     virtual ~RHGame();
     
-    RHStage*        GetStage() { return m_Stage; }
+    RHStage*            GetStage() { return m_Stage; }
+    void                Tick(const milliseconds deltaTime);     //  seconds
     
+    FBOOL               CreateAndAddPlayer(const RHActorID actorID, STRING skeletonName);
+    FBOOL               CreateAndAddMonster(const RHActorID actorID, STRING skeletonName);
+    RHActor*            FindActor(const RHActorID actorID);
     
-    void            Tick(const float cocosDeltaTime);     //  seconds
+    template <typename ActorLambda>
+    void ForAllPlayers(const ActorLambda& lambda)
+    {
+        m_Stage->ForAllPlayers(lambda);
+    }
+    
+    template <typename ActorLambda>
+    void ForAllMonsters(const ActorLambda& lambda)
+    {
+        m_Stage->ForAllMonsters(lambda);
+    }
+    
+    template <typename ActorLambda>
+    void ForAllActors(const ActorLambda& lambda)
+    {
+        ForAllActors(lambda);
+    }
+
 };
 
 } // namespace flownet

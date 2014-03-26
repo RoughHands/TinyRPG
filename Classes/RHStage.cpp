@@ -19,4 +19,65 @@ RHStage::RHStage(const STRING& objectName):RHObject(objectName),
 
 RHStage::~RHStage()
 {
+    this->ForAllActors([](RHActor* actor)
+    {
+        delete actor;
+    });
+    m_PlayerList.clear();
+    m_MonsterList.clear();
+}
+
+FBOOL RHStage::CreateAndAddPlayer(const RHActorID actorID, STRING skeletonName)
+{
+    RHActor* player = this->FindActor(actorID);
+    if( player != nullptr )
+    {
+        return false;
+    }
+    
+    player = CreateRHObject<RHPlayer>(actorID);
+    m_PlayerList.push_back(player);
+    
+    return true;
+}
+
+FBOOL RHStage::CreateAndAddMonster(const RHActorID actorID, STRING skeletonName)
+{
+    RHActor* monster = this->FindActor(actorID);
+    if( monster != nullptr )
+    {
+        return false;
+    }
+    
+    monster = CreateRHObject<RHMonster>(actorID);
+    m_MonsterList.push_back(monster);
+    
+    return true;
+}
+
+
+RHActor* RHStage::FindActor(const RHActorID actorID)
+{
+    std::function<bool(RHActor*)> actorIDCompare = [actorID](RHActor* actor)->bool
+    {
+        if( actor->GetActorID() == actorID )
+        {
+            return true;
+        }
+        return false;
+    };
+    
+    RHActorList::iterator iter = std::find_if(m_PlayerList.begin(), m_PlayerList.end(), actorIDCompare);
+    if( iter != m_PlayerList.end() )
+    {
+        return *iter;
+    }
+    
+    iter = std::find_if(m_MonsterList.begin(), m_MonsterList.end(), actorIDCompare);
+    if( iter != m_MonsterList.end() )
+    {
+        return *iter;
+    }
+    
+    return nullptr;
 }

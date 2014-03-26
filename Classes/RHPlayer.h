@@ -19,9 +19,11 @@ class RHPlayer : public RHActor
 private:
 
 public:
-    RHPlayer(const STRING& objectName="Player");
+    RHPlayer(const RHActorID actorID, const STRING& objectName="Player");
     virtual ~RHPlayer();
-    
+
+
+    virtual void Tick(const milliseconds deltaTime) override;
 };
 
 } // namespace flownet

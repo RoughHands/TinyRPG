@@ -30,6 +30,14 @@ public:
     CREATE_FUNC(GameScene);
 
 public:
+    virtual void    InitializePortraitLayer() override;
+    virtual void    InitializeLandscapeLayer() override;
+    
+protected :
+    virtual void    AllocateAndAddAllComponents() override;
+
+
+public:
     // called by ClientDirector after changing scene
     virtual void    OnSceneChangedToDisappear() override;
     virtual void    OnSceneChangedToAppear() override;
@@ -39,13 +47,8 @@ public:
     inline ActorLayer*          GetActorLayer()      { return m_ActorLayer; }
     inline GameUILayer*         GetGameUILayer()    { return m_GameUILayer; }
     
-
 public:
-    virtual void    InitializePortraitLayer() override;
-    virtual void    InitializeLandscapeLayer() override;
-    
-protected :
-    virtual void    AllocateAndAddAllComponents() override;
+    void            MoveBackground(RHMoveDirection direction, const float distance);
 };
 
 #endif /* defined(__TinyRPG__GameScene__) */

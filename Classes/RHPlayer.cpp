@@ -12,13 +12,20 @@
 namespace flownet
 {
 
-RHPlayer::RHPlayer(const STRING& objectName):RHActor(objectName)
+RHPlayer::RHPlayer(const RHActorID actorID, const STRING& objectName):RHActor(actorID,objectName)
 {
 
 }
 
 RHPlayer::~RHPlayer()
 {
+}
+
+void RHPlayer::Tick(const milliseconds deltaTime)
+{
+    RHActor::Tick(deltaTime);
+    
+    
 }
 
 } //namespace flownet

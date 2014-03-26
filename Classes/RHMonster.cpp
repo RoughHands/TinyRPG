@@ -11,7 +11,7 @@
 namespace flownet
 {
 
-RHMonster::RHMonster(const STRING& objectName):RHActor(objectName)
+RHMonster::RHMonster(const RHActorID actorID, const STRING& objectName):RHActor(actorID, objectName)
 {
 
 }
@@ -19,5 +19,13 @@ RHMonster::RHMonster(const STRING& objectName):RHActor(objectName)
 RHMonster::~RHMonster()
 {
 }
+
+void RHMonster::Tick(const milliseconds deltaTime)
+{
+    RHActor::Tick(deltaTime);
+    
+    
+}
+
 
 } //namespace flownet

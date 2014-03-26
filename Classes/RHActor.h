@@ -40,41 +40,64 @@ private:
     FLOAT                       m_SpellPower;
     FLOAT                       m_AttackSpeed;
     FLOAT                       m_CastingSpeed;
-    
+
+private:
+    FBOOL                       m_ActorStateChanged;
+public:
+    FBOOL                       IsActorStateChanged(){  return m_ActorStateChanged; }
+    void                        OnActorStateSynced(){  m_ActorStateChanged = false; }
+
+private:
+    FBOOL                       m_ActorMoved;
+public:
+    FBOOL                       IsActorMoved(){ return m_ActorMoved; }
+    void                        OnActorPositionSynced() { m_ActorMoved = false; }
 
 public:
-    RHActor(const STRING& objectName="Actor");
+    RHActor(const RHActorID actorID, const STRING& objectName="Actor");
     virtual ~RHActor();
 
-    const RHActorID             GetActorID()                {   return m_ActorID; }
-    const RHActorID             GetTargetID()               {   return m_TargetID; }
+    const RHActorID             GetActorID() const                  {   return m_ActorID; }
+    const RHActorID             GetTargetID() const                 {   return m_TargetID; }
     
-    const RHActorState          GetActorState()             {   return  m_ActorState;   }
-    const RHMoveDirection       GetMoveDirection()          {   return m_MoveDirection; }
+    const RHActorState          GetActorState() const               {   return  m_ActorState;   }
+    const RHMoveDirection       GetMoveDirection() const            {   return m_MoveDirection; }
 
-    const POINT                 GetCurrentPosition()        {   return m_CurrentPosition;   }
-    const POINT                 GetDesiredPosition()        {   return m_DesiredPosition;   }
+    const POINT                 GetCurrentPosition() const          {   return m_CurrentPosition;   }
+    const POINT                 GetDesiredPosition() const          {   return m_DesiredPosition;   }
     
-    const FSIZE                 GetBoundingSize()           {   return m_BoundingSize;  }
+    const FSIZE                 GetBoundingSize() const             {   return m_BoundingSize;  }
     // BoundingBox =  Position(m_CurrentPosition),Size(m_BoundingSize) with AnchorPoint(MidBottom)
-    const FRECT                 GetBoundingBox()            {   return FRECT(m_CurrentPosition.x-m_BoundingSize.width*0.5f,m_CurrentPosition.y,m_BoundingSize.width,m_BoundingSize.height); }
+    const FRECT                 GetBoundingBox() const              {   return FRECT(m_CurrentPosition.x-m_BoundingSize.width*0.5f,m_CurrentPosition.y,m_BoundingSize.width,m_BoundingSize.height); }
     
     
-    const INT                   GetLevel()                  {   return m_Level; }
-    const FLOAT                 GetExperiencePoint()        {   return m_ExperiencePoint; }
-    const FLOAT                 GetMovingSpeed()            {   return m_MovingSpeed;   }
-    const FLOAT                 GetHealthPoint()            {   return m_HealthPoint;   }
-    const FLOAT                 GetMaxHealthPoint()         {   return m_MaxHealthPoint;    }
-    const FLOAT                 GetManaPoint()              {   return m_ManaPoint; }
-    const FLOAT                 GetMaxManaPoint()           {   return m_MaxManaPoint;  }
-    const FLOAT                 GetAttackPower()            {   return m_AttackPower;   }
-    const FLOAT                 GetSpellPower()             {   return m_SpellPower;    }
-    const FLOAT                 GetAttackSpeed()            {   return m_AttackSpeed;   }
-    const FLOAT                 GetCastingSpeed()           {   return m_CastingSpeed;  }
+    const INT                   GetLevel() const                    {   return m_Level; }
+    const FLOAT                 GetExperiencePoint() const          {   return m_ExperiencePoint; }
+    const FLOAT                 GetMovingSpeed() const              {   return m_MovingSpeed;   }
+    const FLOAT                 GetHealthPoint() const              {   return m_HealthPoint;   }
+    const FLOAT                 GetMaxHealthPoint() const           {   return m_MaxHealthPoint;    }
+    const FLOAT                 GetManaPoint() const                {   return m_ManaPoint; }
+    const FLOAT                 GetMaxManaPoint()  const            {   return m_MaxManaPoint;  }
+    const FLOAT                 GetAttackPower() const              {   return m_AttackPower;   }
+    const FLOAT                 GetSpellPower() const               {   return m_SpellPower;    }
+    const FLOAT                 GetAttackSpeed() const              {   return m_AttackSpeed;   }
+    const FLOAT                 GetCastingSpeed() const             {   return m_CastingSpeed;  }
+    
+public:
+    virtual void                ChangeActorState(const RHActorState actorState);
+    virtual void                SetCurrentPosition(const POINT nextPosition);
+    virtual void                MoveToDestination(const POINT destination);
+    virtual void                MoveWithDirection(const RHMoveDirection moveDirection);
+    
+    virtual void                Tick(const milliseconds deltaTime);
+    
+    void                        UpdateMove(const milliseconds deltaTime);
+    
+    virtual void                EndMove();
     
 };
 
-typedef Vector<RHActor*>    RHActorList;
+typedef Vector<RHActor*>::type  RHActorList;
 
 }   // namespace flownet
 

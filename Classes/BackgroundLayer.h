@@ -46,7 +46,7 @@ public:
     virtual void update(float deltaTime) override;
     
 public:
-    void        MoveBackground(RHMoveDirection direction, float distance);
+    void        MoveBackground(float offset);
     
 };
 

@@ -11,6 +11,8 @@
 #include "GameUILayer.h"
 #include "ActorLayer.h"
 
+#include "RHGame.h"
+
 GameScene::GameScene():BaseScene(SceneType_GameScene),
                 m_BackgroundLayer(nullptr),
                 m_ActorLayer(nullptr),
@@ -75,6 +77,8 @@ void GameScene::InitializePortraitLayer()
     m_BackgroundLayer->setAnchorPoint(AnchorPointLeftBottom);
     m_BackgroundLayer->setPosition(ccp(winSize.width*0.5f-winSize.width*0.5f, winSize.height-backgroundLayerSize.height));
     
+    m_ActorLayer->setAnchorPoint(AnchorPointLeftBottom);
+    m_ActorLayer->setPosition(m_BackgroundLayer->getPosition());
     
     // Propagation
     m_BackgroundLayer->InitializePortraitLayer();
@@ -89,8 +93,14 @@ void GameScene::InitializeLandscapeLayer()
     const CCSize winSize = CCDirector::sharedDirector()->getWinSize();
     
     // Layout
-    const CCSize backgroundLayerSize = m_BackgroundLayer->getContentSize();
+    // Layout
+    const CCSize backgroundLayerSize = CCSizeMake(640.f, 640.f);
+    CCLog("backgroundLayerSize [%f, %f]", backgroundLayerSize.width, backgroundLayerSize.height);
+    m_BackgroundLayer->setAnchorPoint(AnchorPointLeftBottom);
     m_BackgroundLayer->setPosition(ccp(winSize.width*0.5f-winSize.width*0.5f, winSize.height-backgroundLayerSize.height));
+    
+    m_ActorLayer->setAnchorPoint(AnchorPointLeftBottom);
+    m_ActorLayer->setPosition(m_BackgroundLayer->getPosition());
     
     // Propagation
     m_BackgroundLayer->InitializeLandscapeLayer();
@@ -112,8 +122,36 @@ void GameScene::OnSceneChangedToDisappear()
 
 void GameScene::update(float deltaTime)
 {
+    RHGame::Instance().Tick(milliseconds(static_cast<INT64>(deltaTime*1000.f)));
     // call BaseScene::update for rendering task worker routine
     BaseScene::update(deltaTime);
-    
+   
+    this->GetActorLayer()->UpdateAfterTick(deltaTime);
 }
 
+void GameScene::MoveBackground(RHMoveDirection direction, const float distance)
+{
+    if( direction == MoveDirection_Center )
+    {
+        // TEST Code
+        
+        return;
+    }
+    
+    float moveOffset = distance;
+    if( direction == MoveDirection_Left )
+    {
+        moveOffset = moveOffset;
+    }
+    else if( direction == MoveDirection_Right )
+    {
+        moveOffset = -moveOffset;
+    }
+    else    // MoveDirection_Center
+    {
+        return;
+    }
+    
+    this->GetBackgroundLayer()->MoveBackground(moveOffset);
+    this->GetActorLayer()->MoveBackground(moveOffset);
+}

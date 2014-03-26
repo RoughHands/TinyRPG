@@ -11,6 +11,8 @@
 
 #include "RHObject.h"
 #include "RHActor.h"
+#include "RHPlayer.h"
+#include "RHMonster.h"
 
 namespace flownet
 {
@@ -29,7 +31,28 @@ public:
     RHStage(const STRING& objectName="Stage");
     virtual ~RHStage();
     
+    FBOOL               CreateAndAddPlayer(const RHActorID actorID, STRING skeletonName);
+    FBOOL               CreateAndAddMonster(const RHActorID actorID, STRING skeletonName);
+    RHActor*            FindActor(const RHActorID actorID);
     
+    template <typename ActorLambda>
+    void ForAllPlayers(const ActorLambda& lambda)
+    {
+        std::for_each(m_PlayerList.begin(), m_PlayerList.end(), lambda);
+    }
+    
+    template <typename ActorLambda>
+    void ForAllMonsters(const ActorLambda& lambda)
+    {
+        std::for_each(m_MonsterList.begin(), m_MonsterList.end(), lambda);
+    }
+    
+    template <typename ActorLambda>
+    void ForAllActors(const ActorLambda& lambda)
+    {
+        ForAllPlayers(lambda);
+        ForAllMonsters(lambda);
+    }
 };
 
 

@@ -9,5 +9,7 @@
 #ifndef __TinyRPG__TinyRPGProperties__
 #define __TinyRPG__TinyRPGProperties__
 
+#define MINIMUM_MOVE_OFFSET 50.f
+
 
 #endif /* defined(__TinyRPG__TinyRPGProperties__) */

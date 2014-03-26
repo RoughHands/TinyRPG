@@ -11,6 +11,8 @@
 #include "GameScene.h"
 #include "BackgroundLayer.h"
 
+#include "RHGame.h"
+
 GameUILayer::GameUILayer():BaseLayer(),
                 m_IsTouchDown(false),
                 m_TouchMoveDirection(MoveDirection_None)
@@ -159,12 +161,14 @@ void GameUILayer::update(float deltaTime)
         if( baseScene->GetSceneType() == SceneType_GameScene )
         {
             GameScene* gameScene = static_cast<GameScene*>(baseScene);
-            BackgroundLayer* backgroundLayer = gameScene->GetBackgroundLayer();
-            backgroundLayer->MoveBackground(m_TouchMoveDirection, 250.f*deltaTime);
+            gameScene->MoveBackground(m_TouchMoveDirection, 250.f*deltaTime);
         }
         else
         {
             ASSERT_DEBUG(baseScene->GetSceneType() == SceneType_GameScene);
         }
+        
+        RHPlayer* myPlayer = RHGame::Instance().FindMyPlayer();
+        myPlayer->MoveWithDirection(m_TouchMoveDirection);
     }
 }
