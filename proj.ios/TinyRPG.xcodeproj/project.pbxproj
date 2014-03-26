@@ -250,6 +250,7 @@
 		4D6AEDB818E13234002115FC /* GameScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4D6AEDB618E13234002115FC /* GameScene.cpp */; };
 		4D6AEDBB18E132A8002115FC /* GameLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4D6AEDB918E132A8002115FC /* GameLayer.cpp */; };
 		4D6AEDBE18E132CD002115FC /* GameUILayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4D6AEDBC18E132CD002115FC /* GameUILayer.cpp */; };
+		4D8909A918E2664E0085B334 /* BackgroundLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4D8909A718E2664E0085B334 /* BackgroundLayer.cpp */; };
 		4DEDB20A18E1B3BD00898469 /* common in Resources */ = {isa = PBXBuildFile; fileRef = 4DEDB20718E1B3BD00898469 /* common */; };
 		4DEDB20B18E1B3BD00898469 /* iphone in Resources */ = {isa = PBXBuildFile; fileRef = 4DEDB20818E1B3BD00898469 /* iphone */; };
 		4DEDB20C18E1B3BD00898469 /* iphone-retina in Resources */ = {isa = PBXBuildFile; fileRef = 4DEDB20918E1B3BD00898469 /* iphone-retina */; };
@@ -791,6 +792,8 @@
 		4D6AEDBA18E132A8002115FC /* GameLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameLayer.h; path = ../Classes/GameLayer.h; sourceTree = "<group>"; };
 		4D6AEDBC18E132CD002115FC /* GameUILayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GameUILayer.cpp; path = ../Classes/GameUILayer.cpp; sourceTree = "<group>"; };
 		4D6AEDBD18E132CD002115FC /* GameUILayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameUILayer.h; path = ../Classes/GameUILayer.h; sourceTree = "<group>"; };
+		4D8909A718E2664E0085B334 /* BackgroundLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = BackgroundLayer.cpp; path = ../Classes/BackgroundLayer.cpp; sourceTree = "<group>"; };
+		4D8909A818E2664E0085B334 /* BackgroundLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BackgroundLayer.h; path = ../Classes/BackgroundLayer.h; sourceTree = "<group>"; };
 		4DEDB20718E1B3BD00898469 /* common */ = {isa = PBXFileReference; lastKnownFileType = folder; path = common; sourceTree = "<group>"; };
 		4DEDB20818E1B3BD00898469 /* iphone */ = {isa = PBXFileReference; lastKnownFileType = folder; path = iphone; sourceTree = "<group>"; };
 		4DEDB20918E1B3BD00898469 /* iphone-retina */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "iphone-retina"; sourceTree = "<group>"; };
@@ -1955,6 +1958,8 @@
 				4D6AEDBA18E132A8002115FC /* GameLayer.h */,
 				4D6AEDBC18E132CD002115FC /* GameUILayer.cpp */,
 				4D6AEDBD18E132CD002115FC /* GameUILayer.h */,
+				4D8909A718E2664E0085B334 /* BackgroundLayer.cpp */,
+				4D8909A818E2664E0085B334 /* BackgroundLayer.h */,
 			);
 			name = GameScene;
 			sourceTree = "<group>";
@@ -2157,6 +2162,7 @@
 				15A3D9B21682F7F9002FB0C5 /* cpVect.c in Sources */,
 				15A3DA311682F826002FB0C5 /* CCBAnimationManager.cpp in Sources */,
 				15A3DA321682F826002FB0C5 /* CCBFileLoader.cpp in Sources */,
+				4D8909A918E2664E0085B334 /* BackgroundLayer.cpp in Sources */,
 				15A3DA331682F826002FB0C5 /* CCBKeyframe.cpp in Sources */,
 				15A3DA341682F826002FB0C5 /* CCBReader.cpp in Sources */,
 				15A3DA351682F826002FB0C5 /* CCBSequence.cpp in Sources */,
