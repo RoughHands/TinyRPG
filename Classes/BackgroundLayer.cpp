@@ -53,9 +53,9 @@ void BackgroundLayer::AllocateAndAddAllComponents()
         CCSprite* nearBackground = CCSprite::create("background/near.png");
         nearBackground->setAnchorPoint(CCPointZero);
         
-        m_ParallaxNode->addChild(farBackground, 0, ccp(0.25f,1.f), CCPointZero);
-        m_ParallaxNode->addChild(midBackground, 1, ccp(0.5f,1.f), CCPointZero);
-        m_ParallaxNode->addChild(nearBackground, 2, ccp(1.f,1.f), CCPointZero);
+        m_ParallaxNode->addChild(farBackground, BackgroundLayerIndex_Far, ccp(0.25f,1.f), CCPointZero);
+        m_ParallaxNode->addChild(midBackground, BackgroundLayerIndex_Midium, ccp(0.5f,1.f), CCPointZero);
+        m_ParallaxNode->addChild(nearBackground, BackgroundLayerIndex_Near, ccp(1.f,1.f), CCPointZero);
     }
 
 }
@@ -109,4 +109,14 @@ void BackgroundLayer::MoveBackground(float offset)
     m_ParallaxNode->setPosition(m_ParallaxNode->getPosition()+ccp(offset,0.f));
     
 //    m_ParallaxNode->runAction(CCMoveBy::create(0.1f, ccp(moveOffset, 0.f)));
+}
+
+CCPoint BackgroundLayer::GetCurrentViewPosition()
+{
+    return  -m_ParallaxNode->getPosition();
+}
+
+void BackgroundLayer::AddActorLayer(ActorLayer *actorLayer)
+{
+    m_ParallaxNode->addChild(actorLayer, BackgroundLayerIndex_Near, ccp(1.f,1.f), CCPointZero);
 }

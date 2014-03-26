@@ -65,7 +65,7 @@ void RHGame::Initialize()
     }
     else
     {
-        player->MoveToDestination(POINT(100.f, 0.f));
+        player->MoveToDestination(POINT(100.f, 150.f));
     }
     
     RHMonster* monster = static_cast<RHMonster*>(instance.FindActor(monsterID));

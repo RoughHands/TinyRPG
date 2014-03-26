@@ -56,11 +56,13 @@ void GameScene::AllocateAndAddAllComponents()
     m_ActorLayer = ActorLayer::create();
     m_ActorLayer->retain();
     
+    m_BackgroundLayer->AddActorLayer(m_ActorLayer);
+    
     m_GameUILayer = GameUILayer::create();
     m_GameUILayer->retain();
     
     this->addChild(m_BackgroundLayer);
-    this->addChild(m_ActorLayer);
+//    this->addChild(m_ActorLayer);
     this->addChild(m_GameUILayer);
 
 }
@@ -72,7 +74,7 @@ void GameScene::InitializePortraitLayer()
     const CCSize winSize = CCDirector::sharedDirector()->getWinSize();
     
     // Layout
-    const CCSize backgroundLayerSize = CCSizeMake(640.f, 640.f);
+    const CCSize backgroundLayerSize = CCSizeMake(VIEW_SIZE_WIDTH, VIEW_SIZE_HEIGHT);
     CCLog("backgroundLayerSize [%f, %f]", backgroundLayerSize.width, backgroundLayerSize.height);
     m_BackgroundLayer->setAnchorPoint(AnchorPointLeftBottom);
     m_BackgroundLayer->setPosition(ccp(winSize.width*0.5f-winSize.width*0.5f, winSize.height-backgroundLayerSize.height));
@@ -125,8 +127,10 @@ void GameScene::update(float deltaTime)
     RHGame::Instance().Tick(milliseconds(static_cast<INT64>(deltaTime*1000.f)));
     // call BaseScene::update for rendering task worker routine
     BaseScene::update(deltaTime);
-   
+    
     this->GetActorLayer()->UpdateAfterTick(deltaTime);
+    
+    this->UpdateScreenTrace(deltaTime);
 }
 
 void GameScene::MoveBackground(RHMoveDirection direction, const float distance)
@@ -153,5 +157,24 @@ void GameScene::MoveBackground(RHMoveDirection direction, const float distance)
     }
     
     this->GetBackgroundLayer()->MoveBackground(moveOffset);
-    this->GetActorLayer()->MoveBackground(moveOffset);
+//    this->GetActorLayer()->MoveBackground(moveOffset);
+}
+
+void GameScene::UpdateScreenTrace(const float deltaTime)
+{
+    RHPlayer* myPlayer = RHGame::Instance().FindMyPlayer();
+    const POINT myPlayerPosition = myPlayer->GetCurrentPosition();
+    const POINT viewPosition = POINT(m_BackgroundLayer->GetCurrentViewPosition().x, m_BackgroundLayer->GetCurrentViewPosition().y);
+    const float worldPointViewLeftBound = viewPosition.x+VIEW_LEFT_BOUND;
+    const float worldPointViewRightBound = viewPosition.x+VIEW_RIGHT_BOUND;
+    
+    if( myPlayerPosition.x < worldPointViewLeftBound )
+    {
+        this->MoveBackground(MoveDirection_Left, worldPointViewLeftBound-myPlayerPosition.x);
+    }
+    if( myPlayerPosition.x > worldPointViewRightBound )
+    {
+        this->MoveBackground(MoveDirection_Right, myPlayerPosition.x-worldPointViewRightBound);
+    }
+//    this->MoveBackground(m_TouchMoveDirection, 250.f*deltaTime);
 }

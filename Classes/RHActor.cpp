@@ -55,14 +55,32 @@ void RHActor::SetCurrentPosition(const POINT nextPosition)
 
 void RHActor::MoveToDestination(const POINT destination)
 {
+    if( this->GetActorState() == ActorState_Attacked || this->GetActorState() == ActorState_Attacking || this->GetActorState() == ActorState_Casting)
+    {
+        return;
+    }
+
     m_DesiredPosition = destination;
+    if( this->GetActorState() != ActorState_Moving)
+    {
+        this->ChangeActorState(ActorState_Moving);
+    }
 }
 
 void RHActor::MoveWithDirection(const RHMoveDirection direction)
 {
-    m_MoveDirection = direction;
+    if( this->GetActorState() == ActorState_Attacked || this->GetActorState() == ActorState_Attacking || this->GetActorState() == ActorState_Casting)
+    {
+        return;
+    }
+    
+    if( direction != MoveDirection_Center)
+    {
+        m_MoveDirection = direction;
+    }
+    
     float moveOffset = MINIMUM_MOVE_OFFSET;
-    switch (m_MoveDirection)
+    switch (direction)
     {
         case MoveDirection_Left:
         {
@@ -95,34 +113,29 @@ void RHActor::Tick(const milliseconds deltaTime)
 
 void RHActor::UpdateMove(const milliseconds deltaTime)
 {
-    if( m_DesiredPosition != m_CurrentPosition )
+    if( this->GetActorState() != ActorState_Moving )
     {
-        if( this->GetActorState() == ActorState_Idle || this->GetActorState() == ActorState_Defencing || this->GetActorState() == ActorState_Moving )
-        {
-            if( this->GetActorState() != ActorState_Moving )
-            {
-                this->ChangeActorState(ActorState_Moving);
-            }
-            
-            POINT gap = (m_DesiredPosition - m_CurrentPosition);
-            const float gapSize = gap.Size();
-            float moveDistance = m_MovingSpeed*(deltaTime.count()*0.001f);
-            if( gapSize <= moveDistance )
-            {
-                //moveDistance = gapSize;
-                this->EndMove();
-            }
-            else
-            {
-                this->SetCurrentPosition( this->GetCurrentPosition()+gap.GetNormalizedVector()*moveDistance);
-            }
-        }
+        return;
     }
+    
+    if( m_DesiredPosition.DistanceTo(m_CurrentPosition) <= MOVE_RESOLUTION  )
+    {
+        this->EndMove();
+    }
+            
+    POINT gap = (m_DesiredPosition - m_CurrentPosition);
+    const float gapSize = gap.Size();
+    float moveDistance = m_MovingSpeed*(deltaTime.count()*0.001f);
+    if( gapSize <= moveDistance )
+    {
+        moveDistance = gapSize;
+    }
+    this->SetCurrentPosition( this->GetCurrentPosition()+gap.GetNormalizedVector()*moveDistance);
 }
 
 void RHActor::EndMove()
 {
-    this->ChangeActorState(ActorState_Idle);
+    this->ChangeActorState(ActorState_Defencing);
     this->SetCurrentPosition(this->GetDesiredPosition());
 }
 

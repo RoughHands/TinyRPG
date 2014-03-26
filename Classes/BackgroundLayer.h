@@ -9,15 +9,17 @@
 #ifndef __TinyRPG__BackgroundLayer__
 #define __TinyRPG__BackgroundLayer__
 
+#include "ActorLayer.h"
+
 class BackgroundLayer : public BaseLayer
 {
     enum BackgroundLayerIndex
     {
-        GameLayerIndex_None = 0,
-        GameLayerIndex_Far,
-        GameLayerIndex_Midium,
-        GameLayerIndex_Near,
-        GameLayerIndex_Max,
+        BackgroundLayerIndex_None = -1,
+        BackgroundLayerIndex_Far,
+        BackgroundLayerIndex_Midium,
+        BackgroundLayerIndex_Near,
+        BackgroundLayerIndex_Max,
     };
 private:
     CCParallaxNode*     m_ParallaxNode;
@@ -45,8 +47,12 @@ public:
     
     virtual void update(float deltaTime) override;
     
+    CCPoint     GetCurrentViewPosition();
+    
 public:
     void        MoveBackground(float offset);
+    
+    void        AddActorLayer(ActorLayer* actorLayer);
     
 };
 

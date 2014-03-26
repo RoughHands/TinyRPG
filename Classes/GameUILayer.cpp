@@ -115,12 +115,18 @@ void GameUILayer::ccTouchMoved(CCTouch *pTouch, CCEvent *pEvent)
 
 void GameUILayer::ccTouchEnded(CCTouch *pTouch, CCEvent *pEvent)
 {
+    RHPlayer* myPlayer = RHGame::Instance().FindMyPlayer();
+    myPlayer->MoveWithDirection(MoveDirection_Center);
+    
     m_IsTouchDown = false;
     m_TouchMoveDirection = MoveDirection_None;
 }
 
 void GameUILayer::ccTouchCancelled(CCTouch *pTouch, CCEvent *pEvent)
 {
+    RHPlayer* myPlayer = RHGame::Instance().FindMyPlayer();
+    myPlayer->MoveWithDirection(MoveDirection_Center);
+
     m_IsTouchDown = false;
     m_TouchMoveDirection = MoveDirection_None;
 }
@@ -156,19 +162,14 @@ void GameUILayer::update(float deltaTime)
     BaseLayer::update(deltaTime);
     
     if( m_IsTouchDown == true )
-    {
-        BaseScene* baseScene = static_cast<BaseScene*>(CCDirector::sharedDirector()->getRunningScene());
-        if( baseScene->GetSceneType() == SceneType_GameScene )
-        {
-            GameScene* gameScene = static_cast<GameScene*>(baseScene);
-            gameScene->MoveBackground(m_TouchMoveDirection, 250.f*deltaTime);
-        }
-        else
-        {
-            ASSERT_DEBUG(baseScene->GetSceneType() == SceneType_GameScene);
-        }
-        
+    {        
         RHPlayer* myPlayer = RHGame::Instance().FindMyPlayer();
+        
+//        if( this->GetActorState() == ActorState_Attacked || this->GetActorState() == ActorState_Attacking || this->GetActorState() == ActorState_Casting)
+//        {
+//            return;
+//        }
+
         myPlayer->MoveWithDirection(m_TouchMoveDirection);
     }
 }

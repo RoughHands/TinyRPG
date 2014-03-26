@@ -49,6 +49,7 @@ public:
     
 public:
     void            MoveBackground(RHMoveDirection direction, const float distance);
+    void            UpdateScreenTrace(const float deltaTime);
 };
 
 #endif /* defined(__TinyRPG__GameScene__) */

@@ -85,7 +85,19 @@ void ActorNode::UpdateAfterTick(const float deltaTime)
         actor->OnActorPositionSynced();
     }
     
-    this->FlipX( actor->GetMoveDirection()==MoveDirection_Left );
+    if( actor->GetMoveDirection() == MoveDirection_Left )
+    {
+        this->FlipX(true);
+    }
+    else if( actor->GetMoveDirection() == MoveDirection_Right)
+    {
+        this->FlipX(false);
+    }
+    else
+    {
+        // Center
+    }
+    
 }
 
 void ActorNode::FlipX(bool flip)
@@ -128,7 +140,7 @@ void ActorNode::ChangeAnimation(const RHActorState actorState)
         case ActorState_Attacking:
         {
             m_SkeletonAnimation->setAnimation("attack", false);
-            m_SkeletonAnimation->addAnimation("idle", true);
+            m_SkeletonAnimation->addAnimation("defense", true);
         }
         break;
         case ActorState_Attacked:
