@@ -8,6 +8,7 @@
 
 #include "BaseScene.h"
 #include "ActivityIndicatorLayer.h"
+#include "RHGame.h"
 
 BaseScene::BaseScene(const SceneType sceneType):m_SceneType(sceneType),m_ActivityProgressLayer(nullptr)
 {
@@ -21,6 +22,8 @@ BaseScene::~BaseScene()
 
 void BaseScene::update(float deltaTime)
 {
+    RHGame::Instance().Tick(deltaTime);
+    
     // Call Rendering Worker Routine here
     // To Do : Client Director pause
     CCScene::update(deltaTime);

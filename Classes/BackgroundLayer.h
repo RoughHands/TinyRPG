@@ -9,7 +9,7 @@
 #ifndef __TinyRPG__BackgroundLayer__
 #define __TinyRPG__BackgroundLayer__
 
-class BackgroundLayer : public CCLayer
+class BackgroundLayer : public BaseLayer
 {
     enum BackgroundLayerIndex
     {
@@ -29,6 +29,12 @@ public:
     virtual bool init();
     CREATE_FUNC(BackgroundLayer);
     
+public:
+    virtual void    InitializePortraitLayer() override;
+    virtual void    InitializeLandscapeLayer() override;
+private:
+    virtual void    AllocateAndAddAllComponents() override;
+public:
     virtual void    onEnter() override;
     virtual void    onExit() override;
     
@@ -38,15 +44,10 @@ public:
         //    virtual void ccTouchCancelled(CCTouch *pTouch, CCEvent *pEvent) override;
     
     virtual void update(float deltaTime) override;
+    
 public:
-        //    virtual void        setTouchEnabled(bool value) override;
+    void        MoveBackground(RHMoveDirection direction, float distance);
     
-    void    InitializePortraitLayer();
-    void    InitializeLandscapeLayer();
-    
-private:
-    void    AllocateAndAddAllComponents();
-
 };
 
 

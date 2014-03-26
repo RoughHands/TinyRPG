@@ -9,14 +9,16 @@
 #ifndef __TinyRPG__GameScene__
 #define __TinyRPG__GameScene__
 
-class GameLayer;
+class BackgroundLayer;
+class ActorLayer;
 class GameUILayer;
 
 class GameScene : public BaseScene
 {
 private:
-    GameLayer*          m_GameLayer;
-    GameUILayer*        m_GameUILayer;
+    BackgroundLayer*        m_BackgroundLayer;
+    ActorLayer*             m_ActorLayer;
+    GameUILayer*            m_GameUILayer;
     
 public:
     GameScene();
@@ -33,8 +35,17 @@ public:
     virtual void    OnSceneChangedToAppear() override;
 
 public:
-    inline GameLayer*       GetGameLayer()      { return m_GameLayer; }
-    inline GameUILayer*     GetGameUILayer()    { return m_GameUILayer; }
+    inline BackgroundLayer*     GetBackgroundLayer()    {   return m_BackgroundLayer;}
+    inline ActorLayer*          GetActorLayer()      { return m_ActorLayer; }
+    inline GameUILayer*         GetGameUILayer()    { return m_GameUILayer; }
+    
+
+public:
+    virtual void    InitializePortraitLayer() override;
+    virtual void    InitializeLandscapeLayer() override;
+    
+protected :
+    virtual void    AllocateAndAddAllComponents() override;
 };
 
 #endif /* defined(__TinyRPG__GameScene__) */

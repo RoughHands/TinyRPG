@@ -7,11 +7,13 @@
 //
 
 #include "GameScene.h"
+#include "BackgroundLayer.h"
 #include "GameUILayer.h"
-#include "GameLayer.h"
+#include "ActorLayer.h"
 
 GameScene::GameScene():BaseScene(SceneType_GameScene),
-                m_GameLayer(nullptr),
+                m_BackgroundLayer(nullptr),
+                m_ActorLayer(nullptr),
                 m_GameUILayer(nullptr)
 {
 
@@ -19,11 +21,12 @@ GameScene::GameScene():BaseScene(SceneType_GameScene),
 
 GameScene::~GameScene()
 {
-    if( m_GameLayer != nullptr )
+    RemoveAndReleaseCCNode(m_BackgroundLayer);
+    if( m_ActorLayer != nullptr )
     {
-        m_GameLayer->removeFromParent();
-        m_GameLayer->release();
-        m_GameLayer = nullptr;
+        m_ActorLayer->removeFromParent();
+        m_ActorLayer->release();
+        m_ActorLayer = nullptr;
     }
     
     RemoveAndReleaseCCNode(m_GameUILayer)
@@ -32,50 +35,69 @@ GameScene::~GameScene()
 bool GameScene::init()
 {
     if(!BaseScene::init()) return false;
-    // when loading scene load the animations
-    // rabbit, cloud or so
+
+    AudioEngine::Instance()->PlayBackgroundMusic("sound_effect/beauty_crush.wav");
     
-//    CCSpriteFrameCache::sharedSpriteFrameCache()->removeSpriteFramesFromFile("beauty_resources.plist");
-//    CCSpriteFrameCache::sharedSpriteFrameCache()->removeSpriteFramesFromFile("glass_animation.plist");
-//    CCSpriteFrameCache::sharedSpriteFrameCache()->removeSpriteFramesFromFile("boom_animation.plist");
-//    CCSpriteFrameCache::sharedSpriteFrameCache()->removeSpriteFramesFromFile("loading_ani.plist");
-//    CCSpriteFrameCache::sharedSpriteFrameCache()->removeSpriteFramesFromFile("beautylist.plist");
-//    CCSpriteFrameCache::sharedSpriteFrameCache()->removeSpriteFramesFromFile("beautylist2.plist");
-//    CCSpriteFrameCache::sharedSpriteFrameCache()->removeSpriteFramesFromFile("beautylist3.plist");
-//    CCSpriteFrameCache::sharedSpriteFrameCache()->removeSpriteFramesFromFile("beautylist4.plist");
-//    CCSpriteFrameCache::sharedSpriteFrameCache()->removeSpriteFramesFromFile("beautylist5.plist");
-//    
-//    
-//    CCSpriteFrameCache::sharedSpriteFrameCache()->addSpriteFramesWithFile("beauty_resources.plist");
-//    CCSpriteFrameCache::sharedSpriteFrameCache()->addSpriteFramesWithFile("glass_animation.plist");
-//    CCSpriteFrameCache::sharedSpriteFrameCache()->addSpriteFramesWithFile("boom_animation.plist");
-//    CCSpriteFrameCache::sharedSpriteFrameCache()->addSpriteFramesWithFile("loading_ani.plist");
-//    CCSpriteFrameCache::sharedSpriteFrameCache()->addSpriteFramesWithFile("beautylist.plist");
-//    CCSpriteFrameCache::sharedSpriteFrameCache()->addSpriteFramesWithFile("beautylist2.plist");
-//    CCSpriteFrameCache::sharedSpriteFrameCache()->addSpriteFramesWithFile("beautylist3.plist");
-//    CCSpriteFrameCache::sharedSpriteFrameCache()->addSpriteFramesWithFile("beautylist4.plist");
-//    CCSpriteFrameCache::sharedSpriteFrameCache()->addSpriteFramesWithFile("beautylist5.plist");
-//    
-//    CCAnimationCache::sharedAnimationCache()->addAnimationsWithFile("common/glass_animations.plist");
-//    CCAnimationCache::sharedAnimationCache()->addAnimationsWithFile("common/boom_animations.plist");
-//    CCAnimationCache::sharedAnimationCache()->addAnimationsWithFile("common/loading_animations.plist");
-//    
-//    AudioEngine::Instance()->PlayBackgroundMusic("sound_effect/beauty_crush.wav");
-    
-    
+    this->InitializePortraitLayer();
+
+    // Must Call ScheduleUpdate() for BaseScene::Update()
     this->scheduleUpdate();
+
+    return true;
+}
+
+void GameScene::AllocateAndAddAllComponents()
+{
+    m_BackgroundLayer = BackgroundLayer::create();
+    m_BackgroundLayer->retain();
     
-    m_GameLayer = GameLayer::create();
-    m_GameLayer->retain();
+    m_ActorLayer = ActorLayer::create();
+    m_ActorLayer->retain();
     
     m_GameUILayer = GameUILayer::create();
     m_GameUILayer->retain();
     
-    this->addChild(m_GameLayer);
+    this->addChild(m_BackgroundLayer);
+    this->addChild(m_ActorLayer);
     this->addChild(m_GameUILayer);
 
-    return true;
 }
+
+void GameScene::InitializePortraitLayer()
+{
+    this->AllocateAndAddAllComponents();
+    
+    const CCSize winSize = CCDirector::sharedDirector()->getWinSize();
+    
+    // Layout
+    const CCSize backgroundLayerSize = CCSizeMake(640.f, 640.f);
+    CCLog("backgroundLayerSize [%f, %f]", backgroundLayerSize.width, backgroundLayerSize.height);
+    m_BackgroundLayer->setAnchorPoint(AnchorPointLeftBottom);
+    m_BackgroundLayer->setPosition(ccp(winSize.width*0.5f-winSize.width*0.5f, winSize.height-backgroundLayerSize.height));
+    
+    
+    // Propagation
+    m_BackgroundLayer->InitializePortraitLayer();
+    m_ActorLayer->InitializePortraitLayer();
+    m_GameUILayer->InitializePortraitLayer();
+}
+
+void GameScene::InitializeLandscapeLayer()
+{
+    this->AllocateAndAddAllComponents();
+    
+    const CCSize winSize = CCDirector::sharedDirector()->getWinSize();
+    
+    // Layout
+    const CCSize backgroundLayerSize = m_BackgroundLayer->getContentSize();
+    m_BackgroundLayer->setPosition(ccp(winSize.width*0.5f-winSize.width*0.5f, winSize.height-backgroundLayerSize.height));
+    
+    // Propagation
+    m_BackgroundLayer->InitializeLandscapeLayer();
+    m_ActorLayer->InitializeLandscapeLayer();
+    m_GameUILayer->InitializeLandscapeLayer();
+}
+
 
 // called by ClientDirector after changing scene
 void GameScene::OnSceneChangedToAppear()
@@ -94,3 +116,4 @@ void GameScene::update(float deltaTime)
     BaseScene::update(deltaTime);
     
 }
+

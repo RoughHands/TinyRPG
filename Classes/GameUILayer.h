@@ -9,9 +9,11 @@
 #ifndef __TinyRPG__GameUILayer__
 #define __TinyRPG__GameUILayer__
 
-class GameUILayer : public CCLayer
+class GameUILayer : public BaseLayer
 {
 private:
+    bool            m_IsTouchDown;
+    RHMoveDirection   m_TouchMoveDirection;
     
 public:
     GameUILayer();
@@ -27,9 +29,19 @@ public:
     virtual void    ccTouchMoved(CCTouch *pTouch, CCEvent *pEvent) override;
     virtual void    ccTouchEnded(CCTouch *pTouch, CCEvent *pEvent) override;
     virtual void    ccTouchCancelled(CCTouch *pTouch, CCEvent *pEvent) override;
+    
+    virtual void    update(float deltaTime) override;
 
 public:
     virtual void    setTouchEnabled(bool value) override;
+    
+    
+protected :
+    virtual void    AllocateAndAddAllComponents() override;
+public:
+    virtual void    InitializePortraitLayer() override;
+    virtual void    InitializeLandscapeLayer() override;
+
 };
 
 

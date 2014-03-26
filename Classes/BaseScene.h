@@ -46,6 +46,13 @@ public:
     void RestartApp();
     
     virtual void    ShowActivityProgressLayer(bool show);
+
+
+protected :
+    virtual void    AllocateAndAddAllComponents() = 0;
+public:
+    virtual void    InitializePortraitLayer() = 0;
+    virtual void    InitializeLandscapeLayer() = 0;
 };
 
 

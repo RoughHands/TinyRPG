@@ -4,6 +4,8 @@
 #include "BaseScene.h"
 #include "GameScene.h"
 
+#include "RHGame.h"
+
 using namespace std;
 
 USING_NS_CC;
@@ -27,7 +29,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
 //    TO Do : ResolutionManager;
     
     // Spine Resolution Setting
-    const CCSize currentDesignResolutionSize = designResolutionPortraitSize;
+    const CCSize currentDesignResolutionSize = designResolutionPortraitWideSize;
     view->setDesignResolutionSize(currentDesignResolutionSize.width, currentDesignResolutionSize.height, kResolutionNoBorder);
 //    view->setDesignResolutionSize(designResolutionSize.width, designResolutionSize.height, kResolutionNoBorder);
 
@@ -38,13 +40,13 @@ bool AppDelegate::applicationDidFinishLaunching() {
 
 	vector<string> searchPath;
 	CCSize frameSize = view->getFrameSize();
-	if (frameSize.width > mediumResource.size.width)
+	if (frameSize.width > mediumResource.size.height)
     {
 		// if the frame's width is larger than the width of medium resource size, select large resource.
 		searchPath.push_back(largeResource.directory);
 		director->setContentScaleFactor( MIN(largeResource.size.height / designResolutionSize.height, largeResource.size.width / designResolutionSize.width) );
 	}
-    else if (frameSize.width > smallResource.size.width)
+    else if (frameSize.width > smallResource.size.height)
     {
 		// if the frame's width is larger than the width of small resource size, select medium resource.
 		searchPath.push_back(mediumResource.directory);
@@ -63,12 +65,15 @@ bool AppDelegate::applicationDidFinishLaunching() {
     
     
     // turn on display FPS
-    director->setDisplayStats(true);
+//    director->setDisplayStats(true);
 
     // set FPS. the default value is 1.0/60 if you don't call this
     director->setAnimationInterval(1.0 / 60);
 
     // create a scene. it's an autorelease object
+    
+    
+    RHGame::Instance().Initialize();
     
     GameScene* gameScene = GameScene::create();
     director->runWithScene(gameScene);

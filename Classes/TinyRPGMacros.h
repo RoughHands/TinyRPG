@@ -31,6 +31,16 @@
 
 #include "cocos2d.h"
 
+// Assert
+#ifdef DEBUG
+#define ASSERT_RELEASE(expression)      assert(expression)
+#define ASSERT_DEBUG(expression)        assert(expression)
+#else
+#define ASSERT_RELEASE(expression)      {if(!(expression)){ INT* makeCrash = nullptr; *makeCrash = MAXINT;}}
+#define ASSERT_DEBUG(expression)        assert(expression)
+#endif
+
+
 #define DESIGN_RESOLUTION_480X320 0
 #define DESIGN_RESOLUTION_960x640 1
 #define DESIGN_RESOLUTION_1024X768 2
@@ -147,6 +157,7 @@ public:
 };
 
 #define TinyRPGFontName "fonts/pencilgrid.ttf"
+
 
 
 #endif
