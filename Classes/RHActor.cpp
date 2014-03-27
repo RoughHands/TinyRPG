@@ -7,18 +7,19 @@
 //
 
 #include "RHActor.h"
+#include "RHStage.h"
 
 namespace  flownet
 {
 
-RHActor::RHActor(const RHActorID actorID, const STRING& objectName):
+RHActor::RHActor(const RHActorID actorID, const FSIZE boundingSize, const STRING& objectName):
                     m_ActorID(actorID),
                     m_TargetID(ActorID_None),
                     m_ActorState(ActorState_Idle),
                     m_MoveDirection(MoveDirection_None),
                     m_CurrentPosition(0.f,0.f),
                     m_DesiredPosition(0.f,0.f),
-                    m_BoundingSize(10.f,10.f),         // BoundingBox =  Position(m_CurrentPosition),Size(m_BoundingSize) with AnchorPoint(MidBottom)
+                    m_BoundingSize(boundingSize),         // BoundingBox =  Position(m_CurrentPosition),Size(m_BoundingSize) with AnchorPoint(MidBottom)
                     m_Level(0),
                     m_ExperiencePoint(0.f),
                     m_MovingSpeed(150.f),       // pixel per second
@@ -31,7 +32,8 @@ RHActor::RHActor(const RHActorID actorID, const STRING& objectName):
                     m_AttackSpeed(1.f),
                     m_CastingSpeed(1.f),
                     m_ActorStateChanged(false),
-                    m_ActorMoved(false)
+                    m_ActorMoved(false),
+                    m_Stage(nullptr)
 {
 
 }
@@ -53,6 +55,11 @@ void RHActor::SetCurrentPosition(const POINT nextPosition)
     m_ActorMoved = true;
 }
 
+void RHActor::SetDesiredPosition(const POINT desiredPosition)
+{
+    m_DesiredPosition = desiredPosition;
+}
+
 void RHActor::MoveToDestination(const POINT destination)
 {
     if( this->GetActorState() == ActorState_Attacked || this->GetActorState() == ActorState_Attacking || this->GetActorState() == ActorState_Casting)
@@ -60,6 +67,17 @@ void RHActor::MoveToDestination(const POINT destination)
         return;
     }
 
+    const POINT direction = destination-this->GetCurrentPosition();
+    FBOOL moveAvailableToDirection = this->CheckMoveAvailableToDirection(direction);
+    if( moveAvailableToDirection == false )
+    {
+        return;
+    }
+    else
+    {
+        // Attack ? 
+    }
+    
     m_DesiredPosition = destination;
     if( this->GetActorState() != ActorState_Moving)
     {
@@ -118,6 +136,13 @@ void RHActor::UpdateMove(const milliseconds deltaTime)
         return;
     }
     
+    const POINT direction = this->GetDesiredPosition()-this->GetCurrentPosition();
+    FBOOL moveAvailableToDirection = this->CheckMoveAvailableToDirection(direction);
+    if( moveAvailableToDirection == false )
+    {
+        this->EndMove();
+    }
+    
     if( m_DesiredPosition.DistanceTo(m_CurrentPosition) <= MOVE_RESOLUTION  )
     {
         this->EndMove();
@@ -136,7 +161,13 @@ void RHActor::UpdateMove(const milliseconds deltaTime)
 void RHActor::EndMove()
 {
     this->ChangeActorState(ActorState_Defencing);
-    this->SetCurrentPosition(this->GetDesiredPosition());
+    this->SetDesiredPosition(this->GetCurrentPosition());
+//    this->SetCurrentPosition(this->GetDesiredPosition());
+}
+
+FBOOL RHActor::CheckMoveAvailableToDirection(const POINT moveDirection)
+{
+    return true;
 }
 
 } // namespace flownet

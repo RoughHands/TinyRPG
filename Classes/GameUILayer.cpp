@@ -165,6 +165,14 @@ void GameUILayer::update(float deltaTime)
     {        
         RHPlayer* myPlayer = RHGame::Instance().FindMyPlayer();
         
+        RHActorState actorState = myPlayer->GetActorState();
+        
+        
+////        if( actorState == ActorState_Moving || actorState == ActorState_Idle || actorState == ActorState_Defencing )
+////        {
+////            CollisionCheckAndAttack?
+////            MoveRequest and Attack?
+////        }
 //        if( this->GetActorState() == ActorState_Attacked || this->GetActorState() == ActorState_Attacking || this->GetActorState() == ActorState_Casting)
 //        {
 //            return;

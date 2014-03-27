@@ -145,7 +145,8 @@ void ActorNode::ChangeAnimation(const RHActorState actorState)
         break;
         case ActorState_Attacked:
         {
-            m_SkeletonAnimation->setAnimation("defense", false);
+            m_SkeletonAnimation->setAnimation("damage", false);
+            m_SkeletonAnimation->addAnimation("defense", false);
         }
         break;
         case ActorState_Casting:
@@ -177,4 +178,19 @@ float ActorNode::GetAnimationDuration(const STRING animationName)
 void ActorNode::UpdatePosition(RHActor* thisActor)
 {
     this->setPosition(ccp(thisActor->GetCurrentPosition().x, thisActor->GetCurrentPosition().y));
+}
+
+void ActorNode::draw()
+{
+    ObjectNode::draw();
+    
+#ifdef SHOW_ANCHORPOINT_DEBUGGING
+    RHActor* actor = RHGame::Instance().GetStage()->FindActor(m_ActorID);
+    FSIZE boundingSize = actor->GetBoundingBox().size;
+    
+    if( actor != nullptr )
+    {
+        ccDrawRect(ccp(0.f,0.f)-ccp(boundingSize.width*0.5f,0.f), ccp(0.f,0.f)+ccp(boundingSize.width*0.5f,boundingSize.height));
+    }
+#endif // SHOW_ANCHORPOINT_DEBUGGING
 }

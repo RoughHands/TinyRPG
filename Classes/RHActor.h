@@ -14,6 +14,7 @@
 namespace flownet
 {
 
+class RHStage;
 class RHActor : public RHObject
 {
 private:
@@ -43,18 +44,22 @@ private:
 
 private:
     FBOOL                       m_ActorStateChanged;
-public:
-    FBOOL                       IsActorStateChanged(){  return m_ActorStateChanged; }
-    void                        OnActorStateSynced(){  m_ActorStateChanged = false; }
-
-private:
     FBOOL                       m_ActorMoved;
+    RHStage*                    m_Stage;
 public:
-    FBOOL                       IsActorMoved(){ return m_ActorMoved; }
-    void                        OnActorPositionSynced() { m_ActorMoved = false; }
+    FBOOL                       IsActorStateChanged()       {   return m_ActorStateChanged; }
+    void                        OnActorStateSynced()        {   m_ActorStateChanged = false; }
+
+    FBOOL                       IsActorMoved()              {   return m_ActorMoved; }
+    void                        OnActorPositionSynced()     {   m_ActorMoved = false; }
+    
+    RHStage*                    GetStage()                  {   return m_Stage; }
+    void                        SetStage(RHStage* stage)    {   m_Stage = stage; }
+private:
+    
 
 public:
-    RHActor(const RHActorID actorID, const STRING& objectName="Actor");
+    RHActor(const RHActorID actorID, const FSIZE boundingSize, const STRING& objectName="Actor");
     virtual ~RHActor();
 
     const RHActorID             GetActorID() const                  {   return m_ActorID; }
@@ -86,6 +91,7 @@ public:
 public:
     virtual void                ChangeActorState(const RHActorState actorState);
     virtual void                SetCurrentPosition(const POINT nextPosition);
+    virtual void                SetDesiredPosition(const POINT desiredPosition);
     virtual void                MoveToDestination(const POINT destination);
     virtual void                MoveWithDirection(const RHMoveDirection moveDirection);
     
@@ -94,6 +100,9 @@ public:
     void                        UpdateMove(const milliseconds deltaTime);
     
     virtual void                EndMove();
+    
+    virtual FBOOL               CheckMoveAvailableToDirection(const POINT moveDirection);
+    
     
 };
 

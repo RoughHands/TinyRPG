@@ -19,10 +19,11 @@ class RHMonster : public RHActor
 private:
 
 public:
-    RHMonster(const RHActorID actorID, const STRING& objectName="Monster");
+    RHMonster(const RHActorID actorID, const FSIZE boundingSize, const STRING& objectName="Monster");
     virtual ~RHMonster();
     
     virtual void Tick(const milliseconds deltaTime) override;
+    virtual FBOOL CheckMoveAvailableToDirection(const POINT moveDirection) override;
 };
 
 } // namespace flownet

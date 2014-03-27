@@ -41,7 +41,8 @@ protected:
     virtual void    UpdatePosition(RHActor* thisActor);
 public:
     float           GetAnimationDuration(const STRING animationName);
-    
+
+    void            draw() override;
 };
 
 typedef Vector<ActorNode*>::type ActorNodeList;

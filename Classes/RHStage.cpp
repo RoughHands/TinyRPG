@@ -35,7 +35,8 @@ FBOOL RHStage::CreateAndAddPlayer(const RHActorID actorID, STRING skeletonName)
         return false;
     }
     
-    player = CreateRHObject<RHPlayer>(actorID);
+    player = CreateRHObject<RHPlayer>(actorID, FSIZE(120.f,200.f));
+    player->SetStage(this);
     m_PlayerList.push_back(player);
     
     return true;
@@ -49,7 +50,8 @@ FBOOL RHStage::CreateAndAddMonster(const RHActorID actorID, STRING skeletonName)
         return false;
     }
     
-    monster = CreateRHObject<RHMonster>(actorID);
+    monster = CreateRHObject<RHMonster>(actorID, FSIZE(440.f,400.f));
+    monster->SetStage(this);
     m_MonsterList.push_back(monster);
     
     return true;
