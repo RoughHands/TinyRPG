@@ -34,7 +34,7 @@ inline void SetNPCFlag(RHActorID& actorID)            { actorID=actorID&ActorID_
 inline void SetMonsterFlag(RHActorID& actorID)        { actorID=actorID&ActorID_ActorTypeClearMask;       actorID = actorID|ActorID_MonsterFlag;}
 inline void SetStageObjectFlag(RHActorID& actorID)    { actorID=actorID&ActorID_ActorTypeClearMask;       actorID = actorID|ActorID_StageObjectFlag;}
 
-typedef Vector<RHActorID>::type ActorIDList;
+typedef Vector<RHActorID>::type RHActorIDList;
 
 
 enum RHMoveDirection : INT

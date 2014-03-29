@@ -23,8 +23,14 @@ public:
     virtual ~RHPlayer();
 
 
-    virtual void    Tick(const milliseconds deltaTime) override;
+    virtual void    Tick(const milliseconds deltaTime, RHGame* game) override;
     virtual FBOOL   CheckMoveAvailableToDirection(const POINT moveDirection) override;
+    
+    void            CheckAttackAvailableToDirection(const POINT moveDirection, RHActorIDList& outTargetActors);
+    
+    virtual void                OnPostAttack() override;
+    virtual void                OnAttacked(RHActor* attacker) override;
+
 };
 
 } // namespace flownet

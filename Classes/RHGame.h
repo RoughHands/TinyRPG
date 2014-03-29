@@ -28,9 +28,12 @@ public:
     static RHGame&          Instance();
     static void             DeleteInstance();
     static void             Initialize();
-
     
 private:
+    SystemTimer             m_GameTimer;
+    ScheduledTaskQueue      m_GameTaskQueue;
+    BaseLock                m_LockQueue;
+    
     RHStage*                m_Stage;
     
     // Client Status
@@ -45,13 +48,16 @@ private:
 public:
     RHGame(const STRING& objectName="Game");
     virtual ~RHGame();
-    
-    RHStage*            GetStage() { return m_Stage; }
+
+    SystemTimer&        GetGameTimer()          {   return m_GameTimer; }
+    RHStage*            GetStage()              { return m_Stage; }
     void                Tick(const milliseconds deltaTime);     //  seconds
     
     FBOOL               CreateAndAddPlayer(const RHActorID actorID, STRING skeletonName);
     FBOOL               CreateAndAddMonster(const RHActorID actorID, STRING skeletonName);
     RHActor*            FindActor(const RHActorID actorID);
+    RHPlayer*           FindPlayer(const RHActorID actorID);
+    RHMonster*          FindMonster(const RHActorID actorID);
     
     template <typename ActorLambda>
     void ForAllPlayers(const ActorLambda& lambda)
@@ -70,7 +76,11 @@ public:
     {
         ForAllActors(lambda);
     }
-
+    
+    void                AddGameTask(const milliseconds& timeDelay, ScheduledTask* scheduledTask);
+    void                RunScheduledTasks(const milliseconds deltaTime);
+    void                AddTaskAt(const ServerTime& serverTimePoint, ScheduledTask* scheduledTask);
+    void                EmptyTaskQueue();
 };
 
 } // namespace flownet

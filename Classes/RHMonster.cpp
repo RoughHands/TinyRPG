@@ -21,15 +21,26 @@ RHMonster::~RHMonster()
 {
 }
 
-void RHMonster::Tick(const milliseconds deltaTime)
+void RHMonster::Tick(const milliseconds deltaTime, RHGame* game)
 {
-    RHActor::Tick(deltaTime);
+    RHActor::Tick(deltaTime, game);
     
     
     static FBOOL isMoveToRight = true;
     
-    const POINT rightBound = POINT(900.f, 300.f);
-    const POINT leftBound = POINT(400.f, 300.f);
+    const POINT rightBound = POINT(900.f, 160.f);
+    const POINT leftBound = POINT(400.f, 160.f);
+
+    RHActorIDList attackableTargetList;
+    POINT direction = isMoveToRight==true? POINT(1.f,0.f):POINT(-1.f,0.f);
+
+    this->CheckAttackAvailableToDirection(direction, attackableTargetList);
+    if( attackableTargetList.size() > 0 )
+    {
+        this->AttackWithDirection(this->GetMoveDirection());
+        return;
+    }
+    
 
     if( isMoveToRight == true )
     {
@@ -87,6 +98,49 @@ FBOOL RHMonster::CheckMoveAvailableToDirection(const POINT moveDirection)
     return moveAvailable;
 
 }
+
+void RHMonster::CheckAttackAvailableToDirection(const POINT moveDirection, RHActorIDList& outTargetActors)
+{
+    outTargetActors.clear();
+    
+    FRECT thisActorAttackingArea = this->GetAttackingAreaBox();
+    this->GetStage()->ForAllPlayers([this, moveDirection,thisActorAttackingArea, &outTargetActors](RHActor* anotherActor)
+    {
+        if( moveDirection.x > 0 )
+        {
+            if( anotherActor->GetCurrentPosition().x > this->GetCurrentPosition().x )
+            {
+                if( true == anotherActor->GetBoundingBox().IntersectsRect(thisActorAttackingArea) )
+                {
+                    outTargetActors.push_back(anotherActor->GetActorID());
+                }
+            }
+        }
+        else if( moveDirection.x > 0 )
+        {
+            if( anotherActor->GetCurrentPosition().x < this->GetCurrentPosition().x )
+            {
+                if( true == anotherActor->GetBoundingBox().IntersectsRect(thisActorAttackingArea) )
+                {
+                    outTargetActors.push_back(anotherActor->GetActorID());
+                }
+            }
+        }
+    });
+}
+
+void RHMonster::OnPostAttack()
+{
+    RHActor::OnPostAttack();
+    
+}
+
+void RHMonster::OnAttacked(RHActor* attacker)
+{
+    RHActor::OnAttacked(attacker);
+    
+}
+
 
 
 

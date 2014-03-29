@@ -1,0 +1,15 @@
+//
+//  TinyRPGPublicHeaders.pch
+//  TinyRPG
+//
+//  Created by Sinhyub Kim on 3/28/14.
+//  Copyright (c) 2014 RoughHands. All rights reserved.
+//
+
+#ifndef TinyRPG_TinyRPGPublicHeaders_pch
+#define TinyRPG_TinyRPGPublicHeaders_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+#endif

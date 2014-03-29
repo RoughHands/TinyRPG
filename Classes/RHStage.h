@@ -34,6 +34,8 @@ public:
     FBOOL               CreateAndAddPlayer(const RHActorID actorID, STRING skeletonName);
     FBOOL               CreateAndAddMonster(const RHActorID actorID, STRING skeletonName);
     RHActor*            FindActor(const RHActorID actorID);
+    RHPlayer*           FindPlayer(const RHActorID actorID);
+    RHMonster*          FindMonster(const RHActorID actorID);
     
     template <typename ActorLambda>
     void ForAllPlayers(const ActorLambda& lambda)

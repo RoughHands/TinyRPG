@@ -164,7 +164,7 @@ void ActorLayer::CreateAndAddPlayerNode(RHPlayer* player)
     
     actorNode = PlayerNode::create(player->GetActorID(), "player/lion");
     actorNode->retain();
-    this->addChild(actorNode);
+    this->addChild(actorNode, ActorLayerIndex_Player);
     m_PlayerNodeList.push_back(actorNode);
     
     actorNode->UpdateAfterTick(0.f);
@@ -184,9 +184,9 @@ void ActorLayer::CreateAndAddMonsterNode(RHMonster* monster)
         return;
     }
     
-    monsterNode = MonsterNode::create(monster->GetActorID(), "monster/dragon");
+    monsterNode = MonsterNode::create(monster->GetActorID(), "monster/huge_chick");
     monsterNode->retain();
-    this->addChild(monsterNode);
+    this->addChild(monsterNode,ActorLayerIndex_Monster);
     m_MonsterNodeList.push_back(monsterNode);
     
     monsterNode->UpdateAfterTick(0.f);    

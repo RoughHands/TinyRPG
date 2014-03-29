@@ -23,6 +23,11 @@ public:
     static MonsterNode* create(const RHActorID actorID, const STRING& skeletonName);
     
 public:
+    virtual bool            IsFlipX();
+    virtual void            FlipX(bool flip);
+
+    
+public:
     virtual void    UpdateAfterTick(const float deltaTime) override;
     
 private:

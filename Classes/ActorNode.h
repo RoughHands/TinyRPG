@@ -32,9 +32,9 @@ public:
     
 public:
     RHActorID               GetActorID()    {   return m_ActorID; }
-    bool                    IsFlipX()       {   return m_FlipX; }
+    virtual bool            IsFlipX()       {   return m_FlipX; }
 
-    void                    FlipX(bool flip);
+    virtual void            FlipX(bool flip);
     
 protected:
     virtual void    ChangeAnimation(const RHActorState actorState);

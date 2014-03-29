@@ -250,6 +250,12 @@
 		4D1A89A318E3064000E5F402 /* MonsterNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4D1A89A118E3064000E5F402 /* MonsterNode.cpp */; };
 		4D1A89A618E31FA000E5F402 /* ObjectNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4D1A89A418E31FA000E5F402 /* ObjectNode.cpp */; };
 		4D1A89A918E34D8300E5F402 /* TinyRPGSharedProperties.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4D1A89A718E34D8300E5F402 /* TinyRPGSharedProperties.cpp */; };
+		4D3D421C18E529BC00700515 /* TinyRPGScheduledTasks.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4D3D421A18E529BC00700515 /* TinyRPGScheduledTasks.cpp */; };
+		4D3D422218E573E400700515 /* RHActorTaskQueue.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4D3D422018E573E400700515 /* RHActorTaskQueue.cpp */; };
+		4D3D422518E5744900700515 /* RHActorTask.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4D3D422318E5744900700515 /* RHActorTask.cpp */; };
+		4D3D422818E5761200700515 /* RHScheduledTickQueue.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4D3D422618E5761200700515 /* RHScheduledTickQueue.cpp */; };
+		4D3D422B18E576FC00700515 /* RHScheduledTick.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4D3D422918E576FC00700515 /* RHScheduledTick.cpp */; };
+		4D3D422E18E5780700700515 /* RHActorScheduledTick.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4D3D422C18E5780700700515 /* RHActorScheduledTick.cpp */; };
 		4D6AEDA018E0FF1A002115FC /* TinyRPGMacros.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4D6AED9F18E0FF1A002115FC /* TinyRPGMacros.cpp */; };
 		4D6AEDA418E10225002115FC /* BaseScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4D6AEDA218E10225002115FC /* BaseScene.cpp */; };
 		4D6AEDA818E1057E002115FC /* ActivityIndicator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4D6AEDA618E1057E002115FC /* ActivityIndicator.cpp */; };
@@ -820,6 +826,19 @@
 		4D1A89A518E31FA000E5F402 /* ObjectNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ObjectNode.h; path = ../Classes/ObjectNode.h; sourceTree = "<group>"; };
 		4D1A89A718E34D8300E5F402 /* TinyRPGSharedProperties.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TinyRPGSharedProperties.cpp; path = ../Classes/TinyRPGSharedProperties.cpp; sourceTree = "<group>"; };
 		4D1A89A818E34D8300E5F402 /* TinyRPGSharedProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TinyRPGSharedProperties.h; path = ../Classes/TinyRPGSharedProperties.h; sourceTree = "<group>"; };
+		4D3D421A18E529BC00700515 /* TinyRPGScheduledTasks.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TinyRPGScheduledTasks.cpp; path = ../Classes/TinyRPGScheduledTasks.cpp; sourceTree = "<group>"; };
+		4D3D421B18E529BC00700515 /* TinyRPGScheduledTasks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TinyRPGScheduledTasks.h; path = ../Classes/TinyRPGScheduledTasks.h; sourceTree = "<group>"; };
+		4D3D421D18E52ACC00700515 /* TinyRPGPublicHeaders.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TinyRPGPublicHeaders.pch; path = ../Classes/TinyRPGPublicHeaders.pch; sourceTree = "<group>"; };
+		4D3D422018E573E400700515 /* RHActorTaskQueue.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = RHActorTaskQueue.cpp; path = ../Classes/RHActorTaskQueue.cpp; sourceTree = "<group>"; };
+		4D3D422118E573E400700515 /* RHActorTaskQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RHActorTaskQueue.h; path = ../Classes/RHActorTaskQueue.h; sourceTree = "<group>"; };
+		4D3D422318E5744900700515 /* RHActorTask.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = RHActorTask.cpp; path = ../Classes/RHActorTask.cpp; sourceTree = "<group>"; };
+		4D3D422418E5744900700515 /* RHActorTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RHActorTask.h; path = ../Classes/RHActorTask.h; sourceTree = "<group>"; };
+		4D3D422618E5761200700515 /* RHScheduledTickQueue.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = RHScheduledTickQueue.cpp; path = ../Classes/RHScheduledTickQueue.cpp; sourceTree = "<group>"; };
+		4D3D422718E5761200700515 /* RHScheduledTickQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RHScheduledTickQueue.h; path = ../Classes/RHScheduledTickQueue.h; sourceTree = "<group>"; };
+		4D3D422918E576FC00700515 /* RHScheduledTick.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = RHScheduledTick.cpp; path = ../Classes/RHScheduledTick.cpp; sourceTree = "<group>"; };
+		4D3D422A18E576FC00700515 /* RHScheduledTick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RHScheduledTick.h; path = ../Classes/RHScheduledTick.h; sourceTree = "<group>"; };
+		4D3D422C18E5780700700515 /* RHActorScheduledTick.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = RHActorScheduledTick.cpp; path = ../Classes/RHActorScheduledTick.cpp; sourceTree = "<group>"; };
+		4D3D422D18E5780700700515 /* RHActorScheduledTick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RHActorScheduledTick.h; path = ../Classes/RHActorScheduledTick.h; sourceTree = "<group>"; };
 		4D6AED9D18E05CE7002115FC /* TinyRPGMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TinyRPGMacros.h; path = ../Classes/TinyRPGMacros.h; sourceTree = "<group>"; };
 		4D6AED9F18E0FF1A002115FC /* TinyRPGMacros.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TinyRPGMacros.cpp; path = ../Classes/TinyRPGMacros.cpp; sourceTree = "<group>"; };
 		4D6AEDA218E10225002115FC /* BaseScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = BaseScene.cpp; path = ../Classes/BaseScene.cpp; sourceTree = "<group>"; };
@@ -1403,6 +1422,7 @@
 				4D6AED9F18E0FF1A002115FC /* TinyRPGMacros.cpp */,
 				4DE33D5B18E2B68500F2209E /* TinyRPGProperties.cpp */,
 				4DE33D5C18E2B68500F2209E /* TinyRPGProperties.h */,
+				4D3D421D18E52ACC00700515 /* TinyRPGPublicHeaders.pch */,
 			);
 			name = Classes;
 			path = ../classes;
@@ -2005,6 +2025,23 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		4D3D421F18E573CC00700515 /* ActorTaskQueue */ = {
+			isa = PBXGroup;
+			children = (
+				4D3D422018E573E400700515 /* RHActorTaskQueue.cpp */,
+				4D3D422118E573E400700515 /* RHActorTaskQueue.h */,
+				4D3D422318E5744900700515 /* RHActorTask.cpp */,
+				4D3D422418E5744900700515 /* RHActorTask.h */,
+				4D3D422618E5761200700515 /* RHScheduledTickQueue.cpp */,
+				4D3D422718E5761200700515 /* RHScheduledTickQueue.h */,
+				4D3D422918E576FC00700515 /* RHScheduledTick.cpp */,
+				4D3D422A18E576FC00700515 /* RHScheduledTick.h */,
+				4D3D422C18E5780700700515 /* RHActorScheduledTick.cpp */,
+				4D3D422D18E5780700700515 /* RHActorScheduledTick.h */,
+			);
+			name = ActorTaskQueue;
+			sourceTree = "<group>";
+		};
 		4D6AEDA118E10214002115FC /* Common */ = {
 			isa = PBXGroup;
 			children = (
@@ -2052,6 +2089,7 @@
 		4DE33D5E18E2CFC000F2209E /* Logic */ = {
 			isa = PBXGroup;
 			children = (
+				4D3D421F18E573CC00700515 /* ActorTaskQueue */,
 				4DE33D5F18E2CFFF00F2209E /* RHGame.cpp */,
 				4DE33D6018E2CFFF00F2209E /* RHGame.h */,
 				4DE33D6218E2D00800F2209E /* RHStage.cpp */,
@@ -2068,6 +2106,8 @@
 				4D1A899618E2F50000E5F402 /* RHObject.h */,
 				4D1A89A718E34D8300E5F402 /* TinyRPGSharedProperties.cpp */,
 				4D1A89A818E34D8300E5F402 /* TinyRPGSharedProperties.h */,
+				4D3D421A18E529BC00700515 /* TinyRPGScheduledTasks.cpp */,
+				4D3D421B18E529BC00700515 /* TinyRPGScheduledTasks.h */,
 			);
 			name = Logic;
 			sourceTree = "<group>";
@@ -2244,6 +2284,7 @@
 				15A3D91D1682F7D5002FB0C5 /* b2EdgeAndPolygonContact.cpp in Sources */,
 				15A3D91E1682F7D5002FB0C5 /* b2PolygonAndCircleContact.cpp in Sources */,
 				15A3D91F1682F7D5002FB0C5 /* b2PolygonContact.cpp in Sources */,
+				4D3D422818E5761200700515 /* RHScheduledTickQueue.cpp in Sources */,
 				15A3D9201682F7D5002FB0C5 /* b2DistanceJoint.cpp in Sources */,
 				298B29BD18D0668400C1920F /* LabelAtlasReader.cpp in Sources */,
 				15A3D9211682F7D5002FB0C5 /* b2FrictionJoint.cpp in Sources */,
@@ -2257,6 +2298,7 @@
 				15A3D9291682F7D5002FB0C5 /* b2WeldJoint.cpp in Sources */,
 				15A3D92A1682F7D5002FB0C5 /* b2WheelJoint.cpp in Sources */,
 				15A3D9391682F7D5002FB0C5 /* b2Rope.cpp in Sources */,
+				4D3D421C18E529BC00700515 /* TinyRPGScheduledTasks.cpp in Sources */,
 				15A3D9951682F7F9002FB0C5 /* chipmunk.c in Sources */,
 				4D1A899D18E3062F00E5F402 /* LandNode.cpp in Sources */,
 				15A3D9971682F7F9002FB0C5 /* cpConstraint.c in Sources */,
@@ -2303,11 +2345,13 @@
 				15A3DA381682F826002FB0C5 /* CCControlButtonLoader.cpp in Sources */,
 				15A3DA391682F826002FB0C5 /* CCControlLoader.cpp in Sources */,
 				15A3DA3A1682F826002FB0C5 /* CCData.cpp in Sources */,
+				4D3D422218E573E400700515 /* RHActorTaskQueue.cpp in Sources */,
 				298B29BC18D0668400C1920F /* ImageViewReader.cpp in Sources */,
 				15A3DA3B1682F826002FB0C5 /* CCLabelBMFontLoader.cpp in Sources */,
 				15A3DA3C1682F826002FB0C5 /* CCLabelTTFLoader.cpp in Sources */,
 				15A3DA3D1682F826002FB0C5 /* CCLayerColorLoader.cpp in Sources */,
 				15A3DA3E1682F826002FB0C5 /* CCLayerGradientLoader.cpp in Sources */,
+				4D3D422B18E576FC00700515 /* RHScheduledTick.cpp in Sources */,
 				15A3DA3F1682F826002FB0C5 /* CCLayerLoader.cpp in Sources */,
 				4D6AEDAB18E105B3002115FC /* ActivityIndicatorLayer.cpp in Sources */,
 				15A3DA401682F826002FB0C5 /* CCMenuItemImageLoader.cpp in Sources */,
@@ -2362,6 +2406,7 @@
 				1A27573F1697CF2B00504026 /* CCEditBoxImplAndroid.cpp in Sources */,
 				1AFAF8B716D35DE700DB1158 /* AppDelegate.cpp in Sources */,
 				1AFAF8B816D35DE700DB1158 /* HelloWorldScene.cpp in Sources */,
+				4D3D422E18E5780700700515 /* RHActorScheduledTick.cpp in Sources */,
 				4D6AEDBB18E132A8002115FC /* ActorLayer.cpp in Sources */,
 				4D6AEDB118E10693002115FC /* TutorialScreenLayer.cpp in Sources */,
 				1AC3624916D4A1E8000847F2 /* AppController.mm in Sources */,
@@ -2436,6 +2481,7 @@
 				379BB9B917F03F3700829B88 /* UIHelper.cpp in Sources */,
 				379BB9BD17F03F3700829B88 /* UIListView.cpp in Sources */,
 				379BB9BE17F03F3700829B88 /* UIPageView.cpp in Sources */,
+				4D3D422518E5744900700515 /* RHActorTask.cpp in Sources */,
 				4DE33D5D18E2B68500F2209E /* TinyRPGProperties.cpp in Sources */,
 				379BB9BF17F03F3700829B88 /* UIScrollView.cpp in Sources */,
 				379BB9C017F03F3700829B88 /* UIButton.cpp in Sources */,
@@ -2486,6 +2532,7 @@
 				);
 				GCC_C_LANGUAGE_STANDARD = c11;
 				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = YES;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -2543,6 +2590,7 @@
 					"/Users/Sinhyub/Project/cocos2d-x/projects/flownet/BoostMobile/ios/framework",
 				);
 				GCC_C_LANGUAGE_STANDARD = c11;
+				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = YES;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;

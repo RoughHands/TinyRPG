@@ -8,6 +8,8 @@
 
 #include "RHActor.h"
 #include "RHStage.h"
+#include "RHGame.h"
+#include "RHActorScheduledTick.h"
 
 namespace  flownet
 {
@@ -20,6 +22,7 @@ RHActor::RHActor(const RHActorID actorID, const FSIZE boundingSize, const STRING
                     m_CurrentPosition(0.f,0.f),
                     m_DesiredPosition(0.f,0.f),
                     m_BoundingSize(boundingSize),         // BoundingBox =  Position(m_CurrentPosition),Size(m_BoundingSize) with AnchorPoint(MidBottom)
+                    m_AttackingAreaSize(FSIZE(boundingSize.width*0.25f, boundingSize.height)),
                     m_Level(0),
                     m_ExperiencePoint(0.f),
                     m_MovingSpeed(150.f),       // pixel per second
@@ -29,11 +32,14 @@ RHActor::RHActor(const RHActorID actorID, const FSIZE boundingSize, const STRING
                     m_MaxManaPoint(10.f),
                     m_AttackPower(10.f),
                     m_SpellPower(10.f),
-                    m_AttackSpeed(1.f),
+                    m_AttackSpeed(1.5f),
                     m_CastingSpeed(1.f),
+                    m_AttackNumber(0.f),
                     m_ActorStateChanged(false),
                     m_ActorMoved(false),
-                    m_Stage(nullptr)
+                    m_Stage(nullptr),
+                    m_ActorTaskQueue(),
+                    m_ScheduledTickQueue(RHGame::Instance().GetGameTimer())
 {
 
 }
@@ -124,9 +130,22 @@ void RHActor::MoveWithDirection(const RHMoveDirection direction)
     this->MoveToDestination(this->GetCurrentPosition()+moveOffset);
 }
 
-void RHActor::Tick(const milliseconds deltaTime)
+void RHActor::AddActorTask(RHActorTask* actorTask)
 {
+    m_ActorTaskQueue.AddActorTask(actorTask);
+}
+
+void RHActor::AddScheduledTick(const milliseconds& timeDelay, RHScheduledTick* scheduledTick)
+{
+    m_ScheduledTickQueue.AddTickAfter(timeDelay, scheduledTick);
+}
+
+void RHActor::Tick(const milliseconds deltaTime, RHGame* game)
+{
+    m_ScheduledTickQueue.Tick(game);
+    m_ActorTaskQueue.ExecuteTasks(this, game);
     this->UpdateMove(deltaTime);
+    
 }
 
 void RHActor::UpdateMove(const milliseconds deltaTime)
@@ -168,6 +187,55 @@ void RHActor::EndMove()
 FBOOL RHActor::CheckMoveAvailableToDirection(const POINT moveDirection)
 {
     return true;
+}
+
+void RHActor::CheckAttackAvailableToDirection(const POINT moveDirection, RHActorIDList& outTargetActors)
+{
+    outTargetActors.clear();
+    return;
+}
+
+const FRECT RHActor::GetAttackingAreaBox() const
+{
+    FRECT boundingBox = this->GetBoundingBox();
+    if (m_MoveDirection == MoveDirection_Left )
+    {
+        return std::move(FRECT(boundingBox.GetMinX()-m_AttackingAreaSize.width,boundingBox.GetMinY(),m_AttackingAreaSize.width,m_AttackingAreaSize.height));
+    }
+    else if( m_MoveDirection == MoveDirection_Right )
+    {
+        return std::move(FRECT(boundingBox.GetMaxX(), boundingBox.GetMinY(), m_AttackingAreaSize.width, m_AttackingAreaSize.height ));
+    }
+    else
+    {
+        return boundingBox;
+    }
+}
+
+void RHActor::AttackWithDirection(const RHMoveDirection attackDirection)
+{
+    if( this->GetActorState() == ActorState_Attacking && m_MoveDirection == attackDirection )
+    {
+        return;
+    }
+    
+    m_MoveDirection = attackDirection;
+    this->ChangeActorState(ActorState_Attacking);
+    m_AttackNumber++;
+    
+    this->AddScheduledTick(milliseconds(static_cast<INT>(1000/this->GetAttackSpeed()*1.f )), CreateScheduledTick<RHScheduledTickAttackTakeEffect>(this->GetActorID(), this->GetAttackNumber()));
+    
+}
+
+void RHActor::OnPostAttack()
+{
+    this->ChangeActorState(ActorState_Defencing);
+}
+
+void RHActor::OnAttacked(RHActor* attacker)
+{
+    this->ChangeActorState(ActorState_Attacked);
+    
 }
 
 } // namespace flownet

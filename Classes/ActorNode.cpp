@@ -129,30 +129,33 @@ void ActorNode::ChangeAnimation(const RHActorState actorState)
         break;
         case ActorState_Defencing:
         {
-            m_SkeletonAnimation->setAnimation("defense", false);
+            m_SkeletonAnimation->setAnimation("defense_intro", false);
+            m_SkeletonAnimation->addAnimation("defense", true);
         }
         break;
         case ActorState_Moving:
         {
-            m_SkeletonAnimation->setAnimation("walk", true);
+            m_SkeletonAnimation->setAnimation("moving", true);
         }
         break;
         case ActorState_Attacking:
         {
-            m_SkeletonAnimation->setAnimation("attack", false);
-            m_SkeletonAnimation->addAnimation("defense", true);
+            m_SkeletonAnimation->setAnimation("attacking", false);
+//            m_SkeletonAnimation->addAnimation("defense_intro", false);
+//            m_SkeletonAnimation->addAnimation("defense", true);
         }
         break;
         case ActorState_Attacked:
         {
-            m_SkeletonAnimation->setAnimation("damage", false);
-            m_SkeletonAnimation->addAnimation("defense", false);
+            m_SkeletonAnimation->setAnimation("attacked", false);
+//            m_SkeletonAnimation->setAnimation("defense_intro", false);
+//            m_SkeletonAnimation->addAnimation("defense", true);
         }
         break;
         case ActorState_Casting:
         {
-            m_SkeletonAnimation->setAnimation("attack", false);
-            m_SkeletonAnimation->addAnimation("idle", true);
+            m_SkeletonAnimation->setAnimation("attacking", false);
+//            m_SkeletonAnimation->addAnimation("idle", true);
         }
         break;
         

@@ -177,7 +177,16 @@ void GameUILayer::update(float deltaTime)
 //        {
 //            return;
 //        }
-
-        myPlayer->MoveWithDirection(m_TouchMoveDirection);
+        
+        RHActorIDList attackReachableMonsters;
+        myPlayer->CheckAttackAvailableToDirection(m_TouchMoveDirection, attackReachableMonsters);
+        if( attackReachableMonsters.size() > 0 )
+        {
+            myPlayer->AttackWithDirection(m_TouchMoveDirection);
+        }
+        else
+        {
+            myPlayer->MoveWithDirection(m_TouchMoveDirection);
+        }
     }
 }

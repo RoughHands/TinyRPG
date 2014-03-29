@@ -21,9 +21,9 @@ RHPlayer::~RHPlayer()
 {
 }
 
-void RHPlayer::Tick(const milliseconds deltaTime)
+void RHPlayer::Tick(const milliseconds deltaTime, RHGame* game)
 {
-    RHActor::Tick(deltaTime);
+    RHActor::Tick(deltaTime, game);
     
     
 }
@@ -49,7 +49,7 @@ FBOOL RHPlayer::CheckMoveAvailableToDirection(const POINT moveDirection)
         }
         else if( moveDirection.x < 0)
         {
-            if( monster->GetCurrentPosition().y < this->GetCurrentPosition().x )
+            if( monster->GetCurrentPosition().x < this->GetCurrentPosition().x )
             {
                 if( true == monster->GetBoundingBox().IntersectsRect(thisActorBoundingBox))
                 {
@@ -62,5 +62,47 @@ FBOOL RHPlayer::CheckMoveAvailableToDirection(const POINT moveDirection)
     return moveAvailable;
 }
 
+void RHPlayer::CheckAttackAvailableToDirection(const POINT moveDirection, RHActorIDList& outTargetActors)
+{
+    outTargetActors.clear();
+    
+    FRECT thisActorAttackingArea = this->GetAttackingAreaBox();
+    this->GetStage()->ForAllMonsters([this, moveDirection,thisActorAttackingArea, &outTargetActors](RHActor* anotherActor)
+    {
+        RHMonster* monster = static_cast<RHMonster*>(anotherActor);
+        if( moveDirection.x > 0 )
+        {
+            if( monster->GetCurrentPosition().x > this->GetCurrentPosition().x )
+            {
+                if( true == monster->GetBoundingBox().IntersectsRect(thisActorAttackingArea) )
+                {
+                    outTargetActors.push_back(monster->GetActorID());
+                }
+            }
+        }
+        else if( moveDirection.x > 0 )
+        {
+            if( monster->GetCurrentPosition().x < this->GetCurrentPosition().x )
+            {
+                if( true == monster->GetBoundingBox().IntersectsRect(thisActorAttackingArea) )
+                {
+                    outTargetActors.push_back(monster->GetActorID());
+                }
+            }
+        }
+    });
+}
+
+void RHPlayer::OnPostAttack()
+{
+    RHActor::OnPostAttack();
+
+}
+
+void RHPlayer::OnAttacked(RHActor* attacker)
+{
+    RHActor::OnAttacked(attacker);
+    
+}
 
 } //namespace flownet

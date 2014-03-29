@@ -10,9 +10,12 @@
 #define __TinyRPG__RHActor__
 
 #include "RHObject.h"
+#include "RHActorTaskQueue.h"
+#include "RHScheduledTickQueue.h"
 
 namespace flownet
 {
+
 
 class RHStage;
 class RHActor : public RHObject
@@ -29,6 +32,7 @@ private:
     
     FSIZE                       m_BoundingSize;         // BoundingBox =  Position(m_CurrentPosition),Size(m_BoundingSize) with AnchorPoint(MidBottom)
     
+    FSIZE                       m_AttackingAreaSize;        // AttackBox = m_CurrentPosition + MoveDirection.Normalize()*AttackingArea
     
     INT                         m_Level;
     FLOAT                       m_ExperiencePoint;
@@ -39,14 +43,22 @@ private:
     FLOAT                       m_MaxManaPoint;
     FLOAT                       m_AttackPower;
     FLOAT                       m_SpellPower;
-    FLOAT                       m_AttackSpeed;
+    FLOAT                       m_AttackSpeed;      // attack per second
     FLOAT                       m_CastingSpeed;
 
 private:
+    INT64                       m_AttackNumber;
     FBOOL                       m_ActorStateChanged;
     FBOOL                       m_ActorMoved;
     RHStage*                    m_Stage;
+    
+private:
+    RHActorTaskQueue            m_ActorTaskQueue;
+    RHScheduledTickQueue        m_ScheduledTickQueue;
+    
 public:
+    const INT64                 GetAttackNumber()const      {   return m_AttackNumber; }
+
     FBOOL                       IsActorStateChanged()       {   return m_ActorStateChanged; }
     void                        OnActorStateSynced()        {   m_ActorStateChanged = false; }
 
@@ -74,8 +86,10 @@ public:
     const FSIZE                 GetBoundingSize() const             {   return m_BoundingSize;  }
     // BoundingBox =  Position(m_CurrentPosition),Size(m_BoundingSize) with AnchorPoint(MidBottom)
     const FRECT                 GetBoundingBox() const              {   return FRECT(m_CurrentPosition.x-m_BoundingSize.width*0.5f,m_CurrentPosition.y,m_BoundingSize.width,m_BoundingSize.height); }
+    const FSIZE                 GetAttackingAreaSize() const        {   return m_AttackingAreaSize; }
+    const FRECT                 GetAttackingAreaBox() const;
     
-    
+
     const INT                   GetLevel() const                    {   return m_Level; }
     const FLOAT                 GetExperiencePoint() const          {   return m_ExperiencePoint; }
     const FLOAT                 GetMovingSpeed() const              {   return m_MovingSpeed;   }
@@ -95,15 +109,25 @@ public:
     virtual void                MoveToDestination(const POINT destination);
     virtual void                MoveWithDirection(const RHMoveDirection moveDirection);
     
-    virtual void                Tick(const milliseconds deltaTime);
+    virtual void                AttackWithDirection(const RHMoveDirection moveDirection);
+    
+    
+    // NOTE : whenever we change/reference Player's status from RPC(ClientConnectionTask), we must use StageTask to Synchronization
+    void                        AddActorTask(RHActorTask* actorTask);
+    void                        AddScheduledTick(const milliseconds& timeDelay, RHScheduledTick* scheduledTick);
+
+    virtual void                Tick(const milliseconds deltaTime, RHGame* game);
     
     void                        UpdateMove(const milliseconds deltaTime);
     
     virtual void                EndMove();
     
     virtual FBOOL               CheckMoveAvailableToDirection(const POINT moveDirection);
+    virtual void                CheckAttackAvailableToDirection(const POINT moveDirection, RHActorIDList& outTargetActors);
     
-    
+public:
+    virtual void                OnPostAttack();
+    virtual void                OnAttacked(RHActor* attacker);
 };
 
 typedef Vector<RHActor*>::type  RHActorList;

@@ -8,6 +8,8 @@
 
 #include "RHStage.h"
 
+namespace flownet
+{
 
 RHStage::RHStage(const STRING& objectName):RHObject(objectName),
                 m_PlayerList(),
@@ -35,7 +37,7 @@ FBOOL RHStage::CreateAndAddPlayer(const RHActorID actorID, STRING skeletonName)
         return false;
     }
     
-    player = CreateRHObject<RHPlayer>(actorID, FSIZE(120.f,200.f));
+    player = CreateRHObject<RHPlayer>(actorID, FSIZE(90.f,175.f));
     player->SetStage(this);
     m_PlayerList.push_back(player);
     
@@ -50,7 +52,7 @@ FBOOL RHStage::CreateAndAddMonster(const RHActorID actorID, STRING skeletonName)
         return false;
     }
     
-    monster = CreateRHObject<RHMonster>(actorID, FSIZE(440.f,400.f));
+    monster = CreateRHObject<RHMonster>(actorID, FSIZE(320.f,400.f));
     monster->SetStage(this);
     m_MonsterList.push_back(monster);
     
@@ -83,3 +85,45 @@ RHActor* RHStage::FindActor(const RHActorID actorID)
     
     return nullptr;
 }
+
+RHPlayer* RHStage::FindPlayer(const RHActorID actorID)
+{
+   std::function<bool(RHActor*)> actorIDCompare = [actorID](RHActor* actor)->bool
+    {
+        if( actor->GetActorID() == actorID )
+        {
+            return true;
+        }
+        return false;
+    };
+    
+    RHActorList::iterator iter = std::find_if(m_PlayerList.begin(), m_PlayerList.end(), actorIDCompare);
+    if( iter == m_PlayerList.end() )
+    {
+        nullptr;
+    }
+    
+    return static_cast<RHPlayer*>(*iter);
+}
+
+RHMonster* RHStage::FindMonster(const RHActorID actorID)
+{
+   std::function<bool(RHActor*)> actorIDCompare = [actorID](RHActor* actor)->bool
+    {
+        if( actor->GetActorID() == actorID )
+        {
+            return true;
+        }
+        return false;
+    };
+    
+    RHActorList::iterator iter = std::find_if(m_MonsterList.begin(), m_MonsterList.end(), actorIDCompare);
+    if( iter == m_PlayerList.end() )
+    {
+        nullptr;
+    }
+    
+    return static_cast<RHMonster*>(*iter);
+}
+
+} // namespace flownet

@@ -45,6 +45,32 @@ MonsterNode* MonsterNode::create(const RHActorID actorID, const STRING& skeleton
     }
 }
 
+bool MonsterNode::IsFlipX()
+{
+    return m_FlipX;
+}
+
+void MonsterNode::FlipX(bool flip)
+{
+    if( m_FlipX == flip )
+    {
+        return;
+    }
+    
+    m_FlipX = flip;
+    
+    // Special case of Monster . ( left / right changed )
+    if( m_FlipX == true )
+    {
+        m_SkeletonAnimation->setScaleX(this->getScaleX());
+    }
+    else
+    {
+        m_SkeletonAnimation->setScaleX(-this->getScaleX());
+    }
+
+}
+
 void MonsterNode::UpdateAfterTick(const float deltaTime)
 {
     ActorNode::UpdateAfterTick(deltaTime);

@@ -22,8 +22,13 @@ public:
     RHMonster(const RHActorID actorID, const FSIZE boundingSize, const STRING& objectName="Monster");
     virtual ~RHMonster();
     
-    virtual void Tick(const milliseconds deltaTime) override;
-    virtual FBOOL CheckMoveAvailableToDirection(const POINT moveDirection) override;
+    virtual void        Tick(const milliseconds deltaTime, RHGame* game) override;
+    virtual FBOOL       CheckMoveAvailableToDirection(const POINT moveDirection) override;
+    
+    virtual void        CheckAttackAvailableToDirection(const POINT moveDirection, RHActorIDList& outTargetActors) override;
+    
+    virtual void                OnPostAttack() override;
+    virtual void                OnAttacked(RHActor* attacker) override;
 };
 
 } // namespace flownet
