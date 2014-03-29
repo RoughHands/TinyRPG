@@ -55,6 +55,7 @@ enum RHActorState : INT
     ActorState_Attacking,
     ActorState_Attacked,
     ActorState_Casting,
+    ActorState_Dead,
     ActorState_Max,
 };
 

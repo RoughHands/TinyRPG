@@ -66,67 +66,12 @@ void RHMonster::Tick(const milliseconds deltaTime, RHGame* game)
 
 FBOOL RHMonster::CheckMoveAvailableToDirection(const POINT moveDirection)
 {
-    FRECT thisActorBoundingBox = this->GetBoundingBox();
-    thisActorBoundingBox.origin = (thisActorBoundingBox.origin+moveDirection.GetNormalizedVector()*MOVE_RESOLUTION);
-    
-    FBOOL moveAvailable = true;
-    this->GetStage()->ForAllPlayers([this, moveDirection, thisActorBoundingBox, &moveAvailable](RHActor* anotherActor)
-    {
-        RHPlayer* player = static_cast<RHPlayer*>(anotherActor);
-        if( moveDirection.x > 0 )
-        {
-            if( player->GetCurrentPosition().x > this->GetCurrentPosition().x )
-            {
-                if( true == player->GetBoundingBox().IntersectsRect(thisActorBoundingBox) )
-                {
-                    moveAvailable = false;
-                }
-            }
-        }
-        else if( moveDirection.x < 0)
-        {
-            if( player->GetCurrentPosition().y < this->GetCurrentPosition().x )
-            {
-                if( true == player->GetBoundingBox().IntersectsRect(thisActorBoundingBox))
-                {
-                    moveAvailable = false;
-                }
-            }
-        }
-    });
-    
-    return moveAvailable;
-
+    return RHActor::CheckMoveAvailableToDirection(moveDirection);
 }
 
 void RHMonster::CheckAttackAvailableToDirection(const POINT moveDirection, RHActorIDList& outTargetActors)
 {
-    outTargetActors.clear();
-    
-    FRECT thisActorAttackingArea = this->GetAttackingAreaBox();
-    this->GetStage()->ForAllPlayers([this, moveDirection,thisActorAttackingArea, &outTargetActors](RHActor* anotherActor)
-    {
-        if( moveDirection.x > 0 )
-        {
-            if( anotherActor->GetCurrentPosition().x > this->GetCurrentPosition().x )
-            {
-                if( true == anotherActor->GetBoundingBox().IntersectsRect(thisActorAttackingArea) )
-                {
-                    outTargetActors.push_back(anotherActor->GetActorID());
-                }
-            }
-        }
-        else if( moveDirection.x > 0 )
-        {
-            if( anotherActor->GetCurrentPosition().x < this->GetCurrentPosition().x )
-            {
-                if( true == anotherActor->GetBoundingBox().IntersectsRect(thisActorAttackingArea) )
-                {
-                    outTargetActors.push_back(anotherActor->GetActorID());
-                }
-            }
-        }
-    });
+    RHActor::CheckAttackAvailableToDirection(moveDirection, outTargetActors);
 }
 
 void RHMonster::OnPostAttack()
@@ -141,6 +86,15 @@ void RHMonster::OnAttacked(RHActor* attacker)
     
 }
 
+void RHMonster::EndMove()
+{
+    RHActor::EndMove();
+    
+    if( false == this->ChangeActorState(ActorState_Idle) )
+    {
+        return;
+    }
+}
 
 
 

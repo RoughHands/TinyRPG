@@ -77,7 +77,7 @@ void GameScene::InitializePortraitLayer()
     const CCSize backgroundLayerSize = CCSizeMake(VIEW_SIZE_WIDTH, VIEW_SIZE_HEIGHT);
     CCLog("backgroundLayerSize [%f, %f]", backgroundLayerSize.width, backgroundLayerSize.height);
     m_BackgroundLayer->setAnchorPoint(AnchorPointLeftBottom);
-    m_BackgroundLayer->setPosition(ccp(winSize.width*0.5f-winSize.width*0.5f, winSize.height-backgroundLayerSize.height));
+    m_BackgroundLayer->setPosition(ccp(0.f, winSize.height-backgroundLayerSize.height));
     
     m_ActorLayer->setAnchorPoint(AnchorPointLeftBottom);
     m_ActorLayer->setPosition(m_BackgroundLayer->getPosition());

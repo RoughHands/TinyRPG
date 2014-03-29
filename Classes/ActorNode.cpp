@@ -158,7 +158,13 @@ void ActorNode::ChangeAnimation(const RHActorState actorState)
 //            m_SkeletonAnimation->addAnimation("idle", true);
         }
         break;
+        case ActorState_Dead:
+        {
+            m_SkeletonAnimation->setAnimation("dead", false);
+        }
+        break;
         
+        case ActorState_None:
         default:
         {
             ASSERT_DEBUG(false);
