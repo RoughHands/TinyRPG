@@ -40,6 +40,34 @@ bool ActorNode::init(const RHActorID actorID, const STRING& skeletonName)
     {
         return false;
     }
+    
+    
+//    
+//    "idle"
+//    "defense_intro"
+//    "defense"
+//    "moving"
+//    "attacking"
+//    "attacked"
+//    "dead"
+//
+    m_SkeletonAnimation->setMix("idle", "moving", 0.1f);
+    m_SkeletonAnimation->setMix("moving", "idle", 0.1f);
+    
+    m_SkeletonAnimation->setMix("defense_intro", "moving", 0.2f);
+    m_SkeletonAnimation->setMix("moving", "defense_intro", 0.2f);
+    
+    m_SkeletonAnimation->setMix("defense_intro", "defense", 0.2f);
+    m_SkeletonAnimation->setMix("defense", "defense_intro", 0.2f);
+    
+    m_SkeletonAnimation->setMix("defense", "moving", 0.2f);
+    m_SkeletonAnimation->setMix("moving", "defense", 0.2f);
+    
+    m_SkeletonAnimation->setMix("defense", "attacking", 0.2f);
+    m_SkeletonAnimation->setMix("attacking", "defense", 0.2f);
+    
+    m_SkeletonAnimation->setMix("defense_intro", "attacking", 0.2f);
+    m_SkeletonAnimation->setMix("attacking", "defense_intro", 0.2f);
 
     m_SkeletonAnimation->setAnchorPoint(AnchorPointMidBottom);
     m_SkeletonAnimation->setPosition(ccp(0.f,0.f));

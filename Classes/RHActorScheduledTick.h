@@ -14,19 +14,19 @@
 namespace flownet
 {
 
-class RHGame;
-class RHScheduledTickAttackTakeEffect : public RHScheduledTick
-{
-private:
-    const RHActorID       m_ActorID;
-    const INT64         m_AttackNumber;
-    
-public:
-    RHScheduledTickAttackTakeEffect(const RHActorID actorID, const INT64 attackNumber);
-    virtual ~RHScheduledTickAttackTakeEffect();
-
-    virtual void Execute(RHGame* game) override;
-};
+//class RHGame;
+//class RHScheduledTickAttackTakeEffect : public RHScheduledTick
+//{
+//private:
+//    const RHActorID       m_ActorID;
+//    const INT64         m_AttackNumber;
+//    
+//public:
+//    RHScheduledTickAttackTakeEffect(const RHActorID actorID, const INT64 attackNumber);
+//    virtual ~RHScheduledTickAttackTakeEffect();
+//
+//    virtual void Execute(RHGame* game) override;
+//};
 
 
 } // namespace flownet

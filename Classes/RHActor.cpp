@@ -420,7 +420,57 @@ void RHActor::AttackWithDirection(const RHMoveDirection attackDirection)
     AtomicIncrement64(&m_AttackNumber);
     m_MoveDirection = attackDirection;
     
-    this->AddScheduledTick(milliseconds(static_cast<INT>(1000/this->GetAttackSpeed()*1.f )), CreateScheduledTick<RHScheduledTickAttackTakeEffect>(this->GetActorID(), this->GetAttackNumber()));
+    const RHActorID thisActorID = m_ActorID;
+    const INT64 attackNumber = m_AttackNumber;
+    
+    this->AddScheduledTick(milliseconds(static_cast<INT>(400)), CreateScheduledLambdaTick("AttackTakeEffect", [thisActorID, attackNumber](RHGame* game)
+    {
+        RHActor* thisActor = game->FindActor(thisActorID);
+        if( thisActor == nullptr )
+        {
+            return;
+        }
+        
+        // Check Attack Number
+        if( thisActor->GetActorState() != ActorState_Attacking || thisActor->GetAttackNumber()!=attackNumber )
+        {
+            return;
+        }
+        
+        // Check State Attack
+        if( IsMonsterID(thisActorID) == true )
+        {
+            // Attack Players
+            game->ForAllPlayers([thisActor](RHActor* actor)
+            {
+                actor->OnAttacked(thisActor);
+            });
+        }
+        else
+        {
+            game->ForAllMonsters([thisActor](RHActor* actor)
+            {
+                actor->OnAttacked(thisActor);
+            });
+        }
+    }));
+    
+    this->AddScheduledTick(milliseconds(static_cast<INT>(1000/this->GetAttackSpeed())), CreateScheduledLambdaTick("PostAttacking", [thisActorID, attackNumber](RHGame* game)
+    {
+          RHActor* thisActor = game->FindActor(thisActorID);
+          if( thisActor == nullptr )
+          {
+              return;
+          }
+          
+              // Check Attack Number
+          if( thisActor->GetActorState() != ActorState_Attacking || thisActor->GetAttackNumber()!=attackNumber )
+          {
+              return;
+          }
+          
+          thisActor->OnPostAttack();
+    }));
     
 }
 
