@@ -28,8 +28,8 @@ void RHMonster::Tick(const milliseconds deltaTime, RHGame* game)
     
     static FBOOL isMoveToRight = true;
     
-    const POINT rightBound = POINT(900.f, 160.f);
-    const POINT leftBound = POINT(400.f, 160.f);
+    const POINT rightBound = POINT(900.f, 40.f);
+    const POINT leftBound = POINT(400.f, 40.f);
 
     RHActorIDList attackableTargetList;
     POINT direction = isMoveToRight==true? POINT(1.f,0.f):POINT(-1.f,0.f);

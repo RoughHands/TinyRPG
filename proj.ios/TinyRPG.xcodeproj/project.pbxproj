@@ -2540,7 +2540,7 @@
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-                    "$(SRCROOT)/../../flownet/BoostMobile/ios/framework",
+					"$(SRCROOT)/../../flownet/BoostMobile/ios/framework",
 				);
 				GCC_C_LANGUAGE_STANDARD = c11;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -2599,7 +2599,7 @@
 				COPY_PHASE_STRIP = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-                    "$(SRCROOT)/../../flownet/BoostMobile/ios/framework",
+					"$(SRCROOT)/../../flownet/BoostMobile/ios/framework",
 				);
 				GCC_C_LANGUAGE_STANDARD = c11;
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = YES;

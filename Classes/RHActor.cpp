@@ -25,7 +25,8 @@ RHActor::RHActor(const RHActorID actorID, const FSIZE boundingSize, const STRING
                     m_AttackingAreaSize(FSIZE(boundingSize.width*0.25f, boundingSize.height)),
                     m_Level(0),
                     m_ExperiencePoint(0.f),
-                    m_MovingSpeed(200.f),       // pixel per second
+//                    m_MovingSpeed(200.f),       // pixel per second
+                    m_MovingSpeed(500.f),       // pixel per second
                     m_HealthPoint(100.f),
                     m_MaxHealthPoint(10.f),
                     m_ManaPoint(10.f),
