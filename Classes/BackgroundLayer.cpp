@@ -153,23 +153,23 @@ void BackgroundLayer::AllocateAndAddAllComponents()
         
         CCSprite* nearObject1 = CCSprite::create("background/near_object_1.png");
         nearObject1->setAnchorPoint(CCPointZero);
-        nearObject1->runAction(CCRepeatForever::create(CCSequence::create(CCMoveBy::create(1.f, ccp(0.f,-10.f)),CCMoveBy::create(1.f, ccp(0.f,10.f)),nullptr)));
+        nearObject1->runAction(CCRepeatForever::create(CCSequence::create(CCMoveBy::create(1.f, ccp(0.f,-15.f)),CCMoveBy::create(1.f, ccp(0.f,15.f)),nullptr)));
         CCSprite* nearObject1Clone = CCSprite:: create("background/near_object_1.png");
         nearObject1Clone->setAnchorPoint(CCPointZero);
-        nearObject1Clone->runAction(CCRepeatForever::create(CCSequence::create(CCMoveBy::create(1.f, ccp(0.f,-10.f)),CCMoveBy::create(1.f, ccp(0.f,10.f)),nullptr)));
+        nearObject1Clone->runAction(CCRepeatForever::create(CCSequence::create(CCMoveBy::create(1.f, ccp(0.f,-15.f)),CCMoveBy::create(1.f, ccp(0.f,15.f)),nullptr)));
         CCSprite* nearObject1Clone2 = CCSprite::create("background/near_object_1.png");
         nearObject1Clone2->setAnchorPoint(CCPointZero);
-        nearObject1Clone2->runAction(CCRepeatForever::create(CCSequence::create(CCMoveBy::create(1.f, ccp(0.f,-10.f)),CCMoveBy::create(1.f, ccp(0.f,10.f)),nullptr)));
+        nearObject1Clone2->runAction(CCRepeatForever::create(CCSequence::create(CCMoveBy::create(1.f, ccp(0.f,-15.f)),CCMoveBy::create(1.f, ccp(0.f,15.f)),nullptr)));
         
         CCSprite* nearObject2 = CCSprite::create("background/near_object_2.png");
         nearObject2->setAnchorPoint(CCPointZero);
-        nearObject2->runAction(CCRepeatForever::create(CCSequence::create(CCMoveBy::create(1.f, ccp(0.f,-10.f)),CCMoveBy::create(1.f, ccp(0.f,10.f)),nullptr)));
+        nearObject2->runAction(CCRepeatForever::create(CCSequence::create(CCMoveBy::create(1.f, ccp(0.f,-15.f)),CCMoveBy::create(1.f, ccp(0.f,15.f)),nullptr)));
         CCSprite* nearObject2Clone = CCSprite:: create("background/near_object_2.png");
         nearObject2Clone->setAnchorPoint(CCPointZero);
-        nearObject2Clone->runAction(CCRepeatForever::create(CCSequence::create(CCMoveBy::create(1.f, ccp(0.f,-10.f)),CCMoveBy::create(1.f, ccp(0.f,10.f)),nullptr)));
+        nearObject2Clone->runAction(CCRepeatForever::create(CCSequence::create(CCMoveBy::create(1.f, ccp(0.f,-15.f)),CCMoveBy::create(1.f, ccp(0.f,15.f)),nullptr)));
         CCSprite* nearObject2Clone2 = CCSprite::create("background/near_object_2.png");
         nearObject2Clone2->setAnchorPoint(CCPointZero);
-        nearObject2Clone2->runAction(CCRepeatForever::create(CCSequence::create(CCMoveBy::create(1.f, ccp(0.f,-10.f)),CCMoveBy::create(1.f, ccp(0.f,10.f)),nullptr)));
+        nearObject2Clone2->runAction(CCRepeatForever::create(CCSequence::create(CCMoveBy::create(1.f, ccp(0.f,-15.f)),CCMoveBy::create(1.f, ccp(0.f,15.f)),nullptr)));
 
         m_ParallaxNode->addChild(nearObject1, BackgroundLayerIndex_NearObject, ccp(nearBackgroundScaleRatio,1.f), ccp(areaWidth*0.1f,0.f));
         m_ParallaxNode->addChild(nearObject1Clone, BackgroundLayerIndex_NearObject, ccp(nearBackgroundScaleRatio,1.f), ccp(areaWidth*0.3f,0.f));
