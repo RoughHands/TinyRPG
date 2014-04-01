@@ -25,16 +25,18 @@ RHActor::RHActor(const RHActorID actorID, const FSIZE boundingSize, const STRING
                     m_AttackingAreaSize(FSIZE(boundingSize.width*0.25f, boundingSize.height)),
                     m_Level(0),
                     m_ExperiencePoint(0.f),
-                    m_MovingSpeed(150.f),       // pixel per second
-                    m_HealthPoint(10.f),
+//                    m_MovingSpeed(200.f),       // pixel per second
+                    m_MovingSpeed(500.f),       // pixel per second
+                    m_HealthPoint(100.f),
                     m_MaxHealthPoint(10.f),
                     m_ManaPoint(10.f),
                     m_MaxManaPoint(10.f),
-                    m_AttackPower(10.f),
+                    m_AttackPower(15.f),
                     m_SpellPower(10.f),
                     m_AttackSpeed(1.5f),
                     m_CastingSpeed(1.f),
                     m_AttackNumber(0.f),
+                    m_AttackedNumber(0.f),
                     m_ActorStateChanged(false),
                     m_ActorMoved(false),
                     m_Stage(nullptr),
@@ -49,11 +51,112 @@ RHActor::~RHActor()
 }
 
 
-void RHActor::ChangeActorState(const RHActorState actorState)
+FBOOL RHActor::ChangeActorState(const RHActorState actorState)
 {
+    if( false == this->IsAbleToChange(actorState) )
+    {
+        return false;
+    }
     m_ActorState = actorState;
     m_ActorStateChanged = true;
+    
+    return true;
 }
+
+FBOOL RHActor::IsAbleToChange(RHActorState stateToChange)
+{
+    switch ( this->GetActorState() )
+    {
+        case ActorState_Idle:
+        {
+            return true;
+        }
+            break;
+            
+        case ActorState_Dead:
+        {
+            return false;
+        }
+        break;
+            
+        case ActorState_Defencing:
+        {
+            if( stateToChange == ActorState_Attacked )
+            {
+                return false;
+            }
+            return true;
+        }
+            break;
+            
+        case ActorState_Moving:
+        {
+            return true;
+        }
+            break;
+            
+        case ActorState_Attacking:
+        {
+            return true;
+        }
+            break;
+            
+        case ActorState_Attacked:
+        {
+            switch (stateToChange)
+            {
+                case ActorState_Dead:
+                {
+                    return true;
+                }
+                    break;
+                case ActorState_Idle:
+                case ActorState_Defencing:
+                case ActorState_Moving:
+                case ActorState_Attacking:
+                case ActorState_Casting:
+                {
+                    return false;
+                }
+                    break;
+                case ActorState_Attacked:
+                {
+                    return true;
+                }
+                    break;
+                    
+                case ActorState_Max:
+                case ActorState_None:
+                default:
+                {
+                    return false;
+                }
+                    break;
+            }
+        }
+            break;
+            
+        case ActorState_Casting:
+        {
+            return true;
+        }
+            break;
+            
+        case ActorState_Max:
+        case ActorState_None:
+        default:
+        {
+            return true;
+        }
+            break;
+    }
+    
+    LogSystem::Instance() << "[IsAbleToChange] : Invalid State";
+    LogSystem::Instance().Commit();
+    
+    return false;
+}
+
 
 void RHActor::SetCurrentPosition(const POINT nextPosition)
 {
@@ -87,7 +190,11 @@ void RHActor::MoveToDestination(const POINT destination)
     m_DesiredPosition = destination;
     if( this->GetActorState() != ActorState_Moving)
     {
-        this->ChangeActorState(ActorState_Moving);
+        FBOOL isAbleToChange = this->ChangeActorState(ActorState_Moving);
+        if( isAbleToChange == false )
+        {
+            return;
+        }
     }
 }
 
@@ -179,20 +286,106 @@ void RHActor::UpdateMove(const milliseconds deltaTime)
 
 void RHActor::EndMove()
 {
-    this->ChangeActorState(ActorState_Defencing);
     this->SetDesiredPosition(this->GetCurrentPosition());
+    FBOOL isChanged = this->ChangeActorState(ActorState_Defencing);
+    if( isChanged == false )
+    {
+        return;
+    }
 //    this->SetCurrentPosition(this->GetDesiredPosition());
 }
 
 FBOOL RHActor::CheckMoveAvailableToDirection(const POINT moveDirection)
 {
-    return true;
+    FRECT thisActorBoundingBox = this->GetBoundingBox();
+    thisActorBoundingBox.origin = (thisActorBoundingBox.origin+moveDirection.GetNormalizedVector()*MOVE_RESOLUTION);
+    
+    FBOOL moveAvailable = true;
+    
+    std::function<void(RHActor* anotherActor)> checkMoveWithAnotherActor = [this, moveDirection, thisActorBoundingBox, &moveAvailable](RHActor* anotherActor)
+    {
+        if( anotherActor->GetActorState() == ActorState_Dead )
+        {
+            return;
+        }
+        
+        if( moveDirection.x > 0 )
+        {
+            if( anotherActor->GetCurrentPosition().x > this->GetCurrentPosition().x )
+            {
+                if( true == anotherActor->GetBoundingBox().IntersectsRect(thisActorBoundingBox) )
+                {
+                    moveAvailable = false;
+                }
+            }
+        }
+        else if( moveDirection.x < 0)
+        {
+            if( anotherActor->GetCurrentPosition().y < this->GetCurrentPosition().x )
+            {
+                if( true == anotherActor->GetBoundingBox().IntersectsRect(thisActorBoundingBox))
+                {
+                    moveAvailable = false;
+                }
+            }
+        }
+    };
+    
+    if( IsMonsterID(this->GetActorID()) == true )
+    {
+        this->GetStage()->ForAllPlayers(checkMoveWithAnotherActor);
+    }
+    else
+    {
+        this->GetStage()->ForAllMonsters(checkMoveWithAnotherActor);
+    }
+    
+    return moveAvailable;
 }
 
 void RHActor::CheckAttackAvailableToDirection(const POINT moveDirection, RHActorIDList& outTargetActors)
 {
     outTargetActors.clear();
-    return;
+    
+    FRECT thisActorAttackingArea = this->GetAttackingAreaBox();
+    
+    std::function<void(RHActor*)> checkAttackWithAnotherActor = [this, moveDirection,thisActorAttackingArea, &outTargetActors](RHActor* anotherActor)
+    {
+        if( anotherActor->GetActorState() == ActorState_Dead )
+        {
+            return;
+        }
+        
+        if( moveDirection.x > 0 )
+        {
+            if( anotherActor->GetCurrentPosition().x > this->GetCurrentPosition().x )
+            {
+                if( true == anotherActor->GetBoundingBox().IntersectsRect(thisActorAttackingArea) )
+                {
+                    outTargetActors.push_back(anotherActor->GetActorID());
+                }
+            }
+        }
+        else if( moveDirection.x > 0 )
+        {
+            if( anotherActor->GetCurrentPosition().x < this->GetCurrentPosition().x )
+            {
+                if( true == anotherActor->GetBoundingBox().IntersectsRect(thisActorAttackingArea) )
+                {
+                    outTargetActors.push_back(anotherActor->GetActorID());
+                }
+            }
+        }
+    };
+    
+    if( IsMonsterID( this->GetActorID() ) == true )
+    {
+        this->GetStage()->ForAllPlayers(checkAttackWithAnotherActor);
+    }
+    else
+    {
+        this->GetStage()->ForAllMonsters(checkAttackWithAnotherActor);
+    }
 }
 
 const FRECT RHActor::GetAttackingAreaBox() const
@@ -219,23 +412,139 @@ void RHActor::AttackWithDirection(const RHMoveDirection attackDirection)
         return;
     }
     
-    m_MoveDirection = attackDirection;
-    this->ChangeActorState(ActorState_Attacking);
-    m_AttackNumber++;
+    FBOOL isAbleToChange = this->ChangeActorState(ActorState_Attacking);
+    if( isAbleToChange == false )
+    {
+        return;
+    }
     
-    this->AddScheduledTick(milliseconds(static_cast<INT>(1000/this->GetAttackSpeed()*1.f )), CreateScheduledTick<RHScheduledTickAttackTakeEffect>(this->GetActorID(), this->GetAttackNumber()));
+    AtomicIncrement64(&m_AttackNumber);
+    m_MoveDirection = attackDirection;
+    
+    const RHActorID thisActorID = m_ActorID;
+    const INT64 attackNumber = m_AttackNumber;
+    
+    this->AddScheduledTick(milliseconds(static_cast<INT>(400)), CreateScheduledLambdaTick("AttackTakeEffect", [thisActorID, attackNumber](RHGame* game)
+    {
+        RHActor* thisActor = game->FindActor(thisActorID);
+        if( thisActor == nullptr )
+        {
+            return;
+        }
+        
+        // Check Attack Number
+        if( thisActor->GetActorState() != ActorState_Attacking || thisActor->GetAttackNumber()!=attackNumber )
+        {
+            return;
+        }
+        
+        // Check State Attack
+        if( IsMonsterID(thisActorID) == true )
+        {
+            // Attack Players
+            game->ForAllPlayers([thisActor](RHActor* actor)
+            {
+                actor->OnAttacked(thisActor);
+            });
+        }
+        else
+        {
+            game->ForAllMonsters([thisActor](RHActor* actor)
+            {
+                actor->OnAttacked(thisActor);
+            });
+        }
+    }));
+    
+    this->AddScheduledTick(milliseconds(static_cast<INT>(1000/this->GetAttackSpeed())), CreateScheduledLambdaTick("PostAttacking", [thisActorID, attackNumber](RHGame* game)
+    {
+          RHActor* thisActor = game->FindActor(thisActorID);
+          if( thisActor == nullptr )
+          {
+              return;
+          }
+          
+              // Check Attack Number
+          if( thisActor->GetActorState() != ActorState_Attacking || thisActor->GetAttackNumber()!=attackNumber )
+          {
+              return;
+          }
+          
+          thisActor->OnPostAttack();
+    }));
     
 }
 
 void RHActor::OnPostAttack()
 {
-    this->ChangeActorState(ActorState_Defencing);
+    FBOOL isAbleToChange = this->ChangeActorState(ActorState_Defencing);
+    if( isAbleToChange == false )
+    {
+        return;
+    }
+}
+
+void RHActor::IncreaseHealthPoint(const float amount)
+{
+    m_HealthPoint += amount;
+    if( m_MaxHealthPoint < m_HealthPoint )
+    {
+        m_HealthPoint = m_MaxHealthPoint;
+    }
+}
+
+void RHActor::DecreaseHealthPoint(const float amount)
+{
+    m_HealthPoint -= amount;
+    if( m_HealthPoint <= 0 )
+    {
+        this->OnDead();
+        m_HealthPoint = 0;
+    }
 }
 
 void RHActor::OnAttacked(RHActor* attacker)
 {
-    this->ChangeActorState(ActorState_Attacked);
+    if( attacker == nullptr )
+    {
+        return;
+    }
     
+    if( false == this->ChangeActorState(ActorState_Attacked) )
+    {
+        return;
+    }
+    
+    AtomicIncrement64(&m_AttackedNumber);
+    const INT64 attackedNumber = m_AttackedNumber;
+    const RHActorID thisActorID = m_ActorID;
+    
+    const float damage = attacker->GetAttackPower();
+    this->TakeDamage(damage);
+    
+    this->AddScheduledTick(milliseconds(static_cast<INT>(1500)), CreateScheduledLambdaTick("PostOnAttacked", [thisActorID, attackedNumber](RHGame* game)
+    {
+        RHActor* thisActor = game->FindActor(thisActorID);
+        if( thisActor == nullptr || attackedNumber != thisActor->GetAttackedNumber())
+        {
+            return;
+        }
+        
+        thisActor->ChangeActorState(ActorState_Defencing);
+    }));
+}
+
+void RHActor::TakeDamage(const float damage)
+{
+    this->DecreaseHealthPoint(damage);
+}
+
+void RHActor::OnDead()
+{
+    if( false == this->ChangeActorState(ActorState_Dead) )
+    {
+        return;
+    }
 }
 
 } // namespace flownet

@@ -26,6 +26,9 @@ bool MonsterNode::init(const RHActorID actorID, const STRING& skeletonName)
     
     this->setAnchorPoint(AnchorPointMidBottom);
     
+    this->FlipX(true);
+    this->FlipX(false);
+    
     return true;
 }
 

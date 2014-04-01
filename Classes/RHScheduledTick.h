@@ -61,7 +61,7 @@ public:
     
     virtual void Execute(RHGame* game) override
     {
-        m_LambdaFunction();
+        m_LambdaFunction(game);
     }
 };
 

@@ -74,7 +74,8 @@ void RHGame::Initialize()
     }
     else
     {
-        player->MoveToDestination(POINT(100.f, 160.f));
+        player->SetCurrentPosition(POINT(250.f, 40.f));
+        player->MoveToDestination(POINT(320.f, 40.f));
     }
     
     RHMonster* monster = static_cast<RHMonster*>(instance.FindActor(monsterID));
@@ -84,8 +85,8 @@ void RHGame::Initialize()
     }
     else
     {
-        monster->SetCurrentPosition(POINT(350.f, 160.f));
-        monster->MoveToDestination(POINT(450.f, 160.f));
+        monster->SetCurrentPosition(POINT(400.f, 40.f));
+        monster->MoveToDestination(POINT(550.f, 40.f));
     }
     
     instance.m_GameTimer.Start();

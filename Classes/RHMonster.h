@@ -26,6 +26,8 @@ public:
     virtual FBOOL       CheckMoveAvailableToDirection(const POINT moveDirection) override;
     
     virtual void        CheckAttackAvailableToDirection(const POINT moveDirection, RHActorIDList& outTargetActors) override;
+
+    virtual void                EndMove() override;
     
     virtual void                OnPostAttack() override;
     virtual void                OnAttacked(RHActor* attacker) override;

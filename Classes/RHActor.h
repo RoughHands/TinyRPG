@@ -48,6 +48,7 @@ private:
 
 private:
     INT64                       m_AttackNumber;
+    INT64                       m_AttackedNumber;
     FBOOL                       m_ActorStateChanged;
     FBOOL                       m_ActorMoved;
     RHStage*                    m_Stage;
@@ -58,6 +59,7 @@ private:
     
 public:
     const INT64                 GetAttackNumber()const      {   return m_AttackNumber; }
+    const INT64                 GetAttackedNumber()const    {   return m_AttackedNumber; }
 
     FBOOL                       IsActorStateChanged()       {   return m_ActorStateChanged; }
     void                        OnActorStateSynced()        {   m_ActorStateChanged = false; }
@@ -103,7 +105,7 @@ public:
     const FLOAT                 GetCastingSpeed() const             {   return m_CastingSpeed;  }
     
 public:
-    virtual void                ChangeActorState(const RHActorState actorState);
+    virtual FBOOL               ChangeActorState(const RHActorState actorState);
     virtual void                SetCurrentPosition(const POINT nextPosition);
     virtual void                SetDesiredPosition(const POINT desiredPosition);
     virtual void                MoveToDestination(const POINT destination);
@@ -111,6 +113,8 @@ public:
     
     virtual void                AttackWithDirection(const RHMoveDirection moveDirection);
     
+    virtual void                IncreaseHealthPoint(const float amount);
+    virtual void                DecreaseHealthPoint(const float amount);
     
     // NOTE : whenever we change/reference Player's status from RPC(ClientConnectionTask), we must use StageTask to Synchronization
     void                        AddActorTask(RHActorTask* actorTask);
@@ -126,8 +130,12 @@ public:
     virtual void                CheckAttackAvailableToDirection(const POINT moveDirection, RHActorIDList& outTargetActors);
     
 public:
+    virtual FBOOL               IsAbleToChange(RHActorState stateToChange);
     virtual void                OnPostAttack();
     virtual void                OnAttacked(RHActor* attacker);
+    virtual void                TakeDamage(const float damage);
+    virtual void                OnDead();
+    
 };
 
 typedef Vector<RHActor*>::type  RHActorList;

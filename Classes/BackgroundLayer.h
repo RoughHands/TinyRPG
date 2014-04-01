@@ -19,6 +19,8 @@ class BackgroundLayer : public BaseLayer
         BackgroundLayerIndex_Far,
         BackgroundLayerIndex_Midium,
         BackgroundLayerIndex_Near,
+        BackgroundLayerIndex_Actor,
+        BackgroundLayerIndex_NearObject,
         BackgroundLayerIndex_Max,
     };
 private:

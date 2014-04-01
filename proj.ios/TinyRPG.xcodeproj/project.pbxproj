@@ -241,7 +241,6 @@
 		379BB9D417F03F3700829B88 /* SceneReader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 379BB99317F03F3700829B88 /* SceneReader.cpp */; };
 		46513EB1187BFBA200B5ABE1 /* UITouchGroup.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46513EAF187BFBA200B5ABE1 /* UITouchGroup.cpp */; };
 		4D1A898F18E2DCF700E5F402 /* libflownetMobile.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D1A898C18E2DB0900E5F402 /* libflownetMobile.a */; };
-		4D1A899118E2DF8100E5F402 /* boost.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D1A899018E2DF8100E5F402 /* boost.framework */; };
 		4D1A899418E2ECEF00E5F402 /* TinyRPGSharedTypes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4D1A899218E2ECEF00E5F402 /* TinyRPGSharedTypes.cpp */; };
 		4D1A899718E2F50000E5F402 /* RHObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4D1A899518E2F50000E5F402 /* RHObject.cpp */; };
 		4D1A899A18E3061C00E5F402 /* ActorNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4D1A899818E3061C00E5F402 /* ActorNode.cpp */; };
@@ -273,6 +272,10 @@
 		4DE33D6718E2D01400F2209E /* RHActor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4DE33D6518E2D01400F2209E /* RHActor.cpp */; };
 		4DE33D6A18E2D01E00F2209E /* RHPlayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4DE33D6818E2D01E00F2209E /* RHPlayer.cpp */; };
 		4DE33D6D18E2D02500F2209E /* RHMonster.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4DE33D6B18E2D02500F2209E /* RHMonster.cpp */; };
+		4DECEC1018E6FDCB0099B07D /* boost.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D1A899018E2DF8100E5F402 /* boost.framework */; };
+		4DECEC1218E700470099B07D /* Icon-120.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DECEC1118E700470099B07D /* Icon-120.png */; };
+		4DECEC1518E700F50099B07D /* Icon-76.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DECEC1318E700F50099B07D /* Icon-76.png */; };
+		4DECEC1618E700F50099B07D /* Icon-152.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DECEC1418E700F50099B07D /* Icon-152.png */; };
 		4DEDB20A18E1B3BD00898469 /* common in Resources */ = {isa = PBXBuildFile; fileRef = 4DEDB20718E1B3BD00898469 /* common */; };
 		4DEDB20B18E1B3BD00898469 /* iphone in Resources */ = {isa = PBXBuildFile; fileRef = 4DEDB20818E1B3BD00898469 /* iphone */; };
 		4DEDB20C18E1B3BD00898469 /* iphone-retina in Resources */ = {isa = PBXBuildFile; fileRef = 4DEDB20918E1B3BD00898469 /* iphone-retina */; };
@@ -873,6 +876,9 @@
 		4DE33D6918E2D01E00F2209E /* RHPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RHPlayer.h; path = ../Classes/RHPlayer.h; sourceTree = "<group>"; };
 		4DE33D6B18E2D02500F2209E /* RHMonster.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = RHMonster.cpp; path = ../Classes/RHMonster.cpp; sourceTree = "<group>"; };
 		4DE33D6C18E2D02500F2209E /* RHMonster.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RHMonster.h; path = ../Classes/RHMonster.h; sourceTree = "<group>"; };
+		4DECEC1118E700470099B07D /* Icon-120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-120.png"; sourceTree = "<group>"; };
+		4DECEC1318E700F50099B07D /* Icon-76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-76.png"; sourceTree = "<group>"; };
+		4DECEC1418E700F50099B07D /* Icon-152.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-152.png"; sourceTree = "<group>"; };
 		4DEDB20718E1B3BD00898469 /* common */ = {isa = PBXFileReference; lastKnownFileType = folder; path = common; sourceTree = "<group>"; };
 		4DEDB20818E1B3BD00898469 /* iphone */ = {isa = PBXFileReference; lastKnownFileType = folder; path = iphone; sourceTree = "<group>"; };
 		4DEDB20918E1B3BD00898469 /* iphone-retina */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "iphone-retina"; sourceTree = "<group>"; };
@@ -898,7 +904,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4D1A899118E2DF8100E5F402 /* boost.framework in Frameworks */,
+				4DECEC1018E6FDCB0099B07D /* boost.framework in Frameworks */,
 				4D1A898F18E2DCF700E5F402 /* libflownetMobile.a in Frameworks */,
 				15A3DA6A1682F886002FB0C5 /* libcocos2dx.a in Frameworks */,
 				1ACB3244164770DE00914215 /* libcurl.a in Frameworks */,
@@ -2125,7 +2131,10 @@
 				7855E0DF153FEF240059DD9A /* Default.png */,
 				D446FD6D16102124000ADA7B /* Default@2x.png */,
 				D4EF949B15BD2D8E00D803EB /* Icon-114.png */,
+				4DECEC1318E700F50099B07D /* Icon-76.png */,
+				4DECEC1418E700F50099B07D /* Icon-152.png */,
 				D4EF949F15BD2D9800D803EB /* Icon-144.png */,
+				4DECEC1118E700470099B07D /* Icon-120.png */,
 				D4EF949915BD2D8B00D803EB /* Icon-57.png */,
 				D4EF949D15BD2D9600D803EB /* Icon-72.png */,
 			);
@@ -2221,7 +2230,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				4DEDB20B18E1B3BD00898469 /* iphone in Resources */,
+				4DECEC1518E700F50099B07D /* Icon-76.png in Resources */,
 				7855E0E1153FEF240059DD9A /* Default.png in Resources */,
+				4DECEC1618E700F50099B07D /* Icon-152.png in Resources */,
 				4DEDB20C18E1B3BD00898469 /* iphone-retina in Resources */,
 				D4EF949A15BD2D8B00D803EB /* Icon-57.png in Resources */,
 				D4EF949C15BD2D8E00D803EB /* Icon-114.png in Resources */,
@@ -2233,6 +2244,7 @@
 				15A3D9961682F7F9002FB0C5 /* CMakeLists.txt in Resources */,
 				1AFAF8BC16D35E4900DB1158 /* CloseNormal.png in Resources */,
 				1AFAF8BD16D35E4900DB1158 /* CloseSelected.png in Resources */,
+				4DECEC1218E700470099B07D /* Icon-120.png in Resources */,
 				1AFAF8BE16D35E4900DB1158 /* HelloWorld.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2528,7 +2540,7 @@
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"/Users/Sinhyub/Project/cocos2d-x/projects/flownet/BoostMobile/ios/framework",
+					"$(SRCROOT)/../../flownet/BoostMobile/ios/framework",
 				);
 				GCC_C_LANGUAGE_STANDARD = c11;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -2587,7 +2599,7 @@
 				COPY_PHASE_STRIP = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"/Users/Sinhyub/Project/cocos2d-x/projects/flownet/BoostMobile/ios/framework",
+					"$(SRCROOT)/../../flownet/BoostMobile/ios/framework",
 				);
 				GCC_C_LANGUAGE_STANDARD = c11;
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = YES;
