@@ -37,6 +37,18 @@ bool BackgroundLayer::init()
     return true;
 }
 
+void BackgroundLayer::visit()
+{
+    kmGLPushMatrix();
+    
+    glEnable(GL_SCISSOR_TEST);
+    CCEGLView::sharedOpenGLView()->setScissorInPoints( this->getPositionX(), this->getPositionY(), 640.f, 610.f);
+    CCLayer::visit();
+    glDisable(GL_SCISSOR_TEST);
+    
+    kmGLPopMatrix();
+}
+
 void BackgroundLayer::AllocateAndAddAllComponents()
 {
     // Allocations
@@ -178,6 +190,105 @@ void BackgroundLayer::AllocateAndAddAllComponents()
         m_ParallaxNode->addChild(nearObject2, BackgroundLayerIndex_NearObject, ccp(nearBackgroundScaleRatio,1.f), ccp(areaWidth*0.95f,0.f));
         m_ParallaxNode->addChild(nearObject2Clone,  BackgroundLayerIndex_NearObject, ccp(nearBackgroundScaleRatio,1.f), ccp(areaWidth*1.3f,0.f));
         m_ParallaxNode->addChild(nearObject2Clone2,  BackgroundLayerIndex_NearObject, ccp(nearBackgroundScaleRatio,1.f), ccp(areaWidth*1.9f,0.f));
+        
+        CCSprite* closestBackground1 = CCSprite::create("background/closest_background_1.png");
+        closestBackground1->setAnchorPoint(CCPointZero);
+        CCSprite* closestBackground1Clone2 = CCSprite::create("background/closest_background_1.png");
+        closestBackground1Clone2->setAnchorPoint(CCPointZero);
+        CCSprite* closestBackground1Clone3 = CCSprite::create("background/closest_background_1.png");
+        closestBackground1Clone3->setAnchorPoint(CCPointZero);
+        CCSprite* closestBackground1Clone4 = CCSprite::create("background/closest_background_1.png");
+        closestBackground1Clone4->setAnchorPoint(CCPointZero);
+        CCSprite* closestBackground1Clone5 = CCSprite::create("background/closest_background_1.png");
+        closestBackground1Clone5->setAnchorPoint(CCPointZero);
+        CCSprite* closestBackground1Clone6 = CCSprite::create("background/closest_background_1.png");
+        closestBackground1Clone6->setAnchorPoint(CCPointZero);
+        CCSprite* closestBackground1Clone7 = CCSprite::create("background/closest_background_1.png");
+        closestBackground1Clone7->setAnchorPoint(CCPointZero);
+        CCSprite* closestBackground1Clone8 = CCSprite::create("background/closest_background_1.png");
+        closestBackground1Clone8->setAnchorPoint(CCPointZero);
+        const CCSize closestBackground1Size = closestBackground1->getContentSize();
+        
+        CCSprite* closestBackground2 = CCSprite::create("background/closest_background_2.png");
+        closestBackground2->setAnchorPoint(CCPointZero);
+        CCSprite* closestBackground2Clone2 = CCSprite::create("background/closest_background_2.png");
+        closestBackground2Clone2->setAnchorPoint(CCPointZero);
+        CCSprite* closestBackground2Clone3 = CCSprite::create("background/closest_background_2.png");
+        closestBackground2Clone3->setAnchorPoint(CCPointZero);
+        CCSprite* closestBackground2Clone4 = CCSprite::create("background/closest_background_2.png");
+        closestBackground2Clone4->setAnchorPoint(CCPointZero);
+        CCSprite* closestBackground2Clone5 = CCSprite::create("background/closest_background_3.png");
+        closestBackground2Clone5->setAnchorPoint(CCPointZero);
+        CCSprite* closestBackground2Clone6 = CCSprite::create("background/closest_background_3.png");
+        closestBackground2Clone6->setAnchorPoint(CCPointZero);
+        CCSprite* closestBackground2Clone7 = CCSprite::create("background/closest_background_3.png");
+        closestBackground2Clone7->setAnchorPoint(CCPointZero);
+        CCSprite* closestBackground2Clone8 = CCSprite::create("background/closest_background_3.png");
+        closestBackground2Clone8->setAnchorPoint(CCPointZero);
+
+        const CCSize closestBackground2Size = closestBackground2->getContentSize();
+        
+        CCSprite* closestBackground3 = CCSprite::create("background/closest_background_3.png");
+        closestBackground3->setAnchorPoint(CCPointZero);
+        CCSprite* closestBackground3Clone2 = CCSprite::create("background/closest_background_3.png");
+        closestBackground3Clone2->setAnchorPoint(CCPointZero);
+        CCSprite* closestBackground3Clone3 = CCSprite::create("background/closest_background_3.png");
+        closestBackground3Clone3->setAnchorPoint(CCPointZero);
+        CCSprite* closestBackground3Clone4 = CCSprite::create("background/closest_background_3.png");
+        closestBackground3Clone4->setAnchorPoint(CCPointZero);
+        const CCSize closestBackground3Size = closestBackground3->getContentSize();
+        
+        const float closestBackgroundScaleRatio = 1.2f;
+        float closestBackgroundOffset = 0.f;
+        m_ParallaxNode->addChild(closestBackground1, BackgroundLayerIndex_ClosestObject, ccp(closestBackgroundScaleRatio,1.f), ccp(closestBackgroundOffset,0.f));
+        closestBackgroundOffset += closestBackground1Size.width;
+        m_ParallaxNode->addChild(closestBackground1Clone2, BackgroundLayerIndex_ClosestObject, ccp(closestBackgroundScaleRatio,1.f), ccp(closestBackgroundOffset,0.f));
+        closestBackgroundOffset += closestBackground1Size.width;
+        m_ParallaxNode->addChild(closestBackground1Clone3, BackgroundLayerIndex_ClosestObject, ccp(closestBackgroundScaleRatio,1.f), ccp(closestBackgroundOffset,0.f));
+        closestBackgroundOffset += closestBackground1Size.width;
+        m_ParallaxNode->addChild(closestBackground1Clone4, BackgroundLayerIndex_ClosestObject, ccp(closestBackgroundScaleRatio,1.f), ccp(closestBackgroundOffset,0.f));
+        closestBackgroundOffset += closestBackground1Size.width;
+        m_ParallaxNode->addChild(closestBackground1Clone5, BackgroundLayerIndex_ClosestObject, ccp(closestBackgroundScaleRatio,1.f), ccp(closestBackgroundOffset,0.f));
+        closestBackgroundOffset += closestBackground1Size.width;
+        m_ParallaxNode->addChild(closestBackground1Clone6, BackgroundLayerIndex_ClosestObject, ccp(closestBackgroundScaleRatio,1.f), ccp(closestBackgroundOffset,0.f));
+        closestBackgroundOffset += closestBackground1Size.width;
+        m_ParallaxNode->addChild(closestBackground1Clone7, BackgroundLayerIndex_ClosestObject, ccp(closestBackgroundScaleRatio,1.f), ccp(closestBackgroundOffset,0.f));
+        closestBackgroundOffset += closestBackground1Size.width;
+        m_ParallaxNode->addChild(closestBackground1Clone8, BackgroundLayerIndex_ClosestObject, ccp(closestBackgroundScaleRatio,1.f), ccp(closestBackgroundOffset,0.f));
+        closestBackgroundOffset += closestBackground1Size.width;
+        
+        closestBackgroundOffset = areaWidth*1.f*closestBackgroundScaleRatio;
+        m_ParallaxNode->addChild(closestBackground2, BackgroundLayerIndex_ClosestObject, ccp(closestBackgroundScaleRatio,1.f), ccp(closestBackgroundOffset,0.f));
+        closestBackgroundOffset += closestBackground2Size.width;
+        m_ParallaxNode->addChild(closestBackground2Clone2, BackgroundLayerIndex_ClosestObject, ccp(closestBackgroundScaleRatio,1.f), ccp(closestBackgroundOffset,0.f));
+        closestBackgroundOffset += closestBackground2Size.width;
+        m_ParallaxNode->addChild(closestBackground2Clone3, BackgroundLayerIndex_ClosestObject, ccp(closestBackgroundScaleRatio,1.f), ccp(closestBackgroundOffset,0.f));
+        closestBackgroundOffset += closestBackground2Size.width;
+        m_ParallaxNode->addChild(closestBackground2Clone4, BackgroundLayerIndex_ClosestObject, ccp(closestBackgroundScaleRatio,1.f), ccp(closestBackgroundOffset,0.f));
+        closestBackgroundOffset += closestBackground2Size.width;
+        m_ParallaxNode->addChild(closestBackground2Clone5, BackgroundLayerIndex_ClosestObject, ccp(closestBackgroundScaleRatio,1.f), ccp(closestBackgroundOffset,0.f));
+        closestBackgroundOffset += closestBackground2Size.width;
+        m_ParallaxNode->addChild(closestBackground2Clone6, BackgroundLayerIndex_ClosestObject, ccp(closestBackgroundScaleRatio,1.f), ccp(closestBackgroundOffset,0.f));
+        closestBackgroundOffset += closestBackground2Size.width;
+        m_ParallaxNode->addChild(closestBackground2Clone7, BackgroundLayerIndex_ClosestObject, ccp(closestBackgroundScaleRatio,1.f), ccp(closestBackgroundOffset,0.f));
+        closestBackgroundOffset += closestBackground2Size.width;
+        m_ParallaxNode->addChild(closestBackground2Clone8, BackgroundLayerIndex_ClosestObject, ccp(closestBackgroundScaleRatio,1.f), ccp(closestBackgroundOffset,0.f));
+        closestBackgroundOffset += closestBackground2Size.width;
+
+        closestBackgroundOffset = areaWidth*2.f*closestBackgroundScaleRatio;
+        m_ParallaxNode->addChild(closestBackground3, BackgroundLayerIndex_ClosestObject, ccp(closestBackgroundScaleRatio,1.f), ccp(closestBackgroundOffset,0.f));
+        closestBackgroundOffset += closestBackground3Size.width;
+        m_ParallaxNode->addChild(closestBackground3Clone2, BackgroundLayerIndex_ClosestObject, ccp(closestBackgroundScaleRatio,1.f), ccp(closestBackgroundOffset,0.f));
+        closestBackgroundOffset += closestBackground3Size.width;
+        m_ParallaxNode->addChild(closestBackground3Clone3, BackgroundLayerIndex_ClosestObject, ccp(closestBackgroundScaleRatio,1.f), ccp(closestBackgroundOffset,0.f));
+        closestBackgroundOffset += closestBackground3Size.width;
+        m_ParallaxNode->addChild(closestBackground3Clone4, BackgroundLayerIndex_ClosestObject, ccp(closestBackgroundScaleRatio,1.f), ccp(closestBackgroundOffset,0.f));
+
+        CCSprite* closestObject1 = CCSprite::create("background/closest_object_1.png");
+        closestObject1->setAnchorPoint(CCPointZero);
+        m_ParallaxNode->addChild(closestObject1, BackgroundLayerIndex_ClosestObject, ccp(closestBackgroundScaleRatio,1.f), ccp(550.f,0.f));
+
+
 
 
 //        m_ParallaxNode->addChild(nearBackground1Repeat, BackgroundLayerIndex_Near, ccp(nearBackgroundScaleRatio,1.f), ccp(0.f,0.f));

@@ -21,6 +21,7 @@ class BackgroundLayer : public BaseLayer
         BackgroundLayerIndex_Near,
         BackgroundLayerIndex_Actor,
         BackgroundLayerIndex_NearObject,
+        BackgroundLayerIndex_ClosestObject,
         BackgroundLayerIndex_Max,
     };
 private:
@@ -48,6 +49,9 @@ public:
         //    virtual void ccTouchCancelled(CCTouch *pTouch, CCEvent *pEvent) override;
     
     virtual void update(float deltaTime) override;
+    
+    // Clip Layer's View
+    virtual void visit() override;
     
     CCPoint     GetCurrentViewPosition();
     
