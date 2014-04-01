@@ -42,7 +42,7 @@ void BackgroundLayer::visit()
     kmGLPushMatrix();
     
     glEnable(GL_SCISSOR_TEST);
-    CCEGLView::sharedOpenGLView()->setScissorInPoints( this->getPositionX(), this->getPositionY(), 640.f, 610.f);
+    CCEGLView::sharedOpenGLView()->setScissorInPoints( this->getPositionX(), this->getPositionY(), 640.f, 640.f);
     CCLayer::visit();
     glDisable(GL_SCISSOR_TEST);
     
