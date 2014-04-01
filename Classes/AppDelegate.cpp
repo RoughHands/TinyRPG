@@ -60,6 +60,8 @@ bool AppDelegate::applicationDidFinishLaunching() {
 	}
 
 	searchPath.push_back("common");
+    
+    CCLog("[SearchPath : %s]", searchPath.front().c_str());
 	CCFileUtils::sharedFileUtils()->setSearchPaths(searchPath);
     // End Spine Resolution Setting
     

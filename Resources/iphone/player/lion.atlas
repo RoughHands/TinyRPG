@@ -1,0 +1,138 @@
+
+lion.png
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+body
+  rotate: true
+  xy: 303, 145
+  size: 105, 114
+  orig: 105, 114
+  offset: 0, 0
+  index: -1
+eye_closed
+  rotate: false
+  xy: 65, 21
+  size: 72, 25
+  orig: 72, 25
+  offset: 0, 0
+  index: -1
+head
+  rotate: false
+  xy: 2, 48
+  size: 145, 202
+  orig: 145, 202
+  offset: 0, 0
+  index: -1
+head_cover
+  rotate: true
+  xy: 419, 117
+  size: 133, 83
+  orig: 133, 83
+  offset: 0, 0
+  index: -1
+left_foot
+  rotate: false
+  xy: 101, 4
+  size: 31, 15
+  orig: 31, 15
+  offset: 0, 0
+  index: -1
+left_lower_arm
+  rotate: false
+  xy: 149, 142
+  size: 152, 108
+  orig: 152, 108
+  offset: 0, 0
+  index: -1
+left_lower_leg
+  rotate: false
+  xy: 475, 78
+  size: 29, 37
+  orig: 29, 37
+  offset: 0, 0
+  index: -1
+left_shoulder
+  rotate: false
+  xy: 356, 18
+  size: 41, 37
+  orig: 41, 37
+  offset: 0, 0
+  index: -1
+left_upper_arm
+  rotate: false
+  xy: 261, 22
+  size: 40, 43
+  orig: 40, 43
+  offset: 0, 0
+  index: -1
+left_upper_leg
+  rotate: true
+  xy: 303, 21
+  size: 34, 51
+  orig: 34, 51
+  offset: 0, 0
+  index: -1
+right_foot
+  rotate: false
+  xy: 65, 5
+  size: 34, 14
+  orig: 34, 14
+  offset: 0, 0
+  index: -1
+right_lower_arm
+  rotate: true
+  xy: 2, 2
+  size: 44, 61
+  orig: 44, 61
+  offset: 0, 0
+  index: -1
+right_lower_leg
+  rotate: false
+  xy: 399, 30
+  size: 30, 38
+  orig: 30, 38
+  offset: 0, 0
+  index: -1
+right_lower_shoulder
+  rotate: false
+  xy: 433, 79
+  size: 40, 36
+  orig: 40, 36
+  offset: 0, 0
+  index: -1
+right_upper_arm
+  rotate: false
+  xy: 395, 70
+  size: 36, 45
+  orig: 36, 45
+  offset: 0, 0
+  index: -1
+right_upper_leg
+  rotate: true
+  xy: 149, 27
+  size: 38, 58
+  orig: 38, 58
+  offset: 0, 0
+  index: -1
+right_upper_shoulder
+  rotate: false
+  xy: 209, 18
+  size: 50, 47
+  orig: 50, 47
+  offset: 0, 0
+  index: -1
+shield
+  rotate: false
+  xy: 303, 57
+  size: 90, 86
+  orig: 90, 86
+  offset: 0, 0
+  index: -1
+shield_defense
+  rotate: true
+  xy: 149, 67
+  size: 73, 149
+  orig: 73, 149
+  offset: 0, 0
+  index: -1
