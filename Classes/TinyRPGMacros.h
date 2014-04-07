@@ -36,7 +36,7 @@
 #define ASSERT_RELEASE(expression)      assert(expression)
 #define ASSERT_DEBUG(expression)        assert(expression)
 #else
-#define ASSERT_RELEASE(expression)      {if(!(expression)){ INT* makeCrash = nullptr; *makeCrash = MAXINT;}}
+#define ASSERT_RELEASE(expression)      {if(!(expression)){ FINT* makeCrash = nullptr; *makeCrash = MAXINT;}}
 #define ASSERT_DEBUG(expression)        assert(expression)
 #endif
 
@@ -156,7 +156,7 @@ public:
 
 };
 
-#define TinyRPGFontName "fonts/pencilgrid.ttf"
+#define TinyRPGFontName fontList[0].c_str()
 
 #define SHOW_ANCHORPOINT_DEBUGGING
 

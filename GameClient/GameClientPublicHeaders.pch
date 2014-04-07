@@ -1,0 +1,33 @@
+//
+//  GameClientPublicHeaders.pch
+//  TinyRPG
+//
+//  Created by Sinhyub Kim on 4/7/14.
+//  Copyright (c) 2014 RoughHands. All rights reserved.
+//
+
+#ifndef TinyRPG_GameClientPublicHeaders_pch
+#define TinyRPG_GameClientPublicHeaders_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+#include "TinyRPGSharedPublicHeaders.pch"
+//    #include "flownetPublicHeaders.pch"
+using namespace flownet;
+
+#include "TinyRPGClientRPCInterface.h"
+
+#include "TinyRPGCSProtocol.h"
+#include "TinyRPGSCProtocol.h"
+
+#include "RHRenderingTaskWorkerRoutine.h"
+
+#include "RHSCPacketHandler.h"
+#include "RHSCPacketParser.h"
+#include "RHCSConnection.h"
+
+#include "RHClientGame.h"
+#include "RHGameClient.h"
+
+#endif

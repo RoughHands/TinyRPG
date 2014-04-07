@@ -15,8 +15,7 @@
     #include "spine-cocos2dx.h"
     using namespace cocos2d::extension;
 
-    #include "TinyRPGSharedPublicHeaders.pch"
-//    #include "flownetPublicHeaders.pch"
+    #include "GameClientPublicHeaders.pch"
     using namespace flownet;
 
     #include "TinyRPGMacros.h"
@@ -24,5 +23,10 @@
     #include "AudioEngine.h"
     #include "BaseScene.h"
     #include "BaseLayer.h"
+
+    #include "SplashLayer.h"
+    #include "SplashScene.h"
+
+    #include "ClientDirector.h"
 
 #endif // __cplusplus

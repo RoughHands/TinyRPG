@@ -11,11 +11,12 @@
 
 class CCActivityIndicatorLayer;
 
-typedef CCDirector ClientDirector;
+//typedef CCDirector ClientDirector;
 
 enum SceneType : int
 {
     SceneType_None,
+    SceneType_SplashScene,
     SceneType_GameScene,
     Scenetype_Max,
 };

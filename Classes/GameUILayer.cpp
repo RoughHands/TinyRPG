@@ -52,7 +52,7 @@ bool GameUILayer::init()
     
     const CCSize winSize = CCDirector::sharedDirector()->getWinSize();
 
-    CCLabelTTF* label = CCLabelTTF::create("UILayer", TinyRPGFontName, 20.f);
+    CCLabelTTF* label = CCLabelTTF::create("UILayer", fontList[0].c_str(), 20);
     label->setPosition(ccp(winSize.width*0.8f, winSize.height*0.8f));
     label->setColor(ccWHITE);
     this->addChild(label);

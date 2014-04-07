@@ -10,7 +10,7 @@
 
 The reason for implement as private inheritance is to hide some interface call by CCDirector.
 */
-class  AppDelegate : private cocos2d::CCApplication
+class  AppDelegate : private cocos2d::CCApplication, flownet::TinyRPGClientRPCInterface
 {
 public:
     AppDelegate();
@@ -36,6 +36,15 @@ public:
     @param  the pointer of the application
     */
     virtual void applicationWillEnterForeground();
+    
+
+    bool            InitializeConnection();
+    
+    virtual void    RestartClient() const override;
+    virtual void    ShowSystemMessage(const flownet::STRING& message) const override;
+    virtual void    OnCSConnected(flownet::FBOOL result, const flownet::STRING errorMessage) const override;
+
+    #include "TinyRPGSCOverrideProtocolHandlerDeclaration.hpp"
 };
 
 #endif // _APP_DELEGATE_H_

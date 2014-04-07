@@ -245,9 +245,17 @@
 		4D1A89A018E3063900E5F402 /* PlayerNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4D1A899E18E3063900E5F402 /* PlayerNode.cpp */; };
 		4D1A89A318E3064000E5F402 /* MonsterNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4D1A89A118E3064000E5F402 /* MonsterNode.cpp */; };
 		4D1A89A618E31FA000E5F402 /* ObjectNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4D1A89A418E31FA000E5F402 /* ObjectNode.cpp */; };
-		4D3E6E7A18F279FE00261EAE /* RHClientGame.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4D3E6E7818F279FE00261EAE /* RHClientGame.cpp */; };
 		4D3E6E7D18F27EB700261EAE /* libTinyRPGSharedMobile.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D3E6E7618F2788000261EAE /* libTinyRPGSharedMobile.a */; };
 		4D3E6E7F18F27ECA00261EAE /* boost.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D3E6E7E18F27EC900261EAE /* boost.framework */; };
+		4D3E6E9018F28AB600261EAE /* RHGameClient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4D3E6E8E18F28AB500261EAE /* RHGameClient.cpp */; };
+		4D3E6E9418F28AED00261EAE /* RHClientGame.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4D3E6E9218F28AED00261EAE /* RHClientGame.cpp */; };
+		4D3E6E9B18F28BF500261EAE /* RHRenderingTaskWorkerRoutine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4D3E6E9918F28BF500261EAE /* RHRenderingTaskWorkerRoutine.cpp */; };
+		4D3E6EA518F28F2E00261EAE /* RHCSConnection.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4D3E6EA318F28F2E00261EAE /* RHCSConnection.cpp */; };
+		4D3E6EA918F29A8D00261EAE /* RHSCPacketParser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4D3E6EA718F29A8D00261EAE /* RHSCPacketParser.cpp */; };
+		4D3E6EAC18F29BAA00261EAE /* RHSCPacketHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4D3E6EAA18F29BAA00261EAE /* RHSCPacketHandler.cpp */; };
+		4D3E6EAF18F29F2D00261EAE /* ClientDirector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4D3E6EAD18F29F2D00261EAE /* ClientDirector.cpp */; };
+		4D3E6EB218F2A54700261EAE /* SplashScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4D3E6EB018F2A54700261EAE /* SplashScene.cpp */; };
+		4D3E6EB518F2A58300261EAE /* SplashLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4D3E6EB318F2A58300261EAE /* SplashLayer.cpp */; };
 		4D6AEDA018E0FF1A002115FC /* TinyRPGMacros.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4D6AED9F18E0FF1A002115FC /* TinyRPGMacros.cpp */; };
 		4D6AEDA418E10225002115FC /* BaseScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4D6AEDA218E10225002115FC /* BaseScene.cpp */; };
 		4D6AEDA818E1057E002115FC /* ActivityIndicator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4D6AEDA618E1057E002115FC /* ActivityIndicator.cpp */; };
@@ -811,9 +819,27 @@
 		4D1A89A518E31FA000E5F402 /* ObjectNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ObjectNode.h; path = ../Classes/ObjectNode.h; sourceTree = "<group>"; };
 		4D3D421D18E52ACC00700515 /* TinyRPGPublicHeaders.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TinyRPGPublicHeaders.pch; path = ../Classes/TinyRPGPublicHeaders.pch; sourceTree = "<group>"; };
 		4D3E6E7018F2787F00261EAE /* TinyRPGSharedMobile.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = TinyRPGSharedMobile.xcodeproj; path = ../../../../RoughHands/TinyRPG/TinyRPGShared/TinyRPGShared/TinyRPGSharedMobile.xcodeproj; sourceTree = "<group>"; };
-		4D3E6E7818F279FE00261EAE /* RHClientGame.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = RHClientGame.cpp; path = ../Classes/RHClientGame.cpp; sourceTree = "<group>"; };
-		4D3E6E7918F279FE00261EAE /* RHClientGame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RHClientGame.h; path = ../Classes/RHClientGame.h; sourceTree = "<group>"; };
 		4D3E6E7E18F27EC900261EAE /* boost.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = boost.framework; path = ../../../../RoughHands/TinyRPG/flownet/BoostMobile/ios/framework/boost.framework; sourceTree = "<group>"; };
+		4D3E6E8E18F28AB500261EAE /* RHGameClient.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = RHGameClient.cpp; path = ../GameClient/RHGameClient.cpp; sourceTree = "<group>"; };
+		4D3E6E8F18F28AB500261EAE /* RHGameClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RHGameClient.h; path = ../GameClient/RHGameClient.h; sourceTree = "<group>"; };
+		4D3E6E9218F28AED00261EAE /* RHClientGame.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = RHClientGame.cpp; path = ../GameClient/RHClientGame.cpp; sourceTree = "<group>"; };
+		4D3E6E9318F28AED00261EAE /* RHClientGame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RHClientGame.h; path = ../GameClient/RHClientGame.h; sourceTree = "<group>"; };
+		4D3E6E9918F28BF500261EAE /* RHRenderingTaskWorkerRoutine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = RHRenderingTaskWorkerRoutine.cpp; path = ../GameClient/RHRenderingTaskWorkerRoutine.cpp; sourceTree = "<group>"; };
+		4D3E6E9A18F28BF500261EAE /* RHRenderingTaskWorkerRoutine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RHRenderingTaskWorkerRoutine.h; path = ../GameClient/RHRenderingTaskWorkerRoutine.h; sourceTree = "<group>"; };
+		4D3E6E9C18F28CFC00261EAE /* GameClientPublicHeaders.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = GameClientPublicHeaders.pch; path = ../GameClient/GameClientPublicHeaders.pch; sourceTree = "<group>"; };
+		4D3E6E9F18F28E0100261EAE /* TinyRPGClientRPCInterface.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TinyRPGClientRPCInterface.h; path = ../GameClient/TinyRPGClientRPCInterface.h; sourceTree = "<group>"; };
+		4D3E6EA318F28F2E00261EAE /* RHCSConnection.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = RHCSConnection.cpp; path = ../GameClient/RHCSConnection.cpp; sourceTree = "<group>"; };
+		4D3E6EA418F28F2E00261EAE /* RHCSConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RHCSConnection.h; path = ../GameClient/RHCSConnection.h; sourceTree = "<group>"; };
+		4D3E6EA718F29A8D00261EAE /* RHSCPacketParser.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = RHSCPacketParser.cpp; path = ../Classes/RHSCPacketParser.cpp; sourceTree = "<group>"; };
+		4D3E6EA818F29A8D00261EAE /* RHSCPacketParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RHSCPacketParser.h; path = ../Classes/RHSCPacketParser.h; sourceTree = "<group>"; };
+		4D3E6EAA18F29BAA00261EAE /* RHSCPacketHandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = RHSCPacketHandler.cpp; path = ../GameClient/RHSCPacketHandler.cpp; sourceTree = "<group>"; };
+		4D3E6EAB18F29BAA00261EAE /* RHSCPacketHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RHSCPacketHandler.h; path = ../GameClient/RHSCPacketHandler.h; sourceTree = "<group>"; };
+		4D3E6EAD18F29F2D00261EAE /* ClientDirector.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ClientDirector.cpp; path = ../Classes/ClientDirector.cpp; sourceTree = "<group>"; };
+		4D3E6EAE18F29F2D00261EAE /* ClientDirector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ClientDirector.h; path = ../Classes/ClientDirector.h; sourceTree = "<group>"; };
+		4D3E6EB018F2A54700261EAE /* SplashScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SplashScene.cpp; path = ../Classes/SplashScene.cpp; sourceTree = "<group>"; };
+		4D3E6EB118F2A54700261EAE /* SplashScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SplashScene.h; path = ../Classes/SplashScene.h; sourceTree = "<group>"; };
+		4D3E6EB318F2A58300261EAE /* SplashLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SplashLayer.cpp; path = ../Classes/SplashLayer.cpp; sourceTree = "<group>"; };
+		4D3E6EB418F2A58300261EAE /* SplashLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SplashLayer.h; path = ../Classes/SplashLayer.h; sourceTree = "<group>"; };
 		4D6AED9D18E05CE7002115FC /* TinyRPGMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TinyRPGMacros.h; path = ../Classes/TinyRPGMacros.h; sourceTree = "<group>"; };
 		4D6AED9F18E0FF1A002115FC /* TinyRPGMacros.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TinyRPGMacros.cpp; path = ../Classes/TinyRPGMacros.cpp; sourceTree = "<group>"; };
 		4D6AEDA218E10225002115FC /* BaseScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = BaseScene.cpp; path = ../Classes/BaseScene.cpp; sourceTree = "<group>"; };
@@ -1379,7 +1405,6 @@
 		15AA9C4015B7EC450033D6C2 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				4D3E6E7718F279EE00261EAE /* TinyRPG */,
 				4D6AEDB218E129B5002115FC /* GameScene */,
 				4D6AEDA118E10214002115FC /* Common */,
 				1AFAF8B316D35DE700DB1158 /* AppDelegate.cpp */,
@@ -1644,6 +1669,7 @@
 				15A3D87E1682F7B3002FB0C5 /* cocos2dx.xcodeproj */,
 				15A3D8871682F7D5002FB0C5 /* Box2D */,
 				15A3D93A1682F7F9002FB0C5 /* chipmunk */,
+				4D3E6E9118F28AD400261EAE /* GameClient */,
 				15AA9C4015B7EC450033D6C2 /* Classes */,
 				15A3DA6B1682F8A6002FB0C5 /* CocosDenshion */,
 				15A3D9B31682F826002FB0C5 /* extensions */,
@@ -1994,13 +2020,49 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		4D3E6E7718F279EE00261EAE /* TinyRPG */ = {
+		4D3E6E9118F28AD400261EAE /* GameClient */ = {
 			isa = PBXGroup;
 			children = (
-				4D3E6E7818F279FE00261EAE /* RHClientGame.cpp */,
-				4D3E6E7918F279FE00261EAE /* RHClientGame.h */,
+				4D3E6EA618F2904700261EAE /* Protocol */,
+				4D3E6E9D18F28DA200261EAE /* RPC */,
+				4D3E6E9518F28BD000261EAE /* ThreadManagement */,
+				4D3E6E9218F28AED00261EAE /* RHClientGame.cpp */,
+				4D3E6E9318F28AED00261EAE /* RHClientGame.h */,
+				4D3E6E8E18F28AB500261EAE /* RHGameClient.cpp */,
+				4D3E6E8F18F28AB500261EAE /* RHGameClient.h */,
+				4D3E6E9C18F28CFC00261EAE /* GameClientPublicHeaders.pch */,
 			);
-			name = TinyRPG;
+			name = GameClient;
+			sourceTree = "<group>";
+		};
+		4D3E6E9518F28BD000261EAE /* ThreadManagement */ = {
+			isa = PBXGroup;
+			children = (
+				4D3E6E9918F28BF500261EAE /* RHRenderingTaskWorkerRoutine.cpp */,
+				4D3E6E9A18F28BF500261EAE /* RHRenderingTaskWorkerRoutine.h */,
+			);
+			name = ThreadManagement;
+			sourceTree = "<group>";
+		};
+		4D3E6E9D18F28DA200261EAE /* RPC */ = {
+			isa = PBXGroup;
+			children = (
+				4D3E6E9F18F28E0100261EAE /* TinyRPGClientRPCInterface.h */,
+				4D3E6EA318F28F2E00261EAE /* RHCSConnection.cpp */,
+				4D3E6EA418F28F2E00261EAE /* RHCSConnection.h */,
+				4D3E6EA718F29A8D00261EAE /* RHSCPacketParser.cpp */,
+				4D3E6EA818F29A8D00261EAE /* RHSCPacketParser.h */,
+				4D3E6EAA18F29BAA00261EAE /* RHSCPacketHandler.cpp */,
+				4D3E6EAB18F29BAA00261EAE /* RHSCPacketHandler.h */,
+			);
+			name = RPC;
+			sourceTree = "<group>";
+		};
+		4D3E6EA618F2904700261EAE /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Protocol;
 			sourceTree = "<group>";
 		};
 		4D6AEDA118E10214002115FC /* Common */ = {
@@ -2020,6 +2082,12 @@
 				4D6AEDB018E10693002115FC /* TutorialScreenLayer.h */,
 				4D6AEDB318E131A6002115FC /* AudioEngine.cpp */,
 				4D6AEDB418E131A6002115FC /* AudioEngine.h */,
+				4D3E6EAD18F29F2D00261EAE /* ClientDirector.cpp */,
+				4D3E6EAE18F29F2D00261EAE /* ClientDirector.h */,
+				4D3E6EB018F2A54700261EAE /* SplashScene.cpp */,
+				4D3E6EB118F2A54700261EAE /* SplashScene.h */,
+				4D3E6EB318F2A58300261EAE /* SplashLayer.cpp */,
+				4D3E6EB418F2A58300261EAE /* SplashLayer.h */,
 			);
 			name = Common;
 			sourceTree = "<group>";
@@ -2207,10 +2275,12 @@
 				15A3D90F1682F7D5002FB0C5 /* b2StackAllocator.cpp in Sources */,
 				15A3D9101682F7D5002FB0C5 /* b2Timer.cpp in Sources */,
 				15A3D9111682F7D5002FB0C5 /* b2Body.cpp in Sources */,
+				4D3E6EAC18F29BAA00261EAE /* RHSCPacketHandler.cpp in Sources */,
 				15A3D9121682F7D5002FB0C5 /* b2ContactManager.cpp in Sources */,
 				15A3D9131682F7D5002FB0C5 /* b2Fixture.cpp in Sources */,
 				15A3D9141682F7D5002FB0C5 /* b2Island.cpp in Sources */,
 				15A3D9151682F7D5002FB0C5 /* b2World.cpp in Sources */,
+				4D3E6E9B18F28BF500261EAE /* RHRenderingTaskWorkerRoutine.cpp in Sources */,
 				15A3D9161682F7D5002FB0C5 /* b2WorldCallbacks.cpp in Sources */,
 				15A3D9171682F7D5002FB0C5 /* b2ChainAndCircleContact.cpp in Sources */,
 				15A3D9181682F7D5002FB0C5 /* b2ChainAndPolygonContact.cpp in Sources */,
@@ -2243,6 +2313,7 @@
 				4D1A89A318E3064000E5F402 /* MonsterNode.cpp in Sources */,
 				15A3D9981682F7F9002FB0C5 /* cpDampedRotarySpring.c in Sources */,
 				15A3D9991682F7F9002FB0C5 /* cpDampedSpring.c in Sources */,
+				4D3E6E9018F28AB600261EAE /* RHGameClient.cpp in Sources */,
 				15A3D99A1682F7F9002FB0C5 /* cpGearJoint.c in Sources */,
 				15A3D99B1682F7F9002FB0C5 /* cpGrooveJoint.c in Sources */,
 				15A3D99C1682F7F9002FB0C5 /* cpPinJoint.c in Sources */,
@@ -2263,8 +2334,10 @@
 				15A3D9AA1682F7F9002FB0C5 /* cpShape.c in Sources */,
 				15A3D9AB1682F7F9002FB0C5 /* cpSpace.c in Sources */,
 				15A3D9AC1682F7F9002FB0C5 /* cpSpaceComponent.c in Sources */,
+				4D3E6EB218F2A54700261EAE /* SplashScene.cpp in Sources */,
 				15A3D9AD1682F7F9002FB0C5 /* cpSpaceHash.c in Sources */,
 				15A3D9AE1682F7F9002FB0C5 /* cpSpaceQuery.c in Sources */,
+				4D3E6EB518F2A58300261EAE /* SplashLayer.cpp in Sources */,
 				15A3D9AF1682F7F9002FB0C5 /* cpSpaceStep.c in Sources */,
 				15A3D9B01682F7F9002FB0C5 /* cpSpatialIndex.c in Sources */,
 				15A3D9B11682F7F9002FB0C5 /* cpSweep1D.c in Sources */,
@@ -2276,6 +2349,7 @@
 				15A3DA341682F826002FB0C5 /* CCBReader.cpp in Sources */,
 				15A3DA351682F826002FB0C5 /* CCBSequence.cpp in Sources */,
 				15A3DA361682F826002FB0C5 /* CCBSequenceProperty.cpp in Sources */,
+				4D3E6EA918F29A8D00261EAE /* RHSCPacketParser.cpp in Sources */,
 				4D6AEDA418E10225002115FC /* BaseScene.cpp in Sources */,
 				46513EB1187BFBA200B5ABE1 /* UITouchGroup.cpp in Sources */,
 				15A3DA371682F826002FB0C5 /* CCBValue.cpp in Sources */,
@@ -2304,7 +2378,6 @@
 				15A3DA491682F826002FB0C5 /* CCControl.cpp in Sources */,
 				4D6AEDA818E1057E002115FC /* ActivityIndicator.cpp in Sources */,
 				15A3DA4A1682F826002FB0C5 /* CCControlButton.cpp in Sources */,
-				4D3E6E7A18F279FE00261EAE /* RHClientGame.cpp in Sources */,
 				15A3DA4B1682F826002FB0C5 /* CCControlColourPicker.cpp in Sources */,
 				298B29BF18D0668400C1920F /* LabelReader.cpp in Sources */,
 				15A3DA4C1682F826002FB0C5 /* CCControlHuePicker.cpp in Sources */,
@@ -2331,6 +2404,7 @@
 				15A3DA5E1682F826002FB0C5 /* CCPhysicsDebugNode.cpp in Sources */,
 				375BD5131868454E0024609E /* CCActionObject.cpp in Sources */,
 				15A3DA5F1682F826002FB0C5 /* CCPhysicsSprite.cpp in Sources */,
+				4D3E6EA518F28F2E00261EAE /* RHCSConnection.cpp in Sources */,
 				15A3DAEB1682F8A6002FB0C5 /* CDAudioManager.m in Sources */,
 				15A3DAEC1682F8A6002FB0C5 /* CDOpenALSupport.m in Sources */,
 				15A3DAED1682F8A6002FB0C5 /* CocosDenshion.m in Sources */,
@@ -2361,6 +2435,7 @@
 				1A8F3B78175E05DA00049216 /* CCSkeletonAnimation.cpp in Sources */,
 				375BD5121868454E0024609E /* CCActionNode.cpp in Sources */,
 				1A8F3B79175E05DA00049216 /* extension.cpp in Sources */,
+				4D3E6EAF18F29F2D00261EAE /* ClientDirector.cpp in Sources */,
 				1A8F3B7A175E05DA00049216 /* Json.cpp in Sources */,
 				1A8F3B7B175E05DA00049216 /* RegionAttachment.cpp in Sources */,
 				1A8F3B7C175E05DA00049216 /* Skeleton.cpp in Sources */,
@@ -2403,6 +2478,7 @@
 				379BB9B017F03F3700829B88 /* CCComRender.cpp in Sources */,
 				379BB9B117F03F3700829B88 /* CCInputDelegate.cpp in Sources */,
 				379BB9B317F03F3700829B88 /* UIWidget.cpp in Sources */,
+				4D3E6E9418F28AED00261EAE /* RHClientGame.cpp in Sources */,
 				379BB9B417F03F3700829B88 /* UILayout.cpp in Sources */,
 				379BB9B617F03F3700829B88 /* UILayoutParameter.cpp in Sources */,
 				379BB9B717F03F3700829B88 /* UILayoutDefine.cpp in Sources */,
@@ -2471,6 +2547,7 @@
 					CC_TARGET_OS_IPHONE,
 					"COCOS2D_DEBUG=1",
 					CC_ENABLE_CHIPMUNK_INTEGRATION,
+					DEBUG,
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_VERSION = "";

@@ -74,11 +74,36 @@ bool AppDelegate::applicationDidFinishLaunching() {
 
     // create a scene. it's an autorelease object
     
+
+    CCMenuItemFont::setFontSize(23);
+    #ifndef GOOROOM_RELEASE_BUILD
+    LogTerminal::Initialize();
+    LogSystem::Initialize("GameClientSystemLog");
     
+    #ifndef SET_CLIENT_LOG
+        LogTerminal::Instance().SetDisable(true);
+        LogSystem::Instance().SetDisable(true);
+        #endif // SET_CLIENT_LOG
+    #else
+    LogTerminal::Instance().SetDisable(true);
+    LogSystem::Instance().SetDisable(true);
+    #endif
+    
+    SplashScene* splashScene = SplashScene::create();
+    director->runWithScene(splashScene);
+//    GameScene* gameScene = GameScene::create();
+//    director->runWithScene(gameScene);
+
+
+
     RHClientGame::Instance().Initialize();
     
-    GameScene* gameScene = GameScene::create();
-    director->runWithScene(gameScene);
+    RHGameClient& client = RHGameClient::Instance();
+    
+    client.InitializeClient(this);
+    this->InitializeConnection();
+    client.StartClient();
+    
 
     return true;
 }
@@ -98,3 +123,226 @@ void AppDelegate::applicationWillEnterForeground() {
     // if you use SimpleAudioEngine, it must resume here
     // SimpleAudioEngine::sharedEngine()->resumeBackgroundMusic();
 }
+
+bool AppDelegate::InitializeConnection()
+{
+    RHGameClient::Instance().GetCSConnection()->InitializeClient(SERVER_CONNECT_ADDRESS, SERVER_CONNECT_PORT);
+    return true;
+}
+
+void AppDelegate::RestartClient() const
+{
+    // Terminate
+    RHGameClient::Instance().TerminateClient();
+
+    CCDirector::sharedDirector()->stopAnimation();
+    CocosDenshion::SimpleAudioEngine::sharedEngine()->pauseBackgroundMusic();
+    CocosDenshion::SimpleAudioEngine::sharedEngine()->pauseAllEffects();
+    
+    CCUserDefault::sharedUserDefault()->flush();
+    
+    // Initialize
+    CCDirector::sharedDirector()->startAnimation();
+    CocosDenshion::SimpleAudioEngine::sharedEngine()->resumeBackgroundMusic();
+    CocosDenshion::SimpleAudioEngine::sharedEngine()->resumeAllEffects();
+    
+#ifndef WITHOUT_SERVER_CONNECTION
+    // Initialize GooRoomClient
+    RHGameClient::Instance().InitializeClient(const_cast<AppDelegate*>(this));
+//    if(!this->InitializeConnection()) CCMessageBox("Cannot connect with server", "Error!");
+    const_cast<AppDelegate*>(this)->InitializeConnection();
+    RHGameClient::Instance().StartClient();
+#endif
+    
+    
+    ClientDirector* clientDirector = static_cast<ClientDirector*>(CCDirector::sharedDirector());
+    clientDirector->ChangeScene<SplashScene, CCTransitionFade>(0.5f);
+}
+
+void AppDelegate::ShowSystemMessage(const flownet::STRING& message) const
+{
+    CCMessageBox("Message", message.c_str());
+}
+
+void AppDelegate::OnCSConnected(flownet::FBOOL result, const flownet::STRING errorMessage) const
+{
+    if( result == false )
+    {
+        std::ostringstream popupMessage;
+        popupMessage << "Cannot connect with server. " << std::endl << errorMessage.c_str();
+        CCLOG("%s", popupMessage.str().c_str());
+        return;
+    }
+    else
+    {
+        SplashScene* scene = dynamic_cast<SplashScene*>(CCDirector::sharedDirector()->getRunningScene());
+        if(scene)
+        {
+//            scene->DisplayMessage("Connected!");
+        }
+        CCLOG("%s", "Success connect with GooRoomServer.\n Start the Game.");
+    }
+}
+
+void AppDelegate::OnSCProtocolError() const
+{
+    BaseScene* scene = static_cast<BaseScene*>(CCDirector::sharedDirector()->getRunningScene());
+    if(scene->GetSceneType() == SceneType_SplashScene)
+    {
+        SplashScene* splashScene = static_cast<SplashScene*>(scene);
+        RHGameClient::Instance().GetRenderingTaskWorkerRoutine().AddTask(CreateLambdaTask("Handle Error", [this, splashScene]{
+            splashScene->DisplayMessage("오류가 발생하였습니다");
+        }));
+    }
+}
+
+
+void AppDelegate::OnSCResponseConnect(flownet::ConnectionID connectionID) const
+{
+    CCLOG("cs connect response");
+    SplashScene* scene = dynamic_cast<SplashScene*>(CCDirector::sharedDirector()->getRunningScene());
+    if(scene)
+    {
+//        scene->DisplayMessage("Connecting ...");
+    }
+    
+
+//    CCUserDefault* userDefault = CCUserDefault::sharedUserDefault();
+//    std::stringstream userIDNoneStringStream;
+//    userIDNoneStringStream << UserID_None;
+//    std::string userIDNoneString = userIDNoneStringStream.str();
+//
+//    std::string userIDString = userDefault->getStringForKey("UserID", userIDNoneString);
+//    std::stringstream userIDStringStream;
+//    userIDStringStream << userIDString;
+//    
+//    RHUserID userID;
+//    userIDStringStream >> userID;
+//    
+//    if(userID == UserID_None)
+//    {
+//        ASSERT_DEBUG(userID != UserID_None);
+//        CCLOG("Error while getting UserID");
+//        return;
+//    }
+    RHUserID userID = UserID_None;
+    
+    RHGameClient::Instance().GetCSConnection()->SendCSRequestLinkUser(userID, OTP_None);
+}
+
+void AppDelegate::OnSCResponseLinkUser(flownet::RHErrorLinkUser errorLinkUser, flownet::RHUser user) const
+{
+//    if(errorLinkUser == ELU_Success)
+//    {
+//        RHGameClient& client = GooRoomClient::Instance();
+//        client.SetUserID(user.GetUserID());
+//        client.SetUser(user);
+//        
+//        if( user.GetStageID() != StageID_None )
+//        {
+//            //  Rejoin Stage
+//            client.GetCSConnection()->SendCSRequestReJoinToUserPlayingStage(user.GetUserID(), user.GetStageID());
+//            return;
+//        }
+//        if( client.GetInvitedStageID() != StageID_None )
+//        {
+//            client.GetCSConnection()->SendCSRequestJoinStage(client.GetUserID(), client.GetInvitedStageID());
+//            client.SetInvitedStageID(StageID_None);
+//            return;
+//        }
+//        
+//        SplashScene* scene = dynamic_cast<SplashScene*>(CCDirector::sharedDirector()->getRunningScene());
+//        if(scene)
+//        {
+////            scene->DisplayMessage("Connected !");
+//            scene->DisplayTouchToGameStart();
+//        }
+//
+//        CheckAndUpdateKakaoFriendFromKakaoServer();
+//    }
+//    else
+//    {
+//        CCLOG("error in link user response");
+//        ASSERT_DEBUG(false);
+//    }
+}
+
+//void AppDelegate::OnFCResponseConnect(flownet::ConnectionID feConnectionID) const
+//{
+//    GooRoomClient& client = GooRoomClient::Instance();
+//
+//    // 이것은 정말로 FE의 기능을 수행하기 위한 커넥션 맺음임. 구름 클라이언트 안에 있는 커넥션인지 알 수가 없잖아...
+//    if(GooRoomClient::Instance().GetCFConnection()->GetConnectionID() != feConnectionID)
+//    {
+//        // why just return??
+//        return;
+//    }
+//    // below is LogIn LingUser Process ( FE -> GooRoom Server)
+//
+//    SplashScene* scene = dynamic_cast<SplashScene*>(CCDirector::sharedDirector()->getRunningScene());
+//    if(scene)
+//    {
+//        scene->DisplayMessage("Connecting to KakaoTalk Server ...");
+//    }
+//    
+////    GooRoomResourceVersionManager& resourceManager = GooRoomClient::Instance().GetGooRoomResourceVersionManager();
+////    GooRoomClient::Instance().GetCFConnection()->SendCFRequestCheckVersion(0, resourceManager.GetLatestVersion());
+//
+//    CCUserDefault* userDefault = CCUserDefault::sharedUserDefault();
+//    std::stringstream kakaoIDNoneStringStream;
+//    kakaoIDNoneStringStream << UserID_None;
+//    std::string kakaoIDNoneString = kakaoIDNoneStringStream.str();
+//
+//    std::string kakaoIDString = userDefault->getStringForKey("KakaoID", kakaoIDNoneString);
+//    std::stringstream kakaoIDStringStream;
+//    kakaoIDStringStream << kakaoIDString;
+//    KakaoID kakaoID;
+//    kakaoIDStringStream >> kakaoID;
+//    
+//    if( kakaoID == KakaoID_None )
+//    {
+//        client.GetCFConnection()->SendCFTESTRequestGetMyKakaoID(0);
+//    }
+//    else
+//    {
+//        GooRoomClient::Instance().SetKakaoID(kakaoID);
+//        GooRoomResourceVersionManager& resourceManager = GooRoomClient::Instance().GetGooRoomResourceVersionManager();
+//        GooRoomClient::Instance().GetCFConnection()->SendCFRequestCheckVersion(0, resourceManager.GetLatestVersion());
+//    }
+//
+//
+////    switch (client.GetCFResponseConnectType()) {
+////        case flownet::CFResponseConnectType_Login:
+////        {
+////            SplashScene* scene = dynamic_cast<SplashScene*>(CCDirector::sharedDirector()->getRunningScene());
+////            if(scene)
+////            {
+////                scene->DisplayMessage("카카오톡 아이디를 확인중입니다");
+////            }
+////            
+////            client.GetCFConnection().SendCFTESTRequestGetMyKakaoID(0);
+////            break;
+////        }
+////        case flownet::CFResponseConnectType_GetPureKakaoFriendIDList :
+////        {
+////            client.GetCFConnection().SendCFTESTRequestGetMyKakaoFriends(client.GetKakaoID());
+////            break;
+////        }
+////        case flownet::CFResponseConnectType_GetKakaoFriendInfoList :
+////        {
+////            break;
+////        }
+////        case flownet::CFResponseConnectType_GetGameFriendInfoList :
+////        {
+////            break;
+////        }
+////        default:
+////        {
+////            ASSERT_DEBUG(false);
+////            break;
+////        }
+////    }
+//}
+//
+//
+
