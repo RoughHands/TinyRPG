@@ -9,7 +9,7 @@
 #include "ActorLayer.h"
 #include "PlayerNode.h"
 #include "MonsterNode.h"
-#include "RHGame.h"
+#include "RHClientGame.h"
 
 ActorLayer::ActorLayer():BaseLayer(),
                     m_PlayerNodeList(),
@@ -42,11 +42,11 @@ void ActorLayer::AllocateAndAddAllComponents()
 {
     const CCSize winSize = CCDirector::sharedDirector()->getWinSize();
     
-    RHGame::Instance().ForAllPlayers([this](RHActor* player)
+    RHClientGame::Instance().ForAllPlayers([this](RHActor* player)
     {
         this->CreateAndAddPlayerNode(static_cast<RHPlayer*>(player));
     });
-    RHGame::Instance().ForAllMonsters([this](RHActor* monster)
+    RHClientGame::Instance().ForAllMonsters([this](RHActor* monster)
     {
         this->CreateAndAddMonsterNode(static_cast<RHMonster*>(monster));
     });

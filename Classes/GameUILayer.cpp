@@ -11,7 +11,7 @@
 #include "GameScene.h"
 #include "BackgroundLayer.h"
 
-#include "RHGame.h"
+#include "RHClientGame.h"
 
 GameUILayer::GameUILayer():BaseLayer(),
                 m_IsTouchDown(false),
@@ -115,7 +115,7 @@ void GameUILayer::ccTouchMoved(CCTouch *pTouch, CCEvent *pEvent)
 
 void GameUILayer::ccTouchEnded(CCTouch *pTouch, CCEvent *pEvent)
 {
-    RHPlayer* myPlayer = RHGame::Instance().FindMyPlayer();
+    RHPlayer* myPlayer = RHClientGame::Instance().FindMyPlayer();
     myPlayer->MoveWithDirection(MoveDirection_Center);
     
     m_IsTouchDown = false;
@@ -124,7 +124,7 @@ void GameUILayer::ccTouchEnded(CCTouch *pTouch, CCEvent *pEvent)
 
 void GameUILayer::ccTouchCancelled(CCTouch *pTouch, CCEvent *pEvent)
 {
-    RHPlayer* myPlayer = RHGame::Instance().FindMyPlayer();
+    RHPlayer* myPlayer = RHClientGame::Instance().FindMyPlayer();
     myPlayer->MoveWithDirection(MoveDirection_Center);
 
     m_IsTouchDown = false;
@@ -163,7 +163,7 @@ void GameUILayer::update(float deltaTime)
     
     if( m_IsTouchDown == true )
     {        
-        RHPlayer* myPlayer = RHGame::Instance().FindMyPlayer();
+        RHPlayer* myPlayer = RHClientGame::Instance().FindMyPlayer();
         
         RHActorState actorState = myPlayer->GetActorState();
         

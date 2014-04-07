@@ -4,7 +4,7 @@
 #include "BaseScene.h"
 #include "GameScene.h"
 
-#include "RHGame.h"
+#include "RHClientGame.h"
 
 using namespace std;
 
@@ -75,7 +75,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
     // create a scene. it's an autorelease object
     
     
-    RHGame::Instance().Initialize();
+    RHClientGame::Instance().Initialize();
     
     GameScene* gameScene = GameScene::create();
     director->runWithScene(gameScene);

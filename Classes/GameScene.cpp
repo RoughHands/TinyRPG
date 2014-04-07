@@ -11,7 +11,7 @@
 #include "GameUILayer.h"
 #include "ActorLayer.h"
 
-#include "RHGame.h"
+#include "RHClientGame.h"
 
 GameScene::GameScene():BaseScene(SceneType_GameScene),
                 m_BackgroundLayer(nullptr),
@@ -124,7 +124,7 @@ void GameScene::OnSceneChangedToDisappear()
 
 void GameScene::update(float deltaTime)
 {
-    RHGame::Instance().Tick(milliseconds(static_cast<INT64>(deltaTime*1000.f)));
+    RHClientGame::Instance().Tick(milliseconds(static_cast<FINT64>(deltaTime*1000.f)));
     // call BaseScene::update for rendering task worker routine
     BaseScene::update(deltaTime);
     
@@ -162,9 +162,9 @@ void GameScene::MoveBackground(RHMoveDirection direction, const float distance)
 
 void GameScene::UpdateScreenTrace(const float deltaTime)
 {
-    RHPlayer* myPlayer = RHGame::Instance().FindMyPlayer();
-    const POINT myPlayerPosition = myPlayer->GetCurrentPosition();
-    const POINT viewPosition = POINT(m_BackgroundLayer->GetCurrentViewPosition().x, m_BackgroundLayer->GetCurrentViewPosition().y);
+    RHPlayer* myPlayer = RHClientGame::Instance().FindMyPlayer();
+    const FPOINT myPlayerPosition = myPlayer->GetCurrentPosition();
+    const FPOINT viewPosition = FPOINT(m_BackgroundLayer->GetCurrentViewPosition().x, m_BackgroundLayer->GetCurrentViewPosition().y);
     const float worldPointViewLeftBound = viewPosition.x+VIEW_LEFT_BOUND;
     const float worldPointViewRightBound = viewPosition.x+VIEW_RIGHT_BOUND;
     

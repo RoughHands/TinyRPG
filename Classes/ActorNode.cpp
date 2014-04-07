@@ -7,7 +7,7 @@
 //
 
 #include "ActorNode.h"
-#include "RHGame.h"
+#include "RHClientGame.h"
 
 ActorNode::ActorNode():ObjectNode(),
         m_ActorID(ActorID_None),
@@ -94,7 +94,7 @@ ActorNode* ActorNode::create(const RHActorID actorID, const STRING& skeletonName
 
 void ActorNode::UpdateAfterTick(const float deltaTime)
 {
-    RHActor* actor = RHGame::Instance().FindActor(m_ActorID);
+    RHActor* actor = RHClientGame::Instance().FindActor(m_ActorID);
     if( actor == nullptr )
     {
         ASSERT_DEBUG(actor != nullptr);
@@ -222,7 +222,7 @@ void ActorNode::draw()
     ObjectNode::draw();
     
 #ifdef SHOW_ANCHORPOINT_DEBUGGING
-    RHActor* actor = RHGame::Instance().GetStage()->FindActor(m_ActorID);
+    RHActor* actor = RHClientGame::Instance().GetStage()->FindActor(m_ActorID);
     FSIZE boundingSize = actor->GetBoundingBox().size;
     
     if( actor != nullptr )

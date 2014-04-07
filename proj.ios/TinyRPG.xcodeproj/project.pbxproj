@@ -240,21 +240,14 @@
 		379BB9D317F03F3700829B88 /* GUIReader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 379BB99117F03F3700829B88 /* GUIReader.cpp */; };
 		379BB9D417F03F3700829B88 /* SceneReader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 379BB99317F03F3700829B88 /* SceneReader.cpp */; };
 		46513EB1187BFBA200B5ABE1 /* UITouchGroup.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46513EAF187BFBA200B5ABE1 /* UITouchGroup.cpp */; };
-		4D1A898F18E2DCF700E5F402 /* libflownetMobile.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D1A898C18E2DB0900E5F402 /* libflownetMobile.a */; };
-		4D1A899418E2ECEF00E5F402 /* TinyRPGSharedTypes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4D1A899218E2ECEF00E5F402 /* TinyRPGSharedTypes.cpp */; };
-		4D1A899718E2F50000E5F402 /* RHObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4D1A899518E2F50000E5F402 /* RHObject.cpp */; };
 		4D1A899A18E3061C00E5F402 /* ActorNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4D1A899818E3061C00E5F402 /* ActorNode.cpp */; };
 		4D1A899D18E3062F00E5F402 /* LandNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4D1A899B18E3062F00E5F402 /* LandNode.cpp */; };
 		4D1A89A018E3063900E5F402 /* PlayerNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4D1A899E18E3063900E5F402 /* PlayerNode.cpp */; };
 		4D1A89A318E3064000E5F402 /* MonsterNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4D1A89A118E3064000E5F402 /* MonsterNode.cpp */; };
 		4D1A89A618E31FA000E5F402 /* ObjectNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4D1A89A418E31FA000E5F402 /* ObjectNode.cpp */; };
-		4D1A89A918E34D8300E5F402 /* TinyRPGSharedProperties.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4D1A89A718E34D8300E5F402 /* TinyRPGSharedProperties.cpp */; };
-		4D3D421C18E529BC00700515 /* TinyRPGScheduledTasks.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4D3D421A18E529BC00700515 /* TinyRPGScheduledTasks.cpp */; };
-		4D3D422218E573E400700515 /* RHActorTaskQueue.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4D3D422018E573E400700515 /* RHActorTaskQueue.cpp */; };
-		4D3D422518E5744900700515 /* RHActorTask.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4D3D422318E5744900700515 /* RHActorTask.cpp */; };
-		4D3D422818E5761200700515 /* RHScheduledTickQueue.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4D3D422618E5761200700515 /* RHScheduledTickQueue.cpp */; };
-		4D3D422B18E576FC00700515 /* RHScheduledTick.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4D3D422918E576FC00700515 /* RHScheduledTick.cpp */; };
-		4D3D422E18E5780700700515 /* RHActorScheduledTick.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4D3D422C18E5780700700515 /* RHActorScheduledTick.cpp */; };
+		4D3E6E7A18F279FE00261EAE /* RHClientGame.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4D3E6E7818F279FE00261EAE /* RHClientGame.cpp */; };
+		4D3E6E7D18F27EB700261EAE /* libTinyRPGSharedMobile.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D3E6E7618F2788000261EAE /* libTinyRPGSharedMobile.a */; };
+		4D3E6E7F18F27ECA00261EAE /* boost.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D3E6E7E18F27EC900261EAE /* boost.framework */; };
 		4D6AEDA018E0FF1A002115FC /* TinyRPGMacros.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4D6AED9F18E0FF1A002115FC /* TinyRPGMacros.cpp */; };
 		4D6AEDA418E10225002115FC /* BaseScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4D6AEDA218E10225002115FC /* BaseScene.cpp */; };
 		4D6AEDA818E1057E002115FC /* ActivityIndicator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4D6AEDA618E1057E002115FC /* ActivityIndicator.cpp */; };
@@ -267,12 +260,6 @@
 		4D8909A918E2664E0085B334 /* BackgroundLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4D8909A718E2664E0085B334 /* BackgroundLayer.cpp */; };
 		4DE33D5A18E2A50900F2209E /* BaseLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4DE33D5818E2A50900F2209E /* BaseLayer.cpp */; };
 		4DE33D5D18E2B68500F2209E /* TinyRPGProperties.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4DE33D5B18E2B68500F2209E /* TinyRPGProperties.cpp */; };
-		4DE33D6118E2CFFF00F2209E /* RHGame.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4DE33D5F18E2CFFF00F2209E /* RHGame.cpp */; };
-		4DE33D6418E2D00800F2209E /* RHStage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4DE33D6218E2D00800F2209E /* RHStage.cpp */; };
-		4DE33D6718E2D01400F2209E /* RHActor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4DE33D6518E2D01400F2209E /* RHActor.cpp */; };
-		4DE33D6A18E2D01E00F2209E /* RHPlayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4DE33D6818E2D01E00F2209E /* RHPlayer.cpp */; };
-		4DE33D6D18E2D02500F2209E /* RHMonster.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4DE33D6B18E2D02500F2209E /* RHMonster.cpp */; };
-		4DECEC1018E6FDCB0099B07D /* boost.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D1A899018E2DF8100E5F402 /* boost.framework */; };
 		4DECEC1218E700470099B07D /* Icon-120.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DECEC1118E700470099B07D /* Icon-120.png */; };
 		4DECEC1518E700F50099B07D /* Icon-76.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DECEC1318E700F50099B07D /* Icon-76.png */; };
 		4DECEC1618E700F50099B07D /* Icon-152.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DECEC1418E700F50099B07D /* Icon-152.png */; };
@@ -310,19 +297,19 @@
 			remoteGlobalIDString = 1551A33E158F2AB200E66CFE;
 			remoteInfo = cocos2dx;
 		};
-		4D1A898B18E2DB0900E5F402 /* PBXContainerItemProxy */ = {
+		4D3E6E7518F2788000261EAE /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 4D1A898718E2DB0800E5F402 /* flownetMobile.xcodeproj */;
+			containerPortal = 4D3E6E7018F2787F00261EAE /* TinyRPGSharedMobile.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = 9418CCBE16AD909E001355FD;
-			remoteInfo = flownetMobile;
+			remoteGlobalIDString = 4D27242518F071B300F6542D;
+			remoteInfo = TinyRPGSharedMobile;
 		};
-		4D1A898D18E2DCEF00E5F402 /* PBXContainerItemProxy */ = {
+		4D3E6E8018F27ED200261EAE /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 4D1A898718E2DB0800E5F402 /* flownetMobile.xcodeproj */;
+			containerPortal = 4D3E6E7018F2787F00261EAE /* TinyRPGSharedMobile.xcodeproj */;
 			proxyType = 1;
-			remoteGlobalIDString = 9418CCBD16AD909E001355FD;
-			remoteInfo = flownetMobile;
+			remoteGlobalIDString = 4D27242418F071B300F6542D;
+			remoteInfo = TinyRPGSharedMobile;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -811,12 +798,7 @@
 		379BB99417F03F3700829B88 /* SceneReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SceneReader.h; sourceTree = "<group>"; };
 		46513EAF187BFBA200B5ABE1 /* UITouchGroup.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UITouchGroup.cpp; sourceTree = "<group>"; };
 		46513EB0187BFBA200B5ABE1 /* UITouchGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UITouchGroup.h; sourceTree = "<group>"; };
-		4D1A898718E2DB0800E5F402 /* flownetMobile.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = flownetMobile.xcodeproj; path = ../../flownet/flownet/flownetMobile.xcodeproj; sourceTree = "<group>"; };
 		4D1A899018E2DF8100E5F402 /* boost.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = boost.framework; path = ../../flownet/BoostMobile/ios/framework/boost.framework; sourceTree = "<group>"; };
-		4D1A899218E2ECEF00E5F402 /* TinyRPGSharedTypes.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TinyRPGSharedTypes.cpp; path = ../Classes/TinyRPGSharedTypes.cpp; sourceTree = "<group>"; };
-		4D1A899318E2ECEF00E5F402 /* TinyRPGSharedTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TinyRPGSharedTypes.h; path = ../Classes/TinyRPGSharedTypes.h; sourceTree = "<group>"; };
-		4D1A899518E2F50000E5F402 /* RHObject.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = RHObject.cpp; path = ../Classes/RHObject.cpp; sourceTree = "<group>"; };
-		4D1A899618E2F50000E5F402 /* RHObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RHObject.h; path = ../Classes/RHObject.h; sourceTree = "<group>"; };
 		4D1A899818E3061C00E5F402 /* ActorNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ActorNode.cpp; path = ../Classes/ActorNode.cpp; sourceTree = "<group>"; };
 		4D1A899918E3061C00E5F402 /* ActorNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ActorNode.h; path = ../Classes/ActorNode.h; sourceTree = "<group>"; };
 		4D1A899B18E3062F00E5F402 /* LandNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = LandNode.cpp; path = ../Classes/LandNode.cpp; sourceTree = "<group>"; };
@@ -827,21 +809,11 @@
 		4D1A89A218E3064000E5F402 /* MonsterNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MonsterNode.h; path = ../Classes/MonsterNode.h; sourceTree = "<group>"; };
 		4D1A89A418E31FA000E5F402 /* ObjectNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ObjectNode.cpp; path = ../Classes/ObjectNode.cpp; sourceTree = "<group>"; };
 		4D1A89A518E31FA000E5F402 /* ObjectNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ObjectNode.h; path = ../Classes/ObjectNode.h; sourceTree = "<group>"; };
-		4D1A89A718E34D8300E5F402 /* TinyRPGSharedProperties.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TinyRPGSharedProperties.cpp; path = ../Classes/TinyRPGSharedProperties.cpp; sourceTree = "<group>"; };
-		4D1A89A818E34D8300E5F402 /* TinyRPGSharedProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TinyRPGSharedProperties.h; path = ../Classes/TinyRPGSharedProperties.h; sourceTree = "<group>"; };
-		4D3D421A18E529BC00700515 /* TinyRPGScheduledTasks.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TinyRPGScheduledTasks.cpp; path = ../Classes/TinyRPGScheduledTasks.cpp; sourceTree = "<group>"; };
-		4D3D421B18E529BC00700515 /* TinyRPGScheduledTasks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TinyRPGScheduledTasks.h; path = ../Classes/TinyRPGScheduledTasks.h; sourceTree = "<group>"; };
 		4D3D421D18E52ACC00700515 /* TinyRPGPublicHeaders.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TinyRPGPublicHeaders.pch; path = ../Classes/TinyRPGPublicHeaders.pch; sourceTree = "<group>"; };
-		4D3D422018E573E400700515 /* RHActorTaskQueue.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = RHActorTaskQueue.cpp; path = ../Classes/RHActorTaskQueue.cpp; sourceTree = "<group>"; };
-		4D3D422118E573E400700515 /* RHActorTaskQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RHActorTaskQueue.h; path = ../Classes/RHActorTaskQueue.h; sourceTree = "<group>"; };
-		4D3D422318E5744900700515 /* RHActorTask.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = RHActorTask.cpp; path = ../Classes/RHActorTask.cpp; sourceTree = "<group>"; };
-		4D3D422418E5744900700515 /* RHActorTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RHActorTask.h; path = ../Classes/RHActorTask.h; sourceTree = "<group>"; };
-		4D3D422618E5761200700515 /* RHScheduledTickQueue.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = RHScheduledTickQueue.cpp; path = ../Classes/RHScheduledTickQueue.cpp; sourceTree = "<group>"; };
-		4D3D422718E5761200700515 /* RHScheduledTickQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RHScheduledTickQueue.h; path = ../Classes/RHScheduledTickQueue.h; sourceTree = "<group>"; };
-		4D3D422918E576FC00700515 /* RHScheduledTick.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = RHScheduledTick.cpp; path = ../Classes/RHScheduledTick.cpp; sourceTree = "<group>"; };
-		4D3D422A18E576FC00700515 /* RHScheduledTick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RHScheduledTick.h; path = ../Classes/RHScheduledTick.h; sourceTree = "<group>"; };
-		4D3D422C18E5780700700515 /* RHActorScheduledTick.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = RHActorScheduledTick.cpp; path = ../Classes/RHActorScheduledTick.cpp; sourceTree = "<group>"; };
-		4D3D422D18E5780700700515 /* RHActorScheduledTick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RHActorScheduledTick.h; path = ../Classes/RHActorScheduledTick.h; sourceTree = "<group>"; };
+		4D3E6E7018F2787F00261EAE /* TinyRPGSharedMobile.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = TinyRPGSharedMobile.xcodeproj; path = ../../../../RoughHands/TinyRPG/TinyRPGShared/TinyRPGShared/TinyRPGSharedMobile.xcodeproj; sourceTree = "<group>"; };
+		4D3E6E7818F279FE00261EAE /* RHClientGame.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = RHClientGame.cpp; path = ../Classes/RHClientGame.cpp; sourceTree = "<group>"; };
+		4D3E6E7918F279FE00261EAE /* RHClientGame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RHClientGame.h; path = ../Classes/RHClientGame.h; sourceTree = "<group>"; };
+		4D3E6E7E18F27EC900261EAE /* boost.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = boost.framework; path = ../../../../RoughHands/TinyRPG/flownet/BoostMobile/ios/framework/boost.framework; sourceTree = "<group>"; };
 		4D6AED9D18E05CE7002115FC /* TinyRPGMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TinyRPGMacros.h; path = ../Classes/TinyRPGMacros.h; sourceTree = "<group>"; };
 		4D6AED9F18E0FF1A002115FC /* TinyRPGMacros.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TinyRPGMacros.cpp; path = ../Classes/TinyRPGMacros.cpp; sourceTree = "<group>"; };
 		4D6AEDA218E10225002115FC /* BaseScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = BaseScene.cpp; path = ../Classes/BaseScene.cpp; sourceTree = "<group>"; };
@@ -866,16 +838,6 @@
 		4DE33D5918E2A50900F2209E /* BaseLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BaseLayer.h; path = ../Classes/BaseLayer.h; sourceTree = "<group>"; };
 		4DE33D5B18E2B68500F2209E /* TinyRPGProperties.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TinyRPGProperties.cpp; path = ../Classes/TinyRPGProperties.cpp; sourceTree = "<group>"; };
 		4DE33D5C18E2B68500F2209E /* TinyRPGProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TinyRPGProperties.h; path = ../Classes/TinyRPGProperties.h; sourceTree = "<group>"; };
-		4DE33D5F18E2CFFF00F2209E /* RHGame.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = RHGame.cpp; path = ../Classes/RHGame.cpp; sourceTree = "<group>"; };
-		4DE33D6018E2CFFF00F2209E /* RHGame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RHGame.h; path = ../Classes/RHGame.h; sourceTree = "<group>"; };
-		4DE33D6218E2D00800F2209E /* RHStage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = RHStage.cpp; path = ../Classes/RHStage.cpp; sourceTree = "<group>"; };
-		4DE33D6318E2D00800F2209E /* RHStage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RHStage.h; path = ../Classes/RHStage.h; sourceTree = "<group>"; };
-		4DE33D6518E2D01400F2209E /* RHActor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = RHActor.cpp; path = ../Classes/RHActor.cpp; sourceTree = "<group>"; };
-		4DE33D6618E2D01400F2209E /* RHActor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RHActor.h; path = ../Classes/RHActor.h; sourceTree = "<group>"; };
-		4DE33D6818E2D01E00F2209E /* RHPlayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = RHPlayer.cpp; path = ../Classes/RHPlayer.cpp; sourceTree = "<group>"; };
-		4DE33D6918E2D01E00F2209E /* RHPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RHPlayer.h; path = ../Classes/RHPlayer.h; sourceTree = "<group>"; };
-		4DE33D6B18E2D02500F2209E /* RHMonster.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = RHMonster.cpp; path = ../Classes/RHMonster.cpp; sourceTree = "<group>"; };
-		4DE33D6C18E2D02500F2209E /* RHMonster.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RHMonster.h; path = ../Classes/RHMonster.h; sourceTree = "<group>"; };
 		4DECEC1118E700470099B07D /* Icon-120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-120.png"; sourceTree = "<group>"; };
 		4DECEC1318E700F50099B07D /* Icon-76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-76.png"; sourceTree = "<group>"; };
 		4DECEC1418E700F50099B07D /* Icon-152.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-152.png"; sourceTree = "<group>"; };
@@ -904,8 +866,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4DECEC1018E6FDCB0099B07D /* boost.framework in Frameworks */,
-				4D1A898F18E2DCF700E5F402 /* libflownetMobile.a in Frameworks */,
+				4D3E6E7F18F27ECA00261EAE /* boost.framework in Frameworks */,
+				4D3E6E7D18F27EB700261EAE /* libTinyRPGSharedMobile.a in Frameworks */,
 				15A3DA6A1682F886002FB0C5 /* libcocos2dx.a in Frameworks */,
 				1ACB3244164770DE00914215 /* libcurl.a in Frameworks */,
 				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
@@ -1417,7 +1379,7 @@
 		15AA9C4015B7EC450033D6C2 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				4DE33D5E18E2CFC000F2209E /* Logic */,
+				4D3E6E7718F279EE00261EAE /* TinyRPG */,
 				4D6AEDB218E129B5002115FC /* GameScene */,
 				4D6AEDA118E10214002115FC /* Common */,
 				1AFAF8B316D35DE700DB1158 /* AppDelegate.cpp */,
@@ -1678,7 +1640,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
-				4D1A898718E2DB0800E5F402 /* flownetMobile.xcodeproj */,
+				4D3E6E7018F2787F00261EAE /* TinyRPGSharedMobile.xcodeproj */,
 				15A3D87E1682F7B3002FB0C5 /* cocos2dx.xcodeproj */,
 				15A3D8871682F7D5002FB0C5 /* Box2D */,
 				15A3D93A1682F7F9002FB0C5 /* chipmunk */,
@@ -1697,6 +1659,7 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4D3E6E7E18F27EC900261EAE /* boost.framework */,
 				4D1A899018E2DF8100E5F402 /* boost.framework */,
 				1ACB3243164770DE00914215 /* libcurl.a */,
 				BF170DB212928DE900B8313A /* libxml2.dylib */,
@@ -2023,29 +1986,21 @@
 			path = CocoStudio;
 			sourceTree = "<group>";
 		};
-		4D1A898818E2DB0800E5F402 /* Products */ = {
+		4D3E6E7118F2787F00261EAE /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				4D1A898C18E2DB0900E5F402 /* libflownetMobile.a */,
+				4D3E6E7618F2788000261EAE /* libTinyRPGSharedMobile.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		4D3D421F18E573CC00700515 /* ActorTaskQueue */ = {
+		4D3E6E7718F279EE00261EAE /* TinyRPG */ = {
 			isa = PBXGroup;
 			children = (
-				4D3D422018E573E400700515 /* RHActorTaskQueue.cpp */,
-				4D3D422118E573E400700515 /* RHActorTaskQueue.h */,
-				4D3D422318E5744900700515 /* RHActorTask.cpp */,
-				4D3D422418E5744900700515 /* RHActorTask.h */,
-				4D3D422618E5761200700515 /* RHScheduledTickQueue.cpp */,
-				4D3D422718E5761200700515 /* RHScheduledTickQueue.h */,
-				4D3D422918E576FC00700515 /* RHScheduledTick.cpp */,
-				4D3D422A18E576FC00700515 /* RHScheduledTick.h */,
-				4D3D422C18E5780700700515 /* RHActorScheduledTick.cpp */,
-				4D3D422D18E5780700700515 /* RHActorScheduledTick.h */,
+				4D3E6E7818F279FE00261EAE /* RHClientGame.cpp */,
+				4D3E6E7918F279FE00261EAE /* RHClientGame.h */,
 			);
-			name = ActorTaskQueue;
+			name = TinyRPG;
 			sourceTree = "<group>";
 		};
 		4D6AEDA118E10214002115FC /* Common */ = {
@@ -2092,32 +2047,6 @@
 			name = GameScene;
 			sourceTree = "<group>";
 		};
-		4DE33D5E18E2CFC000F2209E /* Logic */ = {
-			isa = PBXGroup;
-			children = (
-				4D3D421F18E573CC00700515 /* ActorTaskQueue */,
-				4DE33D5F18E2CFFF00F2209E /* RHGame.cpp */,
-				4DE33D6018E2CFFF00F2209E /* RHGame.h */,
-				4DE33D6218E2D00800F2209E /* RHStage.cpp */,
-				4DE33D6318E2D00800F2209E /* RHStage.h */,
-				4DE33D6518E2D01400F2209E /* RHActor.cpp */,
-				4DE33D6618E2D01400F2209E /* RHActor.h */,
-				4DE33D6818E2D01E00F2209E /* RHPlayer.cpp */,
-				4DE33D6918E2D01E00F2209E /* RHPlayer.h */,
-				4DE33D6B18E2D02500F2209E /* RHMonster.cpp */,
-				4DE33D6C18E2D02500F2209E /* RHMonster.h */,
-				4D1A899218E2ECEF00E5F402 /* TinyRPGSharedTypes.cpp */,
-				4D1A899318E2ECEF00E5F402 /* TinyRPGSharedTypes.h */,
-				4D1A899518E2F50000E5F402 /* RHObject.cpp */,
-				4D1A899618E2F50000E5F402 /* RHObject.h */,
-				4D1A89A718E34D8300E5F402 /* TinyRPGSharedProperties.cpp */,
-				4D1A89A818E34D8300E5F402 /* TinyRPGSharedProperties.h */,
-				4D3D421A18E529BC00700515 /* TinyRPGScheduledTasks.cpp */,
-				4D3D421B18E529BC00700515 /* TinyRPGScheduledTasks.h */,
-			);
-			name = Logic;
-			sourceTree = "<group>";
-		};
 		78C7DDAA14EBA5050085D0C2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -2156,7 +2085,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				4D1A898E18E2DCEF00E5F402 /* PBXTargetDependency */,
+				4D3E6E8118F27ED200261EAE /* PBXTargetDependency */,
 				15A3DA691682F881002FB0C5 /* PBXTargetDependency */,
 			);
 			name = TinyRPG;
@@ -2196,8 +2125,8 @@
 					ProjectRef = 15A3D87E1682F7B3002FB0C5 /* cocos2dx.xcodeproj */;
 				},
 				{
-					ProductGroup = 4D1A898818E2DB0800E5F402 /* Products */;
-					ProjectRef = 4D1A898718E2DB0800E5F402 /* flownetMobile.xcodeproj */;
+					ProductGroup = 4D3E6E7118F2787F00261EAE /* Products */;
+					ProjectRef = 4D3E6E7018F2787F00261EAE /* TinyRPGSharedMobile.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -2215,11 +2144,11 @@
 			remoteRef = 15A3D8851682F7B3002FB0C5 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		4D1A898C18E2DB0900E5F402 /* libflownetMobile.a */ = {
+		4D3E6E7618F2788000261EAE /* libTinyRPGSharedMobile.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
-			path = libflownetMobile.a;
-			remoteRef = 4D1A898B18E2DB0900E5F402 /* PBXContainerItemProxy */;
+			path = libTinyRPGSharedMobile.a;
+			remoteRef = 4D3E6E7518F2788000261EAE /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -2265,7 +2194,6 @@
 				15A3D9041682F7D5002FB0C5 /* b2Distance.cpp in Sources */,
 				15A3D9051682F7D5002FB0C5 /* b2DynamicTree.cpp in Sources */,
 				15A3D9061682F7D5002FB0C5 /* b2TimeOfImpact.cpp in Sources */,
-				4DE33D6718E2D01400F2209E /* RHActor.cpp in Sources */,
 				15A3D9071682F7D5002FB0C5 /* b2ChainShape.cpp in Sources */,
 				15A3D9081682F7D5002FB0C5 /* b2CircleShape.cpp in Sources */,
 				15A3D9091682F7D5002FB0C5 /* b2EdgeShape.cpp in Sources */,
@@ -2296,7 +2224,6 @@
 				15A3D91D1682F7D5002FB0C5 /* b2EdgeAndPolygonContact.cpp in Sources */,
 				15A3D91E1682F7D5002FB0C5 /* b2PolygonAndCircleContact.cpp in Sources */,
 				15A3D91F1682F7D5002FB0C5 /* b2PolygonContact.cpp in Sources */,
-				4D3D422818E5761200700515 /* RHScheduledTickQueue.cpp in Sources */,
 				15A3D9201682F7D5002FB0C5 /* b2DistanceJoint.cpp in Sources */,
 				298B29BD18D0668400C1920F /* LabelAtlasReader.cpp in Sources */,
 				15A3D9211682F7D5002FB0C5 /* b2FrictionJoint.cpp in Sources */,
@@ -2310,7 +2237,6 @@
 				15A3D9291682F7D5002FB0C5 /* b2WeldJoint.cpp in Sources */,
 				15A3D92A1682F7D5002FB0C5 /* b2WheelJoint.cpp in Sources */,
 				15A3D9391682F7D5002FB0C5 /* b2Rope.cpp in Sources */,
-				4D3D421C18E529BC00700515 /* TinyRPGScheduledTasks.cpp in Sources */,
 				15A3D9951682F7F9002FB0C5 /* chipmunk.c in Sources */,
 				4D1A899D18E3062F00E5F402 /* LandNode.cpp in Sources */,
 				15A3D9971682F7F9002FB0C5 /* cpConstraint.c in Sources */,
@@ -2329,7 +2255,6 @@
 				15A3D9A21682F7F9002FB0C5 /* cpArbiter.c in Sources */,
 				15A3D9A31682F7F9002FB0C5 /* cpArray.c in Sources */,
 				15A3D9A41682F7F9002FB0C5 /* cpBB.c in Sources */,
-				4DE33D6D18E2D02500F2209E /* RHMonster.cpp in Sources */,
 				15A3D9A51682F7F9002FB0C5 /* cpBBTree.c in Sources */,
 				15A3D9A61682F7F9002FB0C5 /* cpBody.c in Sources */,
 				15A3D9A71682F7F9002FB0C5 /* cpCollision.c in Sources */,
@@ -2357,13 +2282,11 @@
 				15A3DA381682F826002FB0C5 /* CCControlButtonLoader.cpp in Sources */,
 				15A3DA391682F826002FB0C5 /* CCControlLoader.cpp in Sources */,
 				15A3DA3A1682F826002FB0C5 /* CCData.cpp in Sources */,
-				4D3D422218E573E400700515 /* RHActorTaskQueue.cpp in Sources */,
 				298B29BC18D0668400C1920F /* ImageViewReader.cpp in Sources */,
 				15A3DA3B1682F826002FB0C5 /* CCLabelBMFontLoader.cpp in Sources */,
 				15A3DA3C1682F826002FB0C5 /* CCLabelTTFLoader.cpp in Sources */,
 				15A3DA3D1682F826002FB0C5 /* CCLayerColorLoader.cpp in Sources */,
 				15A3DA3E1682F826002FB0C5 /* CCLayerGradientLoader.cpp in Sources */,
-				4D3D422B18E576FC00700515 /* RHScheduledTick.cpp in Sources */,
 				15A3DA3F1682F826002FB0C5 /* CCLayerLoader.cpp in Sources */,
 				4D6AEDAB18E105B3002115FC /* ActivityIndicatorLayer.cpp in Sources */,
 				15A3DA401682F826002FB0C5 /* CCMenuItemImageLoader.cpp in Sources */,
@@ -2381,6 +2304,7 @@
 				15A3DA491682F826002FB0C5 /* CCControl.cpp in Sources */,
 				4D6AEDA818E1057E002115FC /* ActivityIndicator.cpp in Sources */,
 				15A3DA4A1682F826002FB0C5 /* CCControlButton.cpp in Sources */,
+				4D3E6E7A18F279FE00261EAE /* RHClientGame.cpp in Sources */,
 				15A3DA4B1682F826002FB0C5 /* CCControlColourPicker.cpp in Sources */,
 				298B29BF18D0668400C1920F /* LabelReader.cpp in Sources */,
 				15A3DA4C1682F826002FB0C5 /* CCControlHuePicker.cpp in Sources */,
@@ -2393,7 +2317,6 @@
 				298B29C718D0668400C1920F /* WidgetReader.cpp in Sources */,
 				15A3DA521682F826002FB0C5 /* CCControlUtils.cpp in Sources */,
 				375BD4C41868411B0024609E /* TriggerBase.cpp in Sources */,
-				4D1A89A918E34D8300E5F402 /* TinyRPGSharedProperties.cpp in Sources */,
 				298B29BB18D0668400C1920F /* CheckBoxReader.cpp in Sources */,
 				15A3DA531682F826002FB0C5 /* CCInvocation.cpp in Sources */,
 				15A3DA541682F826002FB0C5 /* CCScale9Sprite.cpp in Sources */,
@@ -2405,7 +2328,6 @@
 				15A3DA5B1682F826002FB0C5 /* CCTableView.cpp in Sources */,
 				15A3DA5C1682F826002FB0C5 /* CCTableViewCell.cpp in Sources */,
 				15A3DA5D1682F826002FB0C5 /* HttpClient.cpp in Sources */,
-				4D1A899718E2F50000E5F402 /* RHObject.cpp in Sources */,
 				15A3DA5E1682F826002FB0C5 /* CCPhysicsDebugNode.cpp in Sources */,
 				375BD5131868454E0024609E /* CCActionObject.cpp in Sources */,
 				15A3DA5F1682F826002FB0C5 /* CCPhysicsSprite.cpp in Sources */,
@@ -2418,7 +2340,6 @@
 				1A27573F1697CF2B00504026 /* CCEditBoxImplAndroid.cpp in Sources */,
 				1AFAF8B716D35DE700DB1158 /* AppDelegate.cpp in Sources */,
 				1AFAF8B816D35DE700DB1158 /* HelloWorldScene.cpp in Sources */,
-				4D3D422E18E5780700700515 /* RHActorScheduledTick.cpp in Sources */,
 				4D6AEDBB18E132A8002115FC /* ActorLayer.cpp in Sources */,
 				4D6AEDB118E10693002115FC /* TutorialScreenLayer.cpp in Sources */,
 				1AC3624916D4A1E8000847F2 /* AppController.mm in Sources */,
@@ -2446,7 +2367,6 @@
 				4D6AEDB518E131A6002115FC /* AudioEngine.cpp in Sources */,
 				1A8F3B7D175E05DA00049216 /* SkeletonData.cpp in Sources */,
 				1A8F3B7E175E05DA00049216 /* SkeletonJson.cpp in Sources */,
-				4D1A899418E2ECEF00E5F402 /* TinyRPGSharedTypes.cpp in Sources */,
 				1A8F3B7F175E05DA00049216 /* Skin.cpp in Sources */,
 				298B29BE18D0668400C1920F /* LabelBMFontReader.cpp in Sources */,
 				1A8F3B80175E05DA00049216 /* Slot.cpp in Sources */,
@@ -2469,7 +2389,6 @@
 				379BB9A317F03F3700829B88 /* CCDisplayManager.cpp in Sources */,
 				379BB9A417F03F3700829B88 /* CCSkin.cpp in Sources */,
 				298B29C518D0668400C1920F /* SliderReader.cpp in Sources */,
-				4DE33D6118E2CFFF00F2209E /* RHGame.cpp in Sources */,
 				379BB9A517F03F3700829B88 /* CCColliderDetector.cpp in Sources */,
 				379BB9A617F03F3700829B88 /* CCArmatureDataManager.cpp in Sources */,
 				379BB9A717F03F3700829B88 /* CCArmatureDefine.cpp in Sources */,
@@ -2481,9 +2400,7 @@
 				379BB9AD17F03F3700829B88 /* CCComAttribute.cpp in Sources */,
 				379BB9AE17F03F3700829B88 /* CCComAudio.cpp in Sources */,
 				379BB9AF17F03F3700829B88 /* CCComController.cpp in Sources */,
-				4DE33D6A18E2D01E00F2209E /* RHPlayer.cpp in Sources */,
 				379BB9B017F03F3700829B88 /* CCComRender.cpp in Sources */,
-				4DE33D6418E2D00800F2209E /* RHStage.cpp in Sources */,
 				379BB9B117F03F3700829B88 /* CCInputDelegate.cpp in Sources */,
 				379BB9B317F03F3700829B88 /* UIWidget.cpp in Sources */,
 				379BB9B417F03F3700829B88 /* UILayout.cpp in Sources */,
@@ -2493,7 +2410,6 @@
 				379BB9B917F03F3700829B88 /* UIHelper.cpp in Sources */,
 				379BB9BD17F03F3700829B88 /* UIListView.cpp in Sources */,
 				379BB9BE17F03F3700829B88 /* UIPageView.cpp in Sources */,
-				4D3D422518E5744900700515 /* RHActorTask.cpp in Sources */,
 				4DE33D5D18E2B68500F2209E /* TinyRPGProperties.cpp in Sources */,
 				379BB9BF17F03F3700829B88 /* UIScrollView.cpp in Sources */,
 				379BB9C017F03F3700829B88 /* UIButton.cpp in Sources */,
@@ -2521,10 +2437,10 @@
 			name = cocos2dx;
 			targetProxy = 15A3DA681682F881002FB0C5 /* PBXContainerItemProxy */;
 		};
-		4D1A898E18E2DCEF00E5F402 /* PBXTargetDependency */ = {
+		4D3E6E8118F27ED200261EAE /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			name = flownetMobile;
-			targetProxy = 4D1A898D18E2DCEF00E5F402 /* PBXContainerItemProxy */;
+			name = TinyRPGSharedMobile;
+			targetProxy = 4D3E6E8018F27ED200261EAE /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -2541,6 +2457,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../../flownet/BoostMobile/ios/framework",
+					/Users/Sinhyub/Project/RoughHands/TinyRPG/flownet/BoostMobile/ios/framework,
 				);
 				GCC_C_LANGUAGE_STANDARD = c11;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -2569,7 +2486,8 @@
 					"\"$(SRCROOT)/../../../cocos2dx/platform/third_party/ios\"",
 					"\"$(SRCROOT)/../../../cocos2dx/platform/ios\"",
 					"\"$(SRCROOT)/../../../cocos2dx/platform/ios/Simulation\"",
-					"\"$(SRCROOT)/../../flownet/flownet\"",
+					"\"~/Project/RoughHands/TinyRPG/flownet/flownet\"",
+					"\"~/Project/RoughHands/TinyRPG/TinyRPGShared/TinyRPGShared\"",
 				);
 				INFOPLIST_FILE = Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
@@ -2600,6 +2518,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../../flownet/BoostMobile/ios/framework",
+					"~/Project/RoughHands/TinyRPG/flownet/BoostMobile/ios/framework",
 				);
 				GCC_C_LANGUAGE_STANDARD = c11;
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = YES;
@@ -2626,7 +2545,8 @@
 					"\"$(SRCROOT)/../../../cocos2dx/platform/third_party/ios\"",
 					"\"$(SRCROOT)/../../../cocos2dx/platform/ios\"",
 					"\"$(SRCROOT)/../../../cocos2dx/platform/ios/Simulation\"",
-					"\"$(SRCROOT)/../../flownet/flownet\"",
+					"\"~/Project/RoughHands/TinyRPG/flownet/flownet\"",
+					"\"~/Project/RoughHands/TinyRPG/TinyRPGShared/TinyRPGShared\"",
 				);
 				INFOPLIST_FILE = Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;

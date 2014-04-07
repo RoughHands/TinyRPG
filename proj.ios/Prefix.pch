@@ -15,11 +15,9 @@
     #include "spine-cocos2dx.h"
     using namespace cocos2d::extension;
 
-    #include "flownetPublicHeaders.pch"
+    #include "TinyRPGSharedPublicHeaders.pch"
+//    #include "flownetPublicHeaders.pch"
     using namespace flownet;
-
-    #include "TinyRPGSharedTypes.h"
-    #include "TinyRPGSharedProperties.h"
 
     #include "TinyRPGMacros.h"
     #include "TinyRPGProperties.h"
