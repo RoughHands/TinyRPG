@@ -1,0 +1,68 @@
+
+huge_chick.png
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+beak_closed
+  rotate: false
+  xy: 85, 25
+  size: 22, 18
+  orig: 22, 21
+  offset: 0, 2
+  index: -1
+beak_opened
+  rotate: false
+  xy: 186, 196
+  size: 22, 21
+  orig: 22, 21
+  offset: 0, 0
+  index: -1
+body
+  rotate: false
+  xy: 2, 45
+  size: 182, 208
+  orig: 182, 208
+  offset: 0, 0
+  index: -1
+eye_closed
+  rotate: false
+  xy: 186, 219
+  size: 32, 34
+  orig: 32, 34
+  offset: 0, 0
+  index: -1
+eye_opened
+  rotate: true
+  xy: 220, 221
+  size: 32, 34
+  orig: 32, 34
+  offset: 0, 0
+  index: -1
+foot
+  rotate: false
+  xy: 2, 2
+  size: 13, 7
+  orig: 13, 8
+  offset: 0, 1
+  index: -1
+leg
+  rotate: false
+  xy: 186, 181
+  size: 5, 13
+  orig: 5, 13
+  offset: 0, 0
+  index: -1
+wing_down
+  rotate: false
+  xy: 2, 11
+  size: 40, 32
+  orig: 40, 33
+  offset: 0, 0
+  index: -1
+wing_up
+  rotate: false
+  xy: 44, 16
+  size: 39, 27
+  orig: 40, 33
+  offset: 0, 6
+  index: -1
