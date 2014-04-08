@@ -97,5 +97,14 @@ void RHSCPacketHandler::OnSCResponseLinkUser(RHErrorLinkUser errorLinkUser, RHUs
     this->m_ClientRPCReceiver->OnSCResponseLinkUser(errorLinkUser, user);
 }
 
+void RHSCPacketHandler::OnSCResponseJoinGame(RHErrorJoinGame result, RHGame game, RHActorID myPlayerID)
+{
+    this->m_ClientRPCReceiver->OnSCResponseJoinGame(result, game, myPlayerID);
+}
+
+void RHSCPacketHandler::OnSCNotifyPlayerJoin(RHGameID gameID, flownet::RHPlayer player)
+{
+    this->m_ClientRPCReceiver->OnSCNotifyPlayerJoin(gameID, player);
+}
 
 } // namespace flownet

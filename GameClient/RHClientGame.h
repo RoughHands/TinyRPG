@@ -30,14 +30,21 @@ public:
     
 public:
     const RHActorID         GetMyPlayerID() {   return m_MyPlayerID; }
+    
+    void                    SetMyPlayerID(const RHActorID myPlayerID) { m_MyPlayerID = myPlayerID; }
     RHPlayer*               FindMyPlayer()  { return static_cast<RHPlayer*>(this->FindActor(m_MyPlayerID)); }
 
     void                    UpdateMyPlayer(const milliseconds deltaTime);
     
     virtual void            Tick(const milliseconds deltaTime);
+  
+    void                    InitializeWithGame(RHGame& game);
+//    void                    Initialize();
+
+    void                    CreateAndAddPlayer(RHPlayer& player);
     
-    void                    Initialize();
-    
+private:
+    void                    CleanUp();
 };
 
 } // namespace flownet

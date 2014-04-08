@@ -27,7 +27,7 @@ RHGameClient::RHGameClient():
     m_IsStarted(false),
     m_DeviceID(DeviceID_None),
 //    m_UserID(UserID_None),
-//    m_User(nullptr),
+    m_User(nullptr),
     m_MyActorID(ActorID_None),
     m_IsBGMOn(false),
     m_IsEffectOn(false),
@@ -122,6 +122,26 @@ void RHGameClient::TerminateClient()
 //    
 //    return this->m_Stage->FindPlayer(actorID);
 //}
+
+RHUserID RHGameClient::GetUserID()
+{
+    if( m_User == nullptr )
+    {
+        return UserID_None;
+    }
+    
+    return m_User->GetUserID();
+}
+
+void RHGameClient::SetUser(RHUser& user)
+{
+    if( nullptr != m_User)
+    {
+        delete m_User;
+        m_User = nullptr;
+    }
+    m_User = new RHUser(user);
+}
 
 
 STRING RHGameClient::GetWritableFilePath(const char* fileName)

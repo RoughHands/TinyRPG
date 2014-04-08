@@ -44,11 +44,17 @@ void ActorLayer::AllocateAndAddAllComponents()
     
     RHClientGame::Instance().ForAllPlayers([this](RHActor* player)
     {
-        this->CreateAndAddPlayerNode(static_cast<RHPlayer*>(player));
+        if( nullptr == this->FindActorNode(player->GetActorID()) )
+        {
+            this->CreateAndAddPlayerNode(static_cast<RHPlayer*>(player));
+        }
     });
     RHClientGame::Instance().ForAllMonsters([this](RHActor* monster)
     {
-        this->CreateAndAddMonsterNode(static_cast<RHMonster*>(monster));
+        if( nullptr == this->FindActorNode(monster->GetActorID()) )
+        {
+            this->CreateAndAddMonsterNode(static_cast<RHMonster*>(monster));
+        }
     });
 
     
@@ -112,6 +118,20 @@ void ActorLayer::onEnter()
 {
     CCLayer::onEnter();
 
+    RHClientGame::Instance().ForAllPlayers([this](RHActor* player)
+    {
+        if( nullptr == this->FindActorNode(player->GetActorID()) )
+        {
+            this->CreateAndAddPlayerNode(static_cast<RHPlayer*>(player));
+        }
+    });
+    RHClientGame::Instance().ForAllMonsters([this](RHActor* monster)
+    {
+        if( nullptr == this->FindActorNode(monster->GetActorID()) )
+        {
+            this->CreateAndAddMonsterNode(static_cast<RHMonster*>(monster));
+        }
+    });
 }
 
 void ActorLayer::onExit()

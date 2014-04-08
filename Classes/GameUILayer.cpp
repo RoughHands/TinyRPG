@@ -164,6 +164,10 @@ void GameUILayer::update(float deltaTime)
     if( m_IsTouchDown == true )
     {        
         RHPlayer* myPlayer = RHClientGame::Instance().FindMyPlayer();
+        if( myPlayer == nullptr )
+        {
+            return;
+        }
         
         RHActorState actorState = myPlayer->GetActorState();
         

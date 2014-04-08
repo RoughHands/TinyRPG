@@ -163,6 +163,10 @@ void GameScene::MoveBackground(RHMoveDirection direction, const float distance)
 void GameScene::UpdateScreenTrace(const float deltaTime)
 {
     RHPlayer* myPlayer = RHClientGame::Instance().FindMyPlayer();
+    if( myPlayer == nullptr )
+    {
+        return;
+    }
     const FPOINT myPlayerPosition = myPlayer->GetCurrentPosition();
     const FPOINT viewPosition = FPOINT(m_BackgroundLayer->GetCurrentViewPosition().x, m_BackgroundLayer->GetCurrentViewPosition().y);
     const float worldPointViewLeftBound = viewPosition.x+VIEW_LEFT_BOUND;

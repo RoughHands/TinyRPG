@@ -67,7 +67,7 @@ public:
 // game data part
 private:
     DeviceID                        m_DeviceID;
-//    UserID                          m_UserID;
+    RHUser*                           m_User;
 //    User*                           m_User;
 
 //    RHGameServerID                  m_GameServerID;
@@ -79,8 +79,8 @@ private:
     
 public:
     inline DeviceID         GetDeviceID()       { return m_DeviceID; }
-//    inline RHUserID         GetUserID()         { return m_UserID; }
-//    inline User*            GetUser()           { return m_User; }
+    RHUserID                GetUserID();
+    inline RHUser*          GetUser()           { return m_User; }
 
 //    inline RHGameServerID  GetGameServerID()  { return m_GameServerID; }
     inline RHActorID        GetMyActorID()      { return m_MyActorID; }
@@ -89,9 +89,9 @@ public:
     inline FBOOL             IsEffectOn()        { return m_IsEffectOn; }
     inline FBOOL             IsMessageOn()       { return m_IsMessageOn; }
     
-    inline void         SetDeviceID(DeviceID deviceID)                          { m_DeviceID = deviceID; }
-//    inline void         SetUserID(RHUserID userID)                              { m_UserID = userID; }
-//    inline void         SetUser(RHUser& user)                                   { if(m_User){ delete m_User; m_User = nullptr; } m_User = new User(user); }
+    inline void             SetDeviceID(DeviceID deviceID)                          { m_DeviceID = deviceID; }
+//    inline void           SetUserID(RHUserID userID)                              { m_UserID = userID; }
+    void                    SetUser(RHUser& user);
     
 
 //    inline void         SetGameServerID(RHGameServerID& gameServerID)           { m_GameServerID = gameServerID; }

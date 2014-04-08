@@ -3,11 +3,12 @@
 
 #include "BaseScene.h"
 #include "GameScene.h"
+#include "ActorLayer.h"
 
 #include "RHClientGame.h"
 
 using namespace std;
-
+using namespace flownet;
 USING_NS_CC;
 
 
@@ -19,7 +20,8 @@ AppDelegate::~AppDelegate()
 {
 }
 
-bool AppDelegate::applicationDidFinishLaunching() {
+bool AppDelegate::applicationDidFinishLaunching()
+{
     // initialize director
     CCDirector* director = CCDirector::sharedDirector();
     CCEGLView* view = CCEGLView::sharedOpenGLView();
@@ -77,27 +79,24 @@ bool AppDelegate::applicationDidFinishLaunching() {
 
     CCMenuItemFont::setFontSize(23);
     #ifndef GOOROOM_RELEASE_BUILD
-    LogTerminal::Initialize();
-    LogSystem::Initialize("GameClientSystemLog");
-    
-    #ifndef SET_CLIENT_LOG
-        LogTerminal::Instance().SetDisable(true);
-        LogSystem::Instance().SetDisable(true);
+        LogTerminal::Initialize();
+        LogSystem::Initialize("GameClientSystemLog");    
+        #define SET_CLIENT_LOG
+        #ifndef SET_CLIENT_LOG
+            LogTerminal::Instance().SetDisable(true);
+            LogSystem::Instance().SetDisable(true);
         #endif // SET_CLIENT_LOG
     #else
-    LogTerminal::Instance().SetDisable(true);
-    LogSystem::Instance().SetDisable(true);
+        LogTerminal::Instance().SetDisable(true);
+        LogSystem::Instance().SetDisable(true);
     #endif
     
     SplashScene* splashScene = SplashScene::create();
     director->runWithScene(splashScene);
 //    GameScene* gameScene = GameScene::create();
 //    director->runWithScene(gameScene);
-
-
-
-    RHClientGame::Instance().Initialize();
     
+    RHClientGame::Instance();
     RHGameClient& client = RHGameClient::Instance();
     
     client.InitializeClient(this);
@@ -232,39 +231,43 @@ void AppDelegate::OnSCResponseConnect(flownet::ConnectionID connectionID) const
 
 void AppDelegate::OnSCResponseLinkUser(flownet::RHErrorLinkUser errorLinkUser, flownet::RHUser user) const
 {
-//    if(errorLinkUser == ELU_Success)
-//    {
-//        RHGameClient& client = GooRoomClient::Instance();
-//        client.SetUserID(user.GetUserID());
-//        client.SetUser(user);
-//        
+    CCLog("LinkUser : UserID[%lld], AccountName[%s]", user.GetUserID(), user.GetAccountName().c_str());
+
+    if(errorLinkUser == ELU_Success)
+    {
+        RHGameClient& client = RHGameClient::Instance();
+        
+        client.SetUser(user);
+        
 //        if( user.GetStageID() != StageID_None )
 //        {
 //            //  Rejoin Stage
 //            client.GetCSConnection()->SendCSRequestReJoinToUserPlayingStage(user.GetUserID(), user.GetStageID());
 //            return;
 //        }
+//        
 //        if( client.GetInvitedStageID() != StageID_None )
 //        {
 //            client.GetCSConnection()->SendCSRequestJoinStage(client.GetUserID(), client.GetInvitedStageID());
 //            client.SetInvitedStageID(StageID_None);
 //            return;
 //        }
-//        
-//        SplashScene* scene = dynamic_cast<SplashScene*>(CCDirector::sharedDirector()->getRunningScene());
-//        if(scene)
-//        {
-////            scene->DisplayMessage("Connected !");
-//            scene->DisplayTouchToGameStart();
-//        }
-//
-//        CheckAndUpdateKakaoFriendFromKakaoServer();
-//    }
-//    else
-//    {
-//        CCLOG("error in link user response");
-//        ASSERT_DEBUG(false);
-//    }
+        
+        SplashScene* scene = dynamic_cast<SplashScene*>(CCDirector::sharedDirector()->getRunningScene());
+        if(scene)
+        {
+//            scene->DisplayMessage("Connected !");
+            scene->DisplayTouchToGameStart();
+        }
+        
+        // TEST Code
+        client.GetCSConnection()->SendCSRequestJoinGame(client.GetUserID(), 0);
+    }
+    else
+    {
+        CCLOG("error in link user response");
+        ASSERT_DEBUG(false);
+    }
 }
 
 //void AppDelegate::OnFCResponseConnect(flownet::ConnectionID feConnectionID) const
@@ -345,4 +348,38 @@ void AppDelegate::OnSCResponseLinkUser(flownet::RHErrorLinkUser errorLinkUser, f
 //}
 //
 //
+
+void AppDelegate::OnSCResponseJoinGame(RHErrorJoinGame result, RHGame game, RHActorID myPlayerID) const
+{
+    if( result == ErrorJoinGame_Success )
+    {
+        RHClientGame::Instance().SetMyPlayerID(myPlayerID);
+        RHClientGame::Instance().InitializeWithGame(game);
+    }
+    else
+    {
+        CCLog("Error Join Game : %d", result);
+    }
+    
+    
+}
+
+void AppDelegate::OnSCNotifyPlayerJoin(RHGameID gameID, RHPlayer player)const
+{
+    if( RHClientGame::Instance().GetGameID() != gameID )
+    {
+        CCLog("Error GameID Wrong %lld / %lld", RHClientGame::Instance().GetGameID(), gameID);
+        return;
+    }
+    
+    RHClientGame::Instance().CreateAndAddPlayer(player);
+    RHPlayer* newPlayer = RHClientGame::Instance().FindPlayer(player.GetActorID());
+    
+    BaseScene* baseScene = static_cast<BaseScene*>(CCDirector::sharedDirector()->getRunningScene());
+    if( baseScene->GetSceneType() == SceneType_GameScene )
+    {
+        GameScene* gameScene = static_cast<GameScene*>(baseScene);
+        gameScene->GetActorLayer()->CreateAndAddPlayerNode(newPlayer);
+    }
+}
 

@@ -222,7 +222,7 @@ void ActorNode::draw()
     ObjectNode::draw();
     
 #ifdef SHOW_ANCHORPOINT_DEBUGGING
-    RHActor* actor = RHClientGame::Instance().GetStage()->FindActor(m_ActorID);
+    RHActor* actor = RHClientGame::Instance().GetStage().FindActor(m_ActorID);
     FSIZE boundingSize = actor->GetBoundingBox().size;
     
     if( actor != nullptr )
