@@ -43,6 +43,9 @@ public:
     virtual void    RestartClient() const override;
     virtual void    ShowSystemMessage(const flownet::STRING& message) const override;
     virtual void    OnCSConnected(flownet::FBOOL result, const flownet::STRING errorMessage) const override;
+    
+    RHUserID        LoadUserIDFromUserDefault() const;
+    void            SaveUserIDToUserDefault(const RHUserID userID) const;
 
     #include "TinyRPGSCOverrideProtocolHandlerDeclaration.hpp"
 };

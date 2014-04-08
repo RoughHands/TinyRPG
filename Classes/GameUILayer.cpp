@@ -161,6 +161,11 @@ void GameUILayer::update(float deltaTime)
 {
     BaseLayer::update(deltaTime);
     
+    static float timeAfterLastAttackRequest = 0.f;
+    static float timeAfterLastMoveRequest = 0.f;
+    timeAfterLastAttackRequest += deltaTime;
+    timeAfterLastMoveRequest += deltaTime;
+    
     if( m_IsTouchDown == true )
     {        
         RHPlayer* myPlayer = RHClientGame::Instance().FindMyPlayer();
@@ -171,26 +176,46 @@ void GameUILayer::update(float deltaTime)
         
         RHActorState actorState = myPlayer->GetActorState();
         
-        
-////        if( actorState == ActorState_Moving || actorState == ActorState_Idle || actorState == ActorState_Defencing )
-////        {
-////            CollisionCheckAndAttack?
-////            MoveRequest and Attack?
-////        }
-//        if( this->GetActorState() == ActorState_Attacked || this->GetActorState() == ActorState_Attacking || this->GetActorState() == ActorState_Casting)
-//        {
-//            return;
-//        }
+        const RHGameID gameID = RHClientGame::Instance().GetGameID();
+        const RHActorID myActorID = RHClientGame::Instance().GetMyPlayerID();
+
         
         RHActorIDList attackReachableMonsters;
         myPlayer->CheckAttackAvailableToDirection(m_TouchMoveDirection, attackReachableMonsters);
+
         if( attackReachableMonsters.size() > 0 )
         {
-            myPlayer->AttackWithDirection(m_TouchMoveDirection);
+            if( myPlayer->GetActorState() == ActorState_Attacking && myPlayer->GetMoveDirection() == m_TouchMoveDirection )
+            {
+                // Do Nothing
+
+            }
+            else
+            {
+                if( timeAfterLastAttackRequest >= 0.2f )
+                {
+                    RHGameClient::Instance().GetCSConnection()->SendCSRequestActorAttackWithDirection(gameID, myActorID, m_TouchMoveDirection, myPlayer->GetCurrentPosition());
+                    timeAfterLastAttackRequest = 0.f;
+                }
+            }
+
+//            myPlayer->AttackWithDirection(m_TouchMoveDirection);
         }
         else
         {
-            myPlayer->MoveWithDirection(m_TouchMoveDirection);
+            if( myPlayer->GetActorState() == ActorState_Attacked || myPlayer->GetActorState() == ActorState_Attacking || myPlayer->GetActorState() == ActorState_Casting)
+            {
+                //Do Nothing
+            }
+            else
+            {
+                if( timeAfterLastMoveRequest >= 0.1f )
+                {
+                    RHGameClient::Instance().GetCSConnection()->SendCSRequestActorMoveWithDirection(gameID, myActorID, m_TouchMoveDirection, myPlayer->GetCurrentPosition());
+                    timeAfterLastMoveRequest = 0.f;
+                }
+//                myPlayer->MoveWithDirection(m_TouchMoveDirection);
+            }
         }
     }
 }

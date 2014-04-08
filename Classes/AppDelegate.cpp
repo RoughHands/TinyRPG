@@ -205,26 +205,7 @@ void AppDelegate::OnSCResponseConnect(flownet::ConnectionID connectionID) const
 //        scene->DisplayMessage("Connecting ...");
     }
     
-
-//    CCUserDefault* userDefault = CCUserDefault::sharedUserDefault();
-//    std::stringstream userIDNoneStringStream;
-//    userIDNoneStringStream << UserID_None;
-//    std::string userIDNoneString = userIDNoneStringStream.str();
-//
-//    std::string userIDString = userDefault->getStringForKey("UserID", userIDNoneString);
-//    std::stringstream userIDStringStream;
-//    userIDStringStream << userIDString;
-//    
-//    RHUserID userID;
-//    userIDStringStream >> userID;
-//    
-//    if(userID == UserID_None)
-//    {
-//        ASSERT_DEBUG(userID != UserID_None);
-//        CCLOG("Error while getting UserID");
-//        return;
-//    }
-    RHUserID userID = UserID_None;
+    const RHUserID userID = UserID_None; // this->LoadUserIDFromUserDefault();
     
     RHGameClient::Instance().GetCSConnection()->SendCSRequestLinkUser(userID, OTP_None);
 }
@@ -239,9 +220,10 @@ void AppDelegate::OnSCResponseLinkUser(flownet::RHErrorLinkUser errorLinkUser, f
         
         client.SetUser(user);
         
-//        if( user.GetStageID() != StageID_None )
+//        if( user.GetGameID() != GameID_None)
 //        {
-//            //  Rejoin Stage
+//            //  Rejoin Game
+////            client.Get
 //            client.GetCSConnection()->SendCSRequestReJoinToUserPlayingStage(user.GetUserID(), user.GetStageID());
 //            return;
 //        }
@@ -383,3 +365,70 @@ void AppDelegate::OnSCNotifyPlayerJoin(RHGameID gameID, RHPlayer player)const
     }
 }
 
+RHUserID AppDelegate::LoadUserIDFromUserDefault() const
+{
+    // Getting UserID
+    CCUserDefault* userDefault = CCUserDefault::sharedUserDefault();
+    std::stringstream userIDNoneStringStream;
+    userIDNoneStringStream << UserID_None;
+    std::string userIDNoneString = userIDNoneStringStream.str();
+
+    std::string userIDString = userDefault->getStringForKey("UserID", userIDNoneString);
+    std::stringstream userIDStringStream;
+    userIDStringStream << userIDString;
+    
+    RHUserID userID;
+    userIDStringStream >> userID;
+
+    // TEST
+    if(userID == UserID_None)
+    {
+        CCLOG("Error while getting UserID, UserID Doesn't Exist");
+        // return;
+    }
+    
+    return userID;
+}
+
+void AppDelegate::SaveUserIDToUserDefault(const RHUserID userID) const
+{
+    std::stringstream userIDStringStream;
+    userIDStringStream << userID;
+    CCUserDefault::sharedUserDefault()->setStringForKey("UserID", userIDStringStream.str());
+    CCUserDefault::sharedUserDefault()->flush();
+}
+
+void AppDelegate::OnSCNotifyActorMoveWithDirection(flownet::RHGameID gameID, flownet::RHActorID actorID, flownet::RHMoveDirection moveDirection, flownet::FPOINT currentPosition) const
+{
+    if( gameID != RHClientGame::Instance().GetGameID() )
+    {
+        return;
+    }
+    
+    RHActor* actor = RHClientGame::Instance().FindPlayer(actorID);
+
+    if( actor->GetCurrentPosition().DistanceTo(currentPosition) >= MINIMUM_MOVE_OFFSET )
+    {
+        actor->SetCurrentPosition(currentPosition);
+    }
+    
+    actor->MoveWithDirection(moveDirection);
+}
+
+void AppDelegate::OnSCNotifyActorAttackWithDirection(flownet::RHGameID gameID, flownet::RHActorID actorID, flownet::RHMoveDirection attackDirection, flownet::FPOINT currentPosition) const
+{
+    if( gameID != RHClientGame::Instance().GetGameID() )
+    {
+        return;
+    }
+    
+    RHActor* actor = RHClientGame::Instance().FindPlayer(actorID);
+
+    if( actor->GetCurrentPosition().DistanceTo(currentPosition) >= MINIMUM_MOVE_OFFSET )
+    {
+        actor->SetCurrentPosition(currentPosition);
+    }
+    
+    // To Do : play Attack Animation only (not effect)
+    actor->AttackWithDirection(attackDirection);
+}

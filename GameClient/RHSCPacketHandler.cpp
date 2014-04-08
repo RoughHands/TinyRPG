@@ -107,4 +107,14 @@ void RHSCPacketHandler::OnSCNotifyPlayerJoin(RHGameID gameID, flownet::RHPlayer 
     this->m_ClientRPCReceiver->OnSCNotifyPlayerJoin(gameID, player);
 }
 
+void RHSCPacketHandler::OnSCNotifyActorMoveWithDirection(RHGameID gameID, RHActorID actorID, flownet::RHMoveDirection moveDirection, flownet::FPOINT currentPosition)
+{
+    this->m_ClientRPCReceiver->OnSCNotifyActorMoveWithDirection(gameID, actorID, moveDirection, currentPosition);
+}
+
+void RHSCPacketHandler::OnSCNotifyActorAttackWithDirection(RHGameID gameID, RHActorID actorID, flownet::RHMoveDirection attackDirection, flownet::FPOINT currentPosition)
+{
+    this->m_ClientRPCReceiver->OnSCNotifyActorAttackWithDirection(gameID, actorID, attackDirection, currentPosition);
+}
+
 } // namespace flownet
