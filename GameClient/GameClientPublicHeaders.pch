@@ -16,10 +16,10 @@
 //    #include "flownetPublicHeaders.pch"
 using namespace flownet;
 
-#include "TinyRPGClientRPCInterface.h"
-
 #include "TinyRPGCSProtocol.h"
 #include "TinyRPGSCProtocol.h"
+
+#include "TinyRPGClientRPCInterface.h"
 
 #include "RHRenderingTaskWorkerRoutine.h"
 

@@ -2567,7 +2567,7 @@
 					"\"~/Project/RoughHands/TinyRPG/TinyRPGShared/TinyRPGShared\"",
 				);
 				INFOPLIST_FILE = Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				LIBRARY_SEARCH_PATHS = (
 					"\"$(SRCROOT)/../../../cocos2dx/platform/third_party/ios/libraries\"",
 					"\"$(SRCROOT)/../../../external/libwebsockets/ios/lib\"",
@@ -2577,7 +2577,7 @@
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "";
 				VALID_ARCHS = "arm64 armv7 armv7s";
 			};
@@ -2626,7 +2626,7 @@
 					"\"~/Project/RoughHands/TinyRPG/TinyRPGShared/TinyRPGShared\"",
 				);
 				INFOPLIST_FILE = Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				LIBRARY_SEARCH_PATHS = (
 					"\"$(SRCROOT)/../../../cocos2dx/platform/third_party/ios/libraries\"",
 					"\"$(SRCROOT)/../../../external/libwebsockets/ios/lib\"",
@@ -2635,7 +2635,7 @@
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "";
 				VALIDATE_PRODUCT = YES;
 				VALID_ARCHS = "arm64 armv7 armv7s";

@@ -85,6 +85,11 @@ void RHSCPacketHandler::OnSCProtocolError()
     this->m_ClientRPCReceiver->OnSCProtocolError();
 }
 
+void RHSCPacketHandler::OnSCNotifyError(flownet::TinyRPGSCProtocol ProtocolNumber, FINT ErrorNumber, STRING ErrorMessage)
+{
+    this->m_ClientRPCReceiver->OnSCNotifyError(ProtocolNumber, ErrorNumber, ErrorMessage);
+}
+
 void RHSCPacketHandler::OnSCResponseConnect(ConnectionID connectionID)
 {
     ASSERT_DEBUG(this->m_ClientRPCReceiver);
@@ -100,6 +105,11 @@ void RHSCPacketHandler::OnSCResponseLinkUser(RHErrorLinkUser errorLinkUser, RHUs
 void RHSCPacketHandler::OnSCResponseJoinGame(RHErrorJoinGame result, RHGame game, RHActorID myPlayerID)
 {
     this->m_ClientRPCReceiver->OnSCResponseJoinGame(result, game, myPlayerID);
+}
+
+void RHSCPacketHandler::OnSCResponseReJoinGame(flownet::RHErrorJoinGame result, flownet::RHGame game, RHActorID myPlayerID)
+{
+    this->m_ClientRPCReceiver->OnSCResponseReJoinGame(result, game, myPlayerID);
 }
 
 void RHSCPacketHandler::OnSCNotifyPlayerJoin(RHGameID gameID, flownet::RHPlayer player)

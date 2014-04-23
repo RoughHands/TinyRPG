@@ -195,6 +195,11 @@ void AppDelegate::OnSCProtocolError() const
     }
 }
 
+void AppDelegate::OnSCNotifyError(flownet::TinyRPGSCProtocol ProtocolNumber, flownet::FINT ErrorNumber, flownet::STRING ErrorMessage) const 
+{
+    CCLog("ErrorNotify from Server. ProtocolNumber[%d] ErrorNumber[%d] ErrorMessage[%s]", ProtocolNumber, ErrorNumber, ErrorMessage.c_str());
+}
+
 
 void AppDelegate::OnSCResponseConnect(flownet::ConnectionID connectionID) const
 {
@@ -219,31 +224,26 @@ void AppDelegate::OnSCResponseLinkUser(flownet::RHErrorLinkUser errorLinkUser, f
         RHGameClient& client = RHGameClient::Instance();
         
         client.SetUser(user);
-        
-//        if( user.GetGameID() != GameID_None)
-//        {
-//            //  Rejoin Game
-////            client.Get
-//            client.GetCSConnection()->SendCSRequestReJoinToUserPlayingStage(user.GetUserID(), user.GetStageID());
-//            return;
-//        }
-//        
-//        if( client.GetInvitedStageID() != StageID_None )
-//        {
-//            client.GetCSConnection()->SendCSRequestJoinStage(client.GetUserID(), client.GetInvitedStageID());
-//            client.SetInvitedStageID(StageID_None);
-//            return;
-//        }
-        
+
+
         SplashScene* scene = dynamic_cast<SplashScene*>(CCDirector::sharedDirector()->getRunningScene());
         if(scene)
         {
 //            scene->DisplayMessage("Connected !");
             scene->DisplayTouchToGameStart();
         }
-        
-        // TEST Code
-        client.GetCSConnection()->SendCSRequestJoinGame(client.GetUserID(), 0);
+
+        if( user.GetGameID() != GameID_None )
+        {
+            // Rejoin Game
+            client.GetCSConnection()->SendCSRequestReJoinGame(client.GetUserID(), user.GetGameID());
+            
+        }
+        else
+        {
+            // Test Code below
+            client.GetCSConnection()->SendCSRequestJoinGame(client.GetUserID(), 0);
+        }
     }
     else
     {
@@ -346,6 +346,25 @@ void AppDelegate::OnSCResponseJoinGame(RHErrorJoinGame result, RHGame game, RHAc
     
 }
 
+void AppDelegate::OnSCResponseReJoinGame(RHErrorJoinGame result, RHGame game, RHActorID myPlayerID) const
+{
+    if( result == ErrorJoinGame_Success )
+    {
+        if( game.GetGameID() != RHGameClient::Instance().GetUser()->GetGameID() )
+        {
+            CCLog("Game Doesn't matched on ReJoinGame");
+            return;
+        }
+        
+        RHClientGame::Instance().SetMyPlayerID(myPlayerID);
+        RHClientGame::Instance().InitializeWithGame(game);
+    }
+    else
+    {
+        CCLog("Error ReJoin Game : %d", result);
+    }
+}
+
 void AppDelegate::OnSCNotifyPlayerJoin(RHGameID gameID, RHPlayer player)const
 {
     if( RHClientGame::Instance().GetGameID() != gameID )
@@ -407,7 +426,7 @@ void AppDelegate::OnSCNotifyActorMoveWithDirection(flownet::RHGameID gameID, flo
     
     RHActor* actor = RHClientGame::Instance().FindPlayer(actorID);
 
-    if( actor->GetCurrentPosition().DistanceTo(currentPosition) >= MINIMUM_MOVE_OFFSET )
+    if( actor->GetCurrentPosition().DistanceTo(currentPosition) >= MOVE_ALLOW_DISTANCE )
     {
         actor->SetCurrentPosition(currentPosition);
     }

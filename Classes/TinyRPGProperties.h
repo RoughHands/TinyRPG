@@ -26,6 +26,7 @@
 
 #define MOVE_RESOLUTION 1.5f
 #define MINIMUM_MOVE_OFFSET 50.f
+#define MOVE_ALLOW_DISTANCE 200.f
 
 static const float VIEW_SIZE_WIDTH = 640.f;
 static const float VIEW_SIZE_HEIGHT = 640.f;
