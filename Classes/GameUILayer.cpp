@@ -21,6 +21,8 @@ GameUILayer::GameUILayer():BaseLayer(),
 
 GameUILayer::~GameUILayer()
 {
+    
+
 }
 
 void GameUILayer::AllocateAndAddAllComponents()
@@ -56,6 +58,12 @@ bool GameUILayer::init()
     label->setPosition(ccp(winSize.width*0.8f, winSize.height*0.8f));
     label->setColor(ccWHITE);
     this->addChild(label);
+    
+    CCSprite* buttonRough = CCSprite::create("ui/button_rough.png");
+//    buttonRough->retain();
+    buttonRough->setAnchorPoint(AnchorPointMid);
+    buttonRough->setPosition(ccp(winSize.width*0.5f,buttonRough->getContentSize().height*0.5f));
+    this->addChild(buttonRough);
     
     this->InitializePortraitLayer();
     

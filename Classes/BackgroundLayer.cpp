@@ -66,9 +66,19 @@ void BackgroundLayer::AllocateAndAddAllComponents()
         const CCSize farBackground1Size = farBackground1->getContentSize();
         const CCSize farBackground2Size = farBackground2->getContentSize();
         
-        const float farBackgroundScaleRatio = 0.25f;
-        m_ParallaxNode->addChild(farBackground1, BackgroundLayerIndex_Far, ccp(farBackgroundScaleRatio,1.f), ccp(0.f,0.f));
-        m_ParallaxNode->addChild(farBackground2, BackgroundLayerIndex_Far, ccp(farBackgroundScaleRatio,1.f), ccp(farBackground1Size.width,0.f));
+        CCNode* farBackgroundBase = CCNode::create();
+        farBackgroundBase->setAnchorPoint(ccp(0.f,0.f));
+        const float farBackgroundScaleRatio = 0.25;
+        m_ParallaxNode->addChild(farBackgroundBase, BackgroundLayerIndex_Far, ccp(farBackgroundScaleRatio,1.f), ccp(0.f,0.f));
+
+        farBackground1->setPosition(ccp(0.f,0.f));
+        farBackgroundBase->addChild(farBackground1);
+        farBackground2->setPosition(ccp(farBackground1Size.width,0.f));
+        farBackgroundBase->addChild(farBackground2);
+        
+//        const float farBackgroundScaleRatio = 0.25f;
+//        m_ParallaxNode->addChild(farBackground1, BackgroundLayerIndex_Far, ccp(farBackgroundScaleRatio,1.f), ccp(0.f,0.f));
+//        m_ParallaxNode->addChild(farBackground2, BackgroundLayerIndex_Far, ccp(farBackgroundScaleRatio,1.f), ccp(farBackground1Size.width,0.f));
   
         const float backgroundWidth = (farBackground1Size.width+farBackground2Size.width)*(1/farBackgroundScaleRatio);
         const float areaWidth = backgroundWidth*0.33f; //(3/8)
@@ -161,7 +171,6 @@ void BackgroundLayer::AllocateAndAddAllComponents()
         m_ParallaxNode->addChild(nearBackground3RepeatClone2, BackgroundLayerIndex_Near, ccp(nearBackgroundScaleRatio,1.f), ccp(areaWidth*2.166666666666f,0.f));
         m_ParallaxNode->addChild(nearBackground3RepeatClone3, BackgroundLayerIndex_Near, ccp(nearBackgroundScaleRatio,1.f), ccp(areaWidth*2.333333333333f,0.f));
         m_ParallaxNode->addChild(nearBackground3RepeatClone4, BackgroundLayerIndex_Near, ccp(nearBackgroundScaleRatio,1.f), ccp(areaWidth*2.5f,0.f));
-
         
         CCSprite* nearObject1 = CCSprite::create("background/near_object_1.png");
         nearObject1->setAnchorPoint(CCPointZero);
@@ -183,13 +192,46 @@ void BackgroundLayer::AllocateAndAddAllComponents()
         nearObject2Clone2->setAnchorPoint(CCPointZero);
         nearObject2Clone2->runAction(CCRepeatForever::create(CCSequence::create(CCMoveBy::create(1.f, ccp(0.f,-15.f)),CCMoveBy::create(1.f, ccp(0.f,15.f)),nullptr)));
 
-        m_ParallaxNode->addChild(nearObject1, BackgroundLayerIndex_NearObject, ccp(nearBackgroundScaleRatio,1.f), ccp(areaWidth*0.1f,0.f));
-        m_ParallaxNode->addChild(nearObject1Clone, BackgroundLayerIndex_NearObject, ccp(nearBackgroundScaleRatio,1.f), ccp(areaWidth*0.3f,0.f));
-        m_ParallaxNode->addChild(nearObject1Clone2, BackgroundLayerIndex_NearObject, ccp(nearBackgroundScaleRatio,1.f), ccp(areaWidth*0.6f,0.f));
+        CCNode* nearObjectBackgroundBase = CCNode::create();
+        nearObjectBackgroundBase->setAnchorPoint(CCPointZero);
+        m_ParallaxNode->addChild(nearObjectBackgroundBase, BackgroundLayerIndex_NearObject, ccp(nearBackgroundScaleRatio,1.f), ccp(0.f,0.f));
+
+        float nearObjectOffset = 0.f;
+        nearObject1->setPosition(ccp(nearObjectOffset,0.f));
+        nearObjectOffset += nearObject1->getContentSize().width;
+        nearObject1Clone->setPosition(ccp(nearObjectOffset,0.f));
+        nearObjectOffset += nearObject1Clone->getContentSize().width;
+        nearObject1Clone2->setPosition(ccp(nearObjectOffset,0.f));
+        nearObjectOffset += nearObject1Clone2->getContentSize().width;
+        nearObject2->setPosition(ccp(nearObjectOffset,0.f));
+        nearObjectOffset += nearObject2->getContentSize().width;
+        nearObject2Clone->setPosition(ccp(nearObjectOffset,0.f));
+        nearObjectOffset += nearObject2Clone->getContentSize().width;
+        nearObject2Clone2->setPosition(ccp(nearObjectOffset,0.f));
+        nearObjectOffset += nearObject2Clone2->getContentSize().width;
+
+        nearObjectBackgroundBase->addChild(nearObject1);
+        nearObjectBackgroundBase->addChild(nearObject1Clone);
+        nearObjectBackgroundBase->addChild(nearObject1Clone2);
+        nearObjectBackgroundBase->addChild(nearObject2);
+        nearObjectBackgroundBase->addChild(nearObject2Clone);
+        nearObjectBackgroundBase->addChild(nearObject2Clone2);
         
-        m_ParallaxNode->addChild(nearObject2, BackgroundLayerIndex_NearObject, ccp(nearBackgroundScaleRatio,1.f), ccp(areaWidth*0.95f,0.f));
-        m_ParallaxNode->addChild(nearObject2Clone,  BackgroundLayerIndex_NearObject, ccp(nearBackgroundScaleRatio,1.f), ccp(areaWidth*1.3f,0.f));
-        m_ParallaxNode->addChild(nearObject2Clone2,  BackgroundLayerIndex_NearObject, ccp(nearBackgroundScaleRatio,1.f), ccp(areaWidth*1.9f,0.f));
+//        nearBackground1Repeat->addChild(nearObject1);
+//        nearBackground1RepeatClone2->addChild(nearObject1Clone);
+//        nearBackground1RepeatClone3->addChild(nearObject1Clone2);
+//
+//        nearBackground2Repeat->addChild(nearObject2);
+//        nearBackground2RepeatClone2->addChild(nearObject2Clone);
+//        nearBackground2RepeatClone3->addChild(nearObject2Clone2);
+
+//        m_ParallaxNode->addChild(nearObject1, BackgroundLayerIndex_NearObject, ccp(nearBackgroundScaleRatio,1.f), ccp(areaWidth*0.1f,0.f));
+//        m_ParallaxNode->addChild(nearObject1Clone, BackgroundLayerIndex_NearObject, ccp(nearBackgroundScaleRatio,1.f), ccp(areaWidth*0.3f,0.f));
+//        m_ParallaxNode->addChild(nearObject1Clone2, BackgroundLayerIndex_NearObject, ccp(nearBackgroundScaleRatio,1.f), ccp(areaWidth*0.6f,0.f));
+//        
+//        m_ParallaxNode->addChild(nearObject2, BackgroundLayerIndex_NearObject, ccp(nearBackgroundScaleRatio,1.f), ccp(areaWidth*0.95f,0.f));
+//        m_ParallaxNode->addChild(nearObject2Clone,  BackgroundLayerIndex_NearObject, ccp(nearBackgroundScaleRatio,1.f), ccp(areaWidth*1.3f,0.f));
+//        m_ParallaxNode->addChild(nearObject2Clone2,  BackgroundLayerIndex_NearObject, ccp(nearBackgroundScaleRatio,1.f), ccp(areaWidth*1.9f,0.f));
         
         CCSprite* closestBackground1 = CCSprite::create("background/closest_background_1.png");
         closestBackground1->setAnchorPoint(CCPointZero);
