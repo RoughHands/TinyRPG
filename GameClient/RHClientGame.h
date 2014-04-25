@@ -23,13 +23,15 @@ public:
 
 private:
     RHActorID                   m_MyPlayerID;
+    RHActorController           m_MyPlayerController;
     
 public:
     RHClientGame(const RHGameID gameID, const RHGameType gameType, const STRING& objectName="ClientGame");
     virtual ~RHClientGame();
     
 public:
-    const RHActorID         GetMyPlayerID() {   return m_MyPlayerID; }
+    const RHActorID         GetMyPlayerID()         {   return m_MyPlayerID; }
+    RHActorController&      GetMyPlayerController()   { return m_MyPlayerController; }
     
     void                    SetMyPlayerID(const RHActorID myPlayerID) { m_MyPlayerID = myPlayerID; }
     RHPlayer*               FindMyPlayer()  { return static_cast<RHPlayer*>(this->FindActor(m_MyPlayerID)); }

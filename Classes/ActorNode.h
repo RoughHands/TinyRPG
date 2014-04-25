@@ -9,8 +9,6 @@
 #ifndef __TinyRPG__ActorNode__
 #define __TinyRPG__ActorNode__
 
-#include "ObjectNode.h"
-#include "RHActor.h"
 
 class ActorNode : public ObjectNode
 {

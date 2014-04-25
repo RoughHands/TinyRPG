@@ -266,6 +266,7 @@
 		4D6AEDBB18E132A8002115FC /* ActorLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4D6AEDB918E132A8002115FC /* ActorLayer.cpp */; };
 		4D6AEDBE18E132CD002115FC /* GameUILayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4D6AEDBC18E132CD002115FC /* GameUILayer.cpp */; };
 		4D8909A918E2664E0085B334 /* BackgroundLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4D8909A718E2664E0085B334 /* BackgroundLayer.cpp */; };
+		4DC3BF41190A446D007067A9 /* RHActorController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4DC3BF3F190A446D007067A9 /* RHActorController.cpp */; };
 		4DE33D5A18E2A50900F2209E /* BaseLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4DE33D5818E2A50900F2209E /* BaseLayer.cpp */; };
 		4DE33D5D18E2B68500F2209E /* TinyRPGProperties.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4DE33D5B18E2B68500F2209E /* TinyRPGProperties.cpp */; };
 		4DECEC1218E700470099B07D /* Icon-120.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DECEC1118E700470099B07D /* Icon-120.png */; };
@@ -860,6 +861,8 @@
 		4D6AEDBD18E132CD002115FC /* GameUILayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameUILayer.h; path = ../Classes/GameUILayer.h; sourceTree = "<group>"; };
 		4D8909A718E2664E0085B334 /* BackgroundLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = BackgroundLayer.cpp; path = ../Classes/BackgroundLayer.cpp; sourceTree = "<group>"; };
 		4D8909A818E2664E0085B334 /* BackgroundLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BackgroundLayer.h; path = ../Classes/BackgroundLayer.h; sourceTree = "<group>"; };
+		4DC3BF3F190A446D007067A9 /* RHActorController.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = RHActorController.cpp; path = ../GameClient/RHActorController.cpp; sourceTree = "<group>"; };
+		4DC3BF40190A446D007067A9 /* RHActorController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RHActorController.h; path = ../GameClient/RHActorController.h; sourceTree = "<group>"; };
 		4DE33D5818E2A50900F2209E /* BaseLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = BaseLayer.cpp; path = ../Classes/BaseLayer.cpp; sourceTree = "<group>"; };
 		4DE33D5918E2A50900F2209E /* BaseLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BaseLayer.h; path = ../Classes/BaseLayer.h; sourceTree = "<group>"; };
 		4DE33D5B18E2B68500F2209E /* TinyRPGProperties.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TinyRPGProperties.cpp; path = ../Classes/TinyRPGProperties.cpp; sourceTree = "<group>"; };
@@ -2031,6 +2034,8 @@
 				4D3E6E8E18F28AB500261EAE /* RHGameClient.cpp */,
 				4D3E6E8F18F28AB500261EAE /* RHGameClient.h */,
 				4D3E6E9C18F28CFC00261EAE /* GameClientPublicHeaders.pch */,
+				4DC3BF3F190A446D007067A9 /* RHActorController.cpp */,
+				4DC3BF40190A446D007067A9 /* RHActorController.h */,
 			);
 			name = GameClient;
 			sourceTree = "<group>";
@@ -2403,6 +2408,7 @@
 				15A3DA5D1682F826002FB0C5 /* HttpClient.cpp in Sources */,
 				15A3DA5E1682F826002FB0C5 /* CCPhysicsDebugNode.cpp in Sources */,
 				375BD5131868454E0024609E /* CCActionObject.cpp in Sources */,
+				4DC3BF41190A446D007067A9 /* RHActorController.cpp in Sources */,
 				15A3DA5F1682F826002FB0C5 /* CCPhysicsSprite.cpp in Sources */,
 				4D3E6EA518F28F2E00261EAE /* RHCSConnection.cpp in Sources */,
 				15A3DAEB1682F8A6002FB0C5 /* CDAudioManager.m in Sources */,
@@ -2579,7 +2585,7 @@
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "";
-				VALID_ARCHS = "arm64 armv7 armv7s";
+				VALID_ARCHS = "armv7 armv7s";
 			};
 			name = Debug;
 		};
@@ -2638,7 +2644,7 @@
 				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "";
 				VALIDATE_PRODUCT = YES;
-				VALID_ARCHS = "arm64 armv7 armv7s";
+				VALID_ARCHS = "armv7 armv7s";
 			};
 			name = Release;
 		};

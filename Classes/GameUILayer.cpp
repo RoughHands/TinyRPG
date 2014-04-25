@@ -6,12 +6,7 @@
 //  Copyright (c) 2014 RoughHands. All rights reserved.
 //
 
-#include "GameUILayer.h"
-
-#include "GameScene.h"
-#include "BackgroundLayer.h"
-
-#include "RHClientGame.h"
+#include "Prefix.pch"
 
 GameUILayer::GameUILayer():BaseLayer(),
                 m_IsTouchDown(false),
@@ -88,6 +83,8 @@ void GameUILayer::onExit()
 
 bool GameUILayer::ccTouchBegan(CCTouch *pTouch, CCEvent *pEvent)
 {
+    RHClientGame::Instance().GetMyPlayerController().OnButtonPushedDown();
+
     m_IsTouchDown = true;
     
     const CCSize winSize = CCDirector::sharedDirector()->getWinSize();
@@ -123,6 +120,8 @@ void GameUILayer::ccTouchMoved(CCTouch *pTouch, CCEvent *pEvent)
 
 void GameUILayer::ccTouchEnded(CCTouch *pTouch, CCEvent *pEvent)
 {
+    RHClientGame::Instance().GetMyPlayerController().OnButtonPushedUp();
+    
     RHPlayer* myPlayer = RHClientGame::Instance().FindMyPlayer();
     myPlayer->MoveWithDirection(MoveDirection_Center);
     
@@ -132,6 +131,8 @@ void GameUILayer::ccTouchEnded(CCTouch *pTouch, CCEvent *pEvent)
 
 void GameUILayer::ccTouchCancelled(CCTouch *pTouch, CCEvent *pEvent)
 {
+    RHClientGame::Instance().GetMyPlayerController().OnButtonCanceled();
+
     RHPlayer* myPlayer = RHClientGame::Instance().FindMyPlayer();
     myPlayer->MoveWithDirection(MoveDirection_Center);
 

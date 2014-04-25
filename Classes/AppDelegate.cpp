@@ -1,11 +1,12 @@
 #include "AppDelegate.h"
-#include "HelloWorldScene.h"
 
-#include "BaseScene.h"
-#include "GameScene.h"
-#include "ActorLayer.h"
-
-#include "RHClientGame.h"
+#include "Prefix.pch"
+//
+//#include "BaseScene.h"
+//#include "GameScene.h"
+//#include "ActorLayer.h"
+//
+//#include "RHClientGame.h"
 
 using namespace std;
 using namespace flownet;

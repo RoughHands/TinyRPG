@@ -9,7 +9,6 @@
 #ifndef __TinyRPG__BackgroundLayer__
 #define __TinyRPG__BackgroundLayer__
 
-#include "ActorLayer.h"
 
 class BackgroundLayer : public BaseLayer
 {

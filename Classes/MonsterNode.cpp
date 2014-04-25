@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 RoughHands. All rights reserved.
 //
 
-#include "MonsterNode.h"
+#include "Prefix.pch"
 
 MonsterNode::MonsterNode():ActorNode()
 {

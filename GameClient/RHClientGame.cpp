@@ -34,7 +34,8 @@ void RHClientGame::DeleteInstance()
 
 RHClientGame::RHClientGame(const RHGameID gameID, const RHGameType gameType, const STRING& objectName):
                 RHGame(gameID, gameType, objectName),
-                m_MyPlayerID(ActorID_None)
+                m_MyPlayerID(ActorID_None),
+                m_MyPlayerController()
 {
 }
 
@@ -127,6 +128,11 @@ void RHClientGame::CreateAndAddPlayer(RHPlayer& player)
 {
     RHPlayer* newPlayer = CreateRHObject<RHPlayer>(player);
     this->AddPlayer(newPlayer);
+    
+    if( newPlayer->GetActorID() == this->GetMyPlayerID() )
+    {
+        m_MyPlayerController.SetActor(newPlayer);
+    }
 }
 
 void RHClientGame::CleanUp()

@@ -9,9 +9,6 @@
 #ifndef __TinyRPG__ActorLayer__
 #define __TinyRPG__ActorLayer__
 
-#include "RHPlayer.h"
-#include "RHMonster.h"
-#include "ActorNode.h"
 
 class ActorLayer : public BaseLayer
 {

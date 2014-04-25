@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 RoughHands. All rights reserved.
 //
 
-#include "BackgroundLayer.h"
+#include "Prefix.pch"
 
 BackgroundLayer::BackgroundLayer():BaseLayer(),
                     m_ParallaxNode(nullptr)

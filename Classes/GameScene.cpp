@@ -6,12 +6,7 @@
 //  Copyright (c) 2014 RoughHands. All rights reserved.
 //
 
-#include "GameScene.h"
-#include "BackgroundLayer.h"
-#include "GameUILayer.h"
-#include "ActorLayer.h"
-
-#include "RHClientGame.h"
+#include "Prefix.pch"
 
 GameScene::GameScene():BaseScene(SceneType_GameScene),
                 m_BackgroundLayer(nullptr),

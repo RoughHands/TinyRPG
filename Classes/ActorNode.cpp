@@ -6,8 +6,7 @@
 //  Copyright (c) 2014 RoughHands. All rights reserved.
 //
 
-#include "ActorNode.h"
-#include "RHClientGame.h"
+#include "Prefix.pch"
 
 ActorNode::ActorNode():ObjectNode(),
         m_ActorID(ActorID_None),

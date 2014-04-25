@@ -27,6 +27,8 @@ using namespace flownet;
 #include "RHSCPacketParser.h"
 #include "RHCSConnection.h"
 
+#include "RHActorController.h"
+
 #include "RHClientGame.h"
 #include "RHGameClient.h"
 

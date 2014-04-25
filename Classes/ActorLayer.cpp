@@ -6,10 +6,7 @@
 //  Copyright (c) 2014 RoughHands. All rights reserved.
 //
 
-#include "ActorLayer.h"
-#include "PlayerNode.h"
-#include "MonsterNode.h"
-#include "RHClientGame.h"
+#include "Prefix.pch"
 
 ActorLayer::ActorLayer():BaseLayer(),
                     m_PlayerNodeList(),

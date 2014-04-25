@@ -28,7 +28,6 @@ RHGameClient::RHGameClient():
     m_DeviceID(DeviceID_None),
 //    m_UserID(UserID_None),
     m_User(nullptr),
-    m_MyActorID(ActorID_None),
     m_IsBGMOn(false),
     m_IsEffectOn(false),
     m_IsMessageOn(false)

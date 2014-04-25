@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 RoughHands. All rights reserved.
 //
 
-#include "PlayerNode.h"
+#include "Prefix.pch"
 
 PlayerNode::PlayerNode():ActorNode()
 {

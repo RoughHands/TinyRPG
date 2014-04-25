@@ -71,31 +71,28 @@ private:
 //    User*                           m_User;
 
 //    RHGameServerID                  m_GameServerID;
-    RHActorID                       m_MyActorID;
     
     FBOOL                           m_IsBGMOn;
     FBOOL                           m_IsEffectOn;
     FBOOL                           m_IsMessageOn;
     
 public:
-    inline DeviceID         GetDeviceID()       { return m_DeviceID; }
-    RHUserID                GetUserID();
-    inline RHUser*          GetUser()           { return m_User; }
+    inline DeviceID                 GetDeviceID()       { return m_DeviceID; }
+    RHUserID                        GetUserID();
+    inline RHUser*                  GetUser()           { return m_User; }
 
 //    inline RHGameServerID  GetGameServerID()  { return m_GameServerID; }
-    inline RHActorID        GetMyActorID()      { return m_MyActorID; }
     
-    inline FBOOL             IsBGMOn()           { return m_IsBGMOn; }
-    inline FBOOL             IsEffectOn()        { return m_IsEffectOn; }
-    inline FBOOL             IsMessageOn()       { return m_IsMessageOn; }
+    inline FBOOL                    IsBGMOn()           { return m_IsBGMOn; }
+    inline FBOOL                    IsEffectOn()        { return m_IsEffectOn; }
+    inline FBOOL                    IsMessageOn()       { return m_IsMessageOn; }
     
-    inline void             SetDeviceID(DeviceID deviceID)                          { m_DeviceID = deviceID; }
-//    inline void           SetUserID(RHUserID userID)                              { m_UserID = userID; }
-    void                    SetUser(RHUser& user);
+    inline void                     SetDeviceID(DeviceID deviceID)                          { m_DeviceID = deviceID; }
+//    inline void                   SetUserID(RHUserID userID)                              { m_UserID = userID; }
+    void                            SetUser(RHUser& user);
     
 
 //    inline void         SetGameServerID(RHGameServerID& gameServerID)           { m_GameServerID = gameServerID; }
-    inline void         SetMyActorID(RHActorID actorID)                           { m_MyActorID = actorID; }
 
     inline void         SetBGMOn(FBOOL bgm)                                      { m_IsBGMOn = bgm; }
     inline void         SetEffectOn(FBOOL effect)                                { m_IsEffectOn = effect; }
